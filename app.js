@@ -289,7 +289,31 @@ class CUETGame {
         if (passed) Store.unlockLevel(state.currentLevel + 1);
         Store.addXP(Math.max(0, score));
 
+        let congratulationHtml = '';
+        if (passed) {
+            const ayshaQuotes = [
+                "You're brilliant, Aysha! Keep soaring high!",
+                "Amazing work, Aysha! Your dedication is truly inspiring.",
+                "You crushed it, Aysha! The sky is your only limit.",
+                "Phenomenal job, Aysha! Keep chasing greatness.",
+                "Aysha, you're unstoppable! Absolutely fantastic performance.",
+                "Outstanding, Aysha! Keep making yourself proud."
+            ];
+            const randomQuote = ayshaQuotes[Math.floor(Math.random() * ayshaQuotes.length)];
+
+            congratulationHtml = `
+                <div class="aysha-popup" id="congrats-popup" onclick="this.remove()" style="cursor: pointer;">
+                    <div class="popup-content">
+                        <h2>🎉 Congratulations Aysha! 🎉</h2>
+                        <p class="motivation-quote">"${randomQuote}"</p>
+                        <p style="font-size: 0.9rem; margin-top: 1.5rem; color: #cbd5e1; opacity: 0.7;">Click anywhere to dismiss</p>
+                    </div>
+                </div>
+            `;
+        }
+
         return `
+            ${congratulationHtml}
             <div class="result-view glass-card">
                 <h2>Level ${state.currentLevel} - ${passed ? 'Success!' : 'Failed'}</h2>
                 <h1 class="total-score ${passed ? 'success' : 'fail'}">${score} XP</h1>
