@@ -358,6 +358,23 @@ h1, h2, h3, h4, .logo-text, .level-num {
     font-size: 2.5rem;
 }
 
+.level-card.final-card:hover {
+    border-color: #fbbf24;
+    box-shadow: 0 0 40px rgba(251, 191, 36, 0.4);
+}
+
+.level-card.final-card .level-num {
+    background: linear-gradient(135deg, #fff, #fbbf24);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 3rem;
+}
+
+.level-card.final-card .level-status {
+    color: #fbbf24;
+}
+
 /* Level Section Animation */
 .level-section {
     animation: fadeInSection 0.3s ease-out;

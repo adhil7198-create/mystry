@@ -262,22 +262,35 @@ class CUETGame {
             `;
         }
 
+        // Final Mock Levels (6 levels, 75 questions each)
+        let finalLevelsHTML = '';
+        for (let i = 1; i <= 6; i++) {
+            finalLevelsHTML += `
+                <div class="level-card glass-card final-card" onclick="window.location.hash = '#quiz/final/${i}'">
+                    <div class="level-num">🏆 ${i}</div>
+                    <div class="level-status">⚡ Grand Mock</div>
+                    <div class="level-difficulty">75 Questions</div>
+                </div>
+            `;
+        }
+
         return `
             <div class="view-header">
                 <h2>Choose Your Challenge</h2>
-                <p>Practice like the real CUET exam — MCQs, Match the Following & Assertion-Reason.</p>
+                <p>Practice like the real CUET exam — Standard, Specialized, or Full Mock.</p>
             </div>
 
             <div class="section-tabs">
-                <button class="section-tab active" onclick="window.game.switchSection('mcq')" id="tab-mcq">📝 MCQ Levels</button>
-                <button class="section-tab" onclick="window.game.switchSection('match')" id="tab-match">🔗 Match the Following</button>
-                <button class="section-tab" onclick="window.game.switchSection('ar')" id="tab-ar">⚖️ Assertion-Reason</button>
+                <button class="section-tab active" onclick="window.game.switchSection('mcq')" id="tab-mcq">📝 curriculum</button>
+                <button class="section-tab" onclick="window.game.switchSection('match')" id="tab-match">🔗 Match items</button>
+                <button class="section-tab" onclick="window.game.switchSection('ar')" id="tab-ar">⚖️ Assertion Task</button>
+                <button class="section-tab" onclick="window.game.switchSection('final')" id="tab-final">🏆 Final Mock</button>
             </div>
 
             <div id="section-mcq" class="level-section">
                 <div class="section-header">
                     <h3>📝 Integrated MCQ Levels</h3>
-                    <p class="text-secondary">20 levels with all ${FullQuestionBank.length} questions • Mixed MCQ, Match & Assertion-Reason</p>
+                    <p class="text-secondary">20 levels • Mixed MCQ, Match & Assertion-Reason</p>
                 </div>
                 <div class="level-grid">${mcqLevelsHTML}</div>
             </div>
@@ -285,7 +298,7 @@ class CUETGame {
             <div id="section-match" class="level-section" style="display:none;">
                 <div class="section-header">
                     <h3>🔗 Match the Following</h3>
-                    <p class="text-secondary">${matchRounds} rounds with ${MatchBank.length} questions • Match List-I with List-II</p>
+                    <p class="text-secondary">${matchRounds} rounds • Match List-I with List-II</p>
                 </div>
                 <div class="level-grid">${matchLevelsHTML}</div>
             </div>
@@ -293,9 +306,17 @@ class CUETGame {
             <div id="section-ar" class="level-section" style="display:none;">
                 <div class="section-header">
                     <h3>⚖️ Assertion-Reason</h3>
-                    <p class="text-secondary">${arRounds} rounds with ${AssertionReasonBank.length} questions • Evaluate Assertion & Reason</p>
+                    <p class="text-secondary">${arRounds} rounds • Evaluate Assertion & Reason</p>
                 </div>
                 <div class="level-grid">${arLevelsHTML}</div>
+            </div>
+
+            <div id="section-final" class="level-section" style="display:none;">
+                <div class="section-header">
+                    <h3>🏆 Grand Final Mocks</h3>
+                    <p class="text-secondary">6 levels • 75 Questions each • Real Exam Simulator</p>
+                </div>
+                <div class="level-grid">${finalLevelsHTML}</div>
             </div>
         `;
     }
@@ -511,8 +532,11 @@ class CUETGame {
         Store.state.quiz.active = true;
         Store.state.quiz.questions = this.getQuestionsForLevel(level, quizType);
         
-        // Adjust timer: MCQ = 90min, Match/AR = 10min
-        const timerMin = quizType === 'mcq' ? Store.state.config.timerMinutes : 10;
+        // Adjust timer: MCQ = 90min, Match/AR = 10min, Final = 90min
+        let timerMin = Store.state.config.timerMinutes;
+        if (quizType === 'match' || quizType === 'ar') timerMin = 10;
+        if (quizType === 'final') timerMin = 90;
+
         Store.state.quiz.timeRemaining = timerMin * 60;
         Store.state.quiz.currentQuestionIndex = 0;
         Store.state.quiz.answers = {};
@@ -530,6 +554,13 @@ class CUETGame {
             const perRound = 5;
             const start = (lvl - 1) * perRound;
             return [...AssertionReasonBank].slice(start, start + perRound);
+        } else if (quizType === 'final') {
+            const perMock = 75;
+            // For final mocks, we shuffle the whole bank and take 75
+            // This ensures each of the 6 mocks feels different even with 250 total questions
+            return [...FullQuestionBank]
+                .sort(() => Math.random() - 0.5)
+                .slice(0, perMock);
         } else {
             const perLvl = Store.state.config.questionsPerLevel;
             // Use FullQuestionBank to mix all types (MCQ, Match, AR) into the 20 levels
@@ -703,7 +734,7 @@ class CUETGame {
     }
 
     switchSection(section) {
-        ['mcq', 'match', 'ar'].forEach(s => {
+        ['mcq', 'match', 'ar', 'final'].forEach(s => {
             const el = document.getElementById(`section-${s}`);
             const tab = document.getElementById(`tab-${s}`);
             if (el) el.style.display = s === section ? 'block' : 'none';
