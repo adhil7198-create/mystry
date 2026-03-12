@@ -374,6 +374,60 @@ h1, h2, h3, h4, .logo-text, .level-num {
     line-height: 1.5;
 }
 
+.q-text-review {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+/* Match UI Boxes */
+.match-boxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.match-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--surface-border);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.match-header {
+    background: rgba(139, 92, 246, 0.1);
+    padding: 1rem;
+    font-weight: 800;
+    text-align: center;
+    border-bottom: 1px solid var(--surface-border);
+    color: var(--primary);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+}
+
+.match-items {
+    padding: 0.5rem;
+}
+
+.match-row {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.match-row:last-child {
+    border-bottom: none;
+}
+
+@media (max-width: 640px) {
+    .match-boxes {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
 /* Quiz Styles */
 .quiz-interface {
     display: flex;

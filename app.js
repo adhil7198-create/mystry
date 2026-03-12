@@ -466,7 +466,7 @@ class CUETGame {
             return `
                 <div class="glass-card review-item ${isCorrect ? 'correct' : isUnanswered ? 'unanswered' : 'incorrect'}" style="margin-bottom: 2rem; padding: 2rem; border-left: 8px solid ${isCorrect ? 'var(--accent)' : 'var(--error)'}">
                     <div class="q-meta">${q.module} | Question ${idx + 1}</div>
-                    <h3 class="q-text" style="font-size: 1.25rem; margin-bottom: 1rem; white-space: pre-line;">${q.question}</h3>
+                    ${this.renderQuestionContent(q, true)}
                     <div class="review-options">
                         <p><b>Your Answer:</b> ${isUnanswered ? '<i class="text-secondary">Skipped</i>' : q.options[userAns]}</p>
                         <p><b>Correct Answer:</b> <span class="accent-text">${q.options[q.answerIndex]}</span></p>
@@ -554,7 +554,7 @@ class CUETGame {
                     </div>
                     <div class="question-card glass-card">
                         <div class="q-meta">${q.tag === 'Match' ? '🔗 Match the Following' : q.tag === 'Assertion-Reason' ? '⚖️ Assertion-Reason' : q.module} | ${q.difficulty}</div>
-                        <h2 class="q-text" style="white-space: pre-line;">${q.question}</h2>
+                        ${this.renderQuestionContent(q)}
                         <div class="q-options">
                             ${q.options.map((opt, i) => `
                                 <div class="option-btn ${Store.state.quiz.answers[qIdx] === i ? 'selected' : ''}" onclick="window.game.selectAnswer(${i})">
@@ -633,6 +633,54 @@ class CUETGame {
         clearInterval(this.timerInterval);
         Store.state.quiz.active = false;
         window.location.hash = '#result';
+    }
+
+    renderQuestionContent(q, isReview = false) {
+        if (q.tag === 'Match') {
+            const lines = q.question.split('\n').filter(l => l.trim() !== '');
+            let title = lines[0];
+            let list1Header = "List I";
+            let list2Header = "List II";
+            const items = [];
+            let footer = "";
+
+            lines.forEach(line => {
+                if (line.includes('|')) {
+                    const parts = line.split('|').map(p => p.trim());
+                    if (line.includes('List-I') || line.includes('List-II')) {
+                        list1Header = parts[0];
+                        list2Header = parts[1];
+                    } else {
+                        items.push({ l1: parts[0], l2: parts[1] });
+                    }
+                } else if (line.toLowerCase().includes('choose')) {
+                    footer = line;
+                }
+            });
+
+            return `
+                <div class="match-container">
+                    <h2 class="${isReview ? 'q-text-review' : 'q-text'}" style="margin-bottom: 1.5rem;">${title}</h2>
+                    <div class="match-boxes">
+                        <div class="match-box">
+                            <div class="match-header">${list1Header}</div>
+                            <div class="match-items">
+                                ${items.map(item => `<div class="match-row">${item.l1}</div>`).join('')}
+                            </div>
+                        </div>
+                        <div class="match-box">
+                            <div class="match-header">${list2Header}</div>
+                            <div class="match-items">
+                                ${items.map(item => `<div class="match-row">${item.l2}</div>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                    ${footer ? `<div class="match-footer" style="margin: 1.5rem 0; font-weight: 600; color: var(--text-secondary);">${footer}</div>` : ''}
+                </div>
+            `;
+        }
+
+        return `<h2 class="${isReview ? 'q-text-review' : 'q-text'}" style="white-space: pre-line; ${isReview ? 'font-size: 1.25rem; margin-bottom: 1rem;' : ''}">${q.question}</h2>`;
     }
 
     switchSection(section) {
