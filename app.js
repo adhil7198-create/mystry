@@ -1,5 +1,5 @@
 import { Store } from './src/js/state.js';
-import { FullQuestionBank } from './src/js/data/questions.js';
+import { FullQuestionBank, MCQBank, MatchBank, AssertionReasonBank } from './src/js/data/questions.js';
 import { supabase, fetchLeaderboard, signUpWithEmail, signInWithEmail, signOut, getSession, fetchUserProfile } from './src/js/supabase.js';
 
 class CUETGame {
@@ -83,7 +83,8 @@ class CUETGame {
         const hash = window.location.hash || '#home';
         const parts = hash.replace('#', '').split('/');
         const route = parts[0] || 'home';
-        const param = parts[1] || null;
+        // Pass everything after the route as the param (e.g., 'mcq/3' for '#quiz/mcq/3')
+        const param = parts.slice(1).join('/') || null;
 
         this.renderView(route, param);
     }
@@ -221,23 +222,81 @@ class CUETGame {
 
     viewLevels() {
         const { unlockedLevels } = Store.state.user;
-        let levelsHTML = '';
+
+        // MCQ Levels (20 levels)
+        let mcqLevelsHTML = '';
         for (let i = 1; i <= 20; i++) {
             const isLocked = i > unlockedLevels;
-            levelsHTML += `
-                <div class="level-card glass-card ${isLocked ? 'locked' : ''}" onclick="${!isLocked ? `window.location.hash = '#quiz/${i}'` : ''}">
+            mcqLevelsHTML += `
+                <div class="level-card glass-card ${isLocked ? 'locked' : ''}" onclick="${!isLocked ? `window.location.hash = '#quiz/mcq/${i}'` : ''}">
                     <div class="level-num">${i}</div>
                     <div class="level-status">${isLocked ? '🔒 Locked' : '✨ Unlocked'}</div>
                     <div class="level-difficulty">${i <= 5 ? 'Basic' : i <= 15 ? 'Advanced' : 'Grand Mock'}</div>
                 </div>
             `;
         }
+
+        // Match the Following Rounds
+        const matchRounds = Math.ceil(MatchBank.length / 5);
+        let matchLevelsHTML = '';
+        for (let i = 1; i <= matchRounds; i++) {
+            matchLevelsHTML += `
+                <div class="level-card glass-card match-card" onclick="window.location.hash = '#quiz/match/${i}'">
+                    <div class="level-num">🔗 ${i}</div>
+                    <div class="level-status">✨ Open</div>
+                    <div class="level-difficulty">5 Questions</div>
+                </div>
+            `;
+        }
+
+        // Assertion-Reason Rounds
+        const arRounds = Math.ceil(AssertionReasonBank.length / 5);
+        let arLevelsHTML = '';
+        for (let i = 1; i <= arRounds; i++) {
+            arLevelsHTML += `
+                <div class="level-card glass-card ar-card" onclick="window.location.hash = '#quiz/ar/${i}'">
+                    <div class="level-num">⚖️ ${i}</div>
+                    <div class="level-status">✨ Open</div>
+                    <div class="level-difficulty">5 Questions</div>
+                </div>
+            `;
+        }
+
         return `
             <div class="view-header">
-                <h2>Unlock Your Potential</h2>
-                <p>Reach 50% accuracy to unlock the next challenge.</p>
+                <h2>Choose Your Challenge</h2>
+                <p>Practice like the real CUET exam — MCQs, Match the Following & Assertion-Reason.</p>
             </div>
-            <div class="level-grid">${levelsHTML}</div>
+
+            <div class="section-tabs">
+                <button class="section-tab active" onclick="window.game.switchSection('mcq')" id="tab-mcq">📝 MCQ Levels</button>
+                <button class="section-tab" onclick="window.game.switchSection('match')" id="tab-match">🔗 Match the Following</button>
+                <button class="section-tab" onclick="window.game.switchSection('ar')" id="tab-ar">⚖️ Assertion-Reason</button>
+            </div>
+
+            <div id="section-mcq" class="level-section">
+                <div class="section-header">
+                    <h3>📝 MCQ Levels</h3>
+                    <p class="text-secondary">20 levels with ${MCQBank.length} questions • Classic Multiple Choice</p>
+                </div>
+                <div class="level-grid">${mcqLevelsHTML}</div>
+            </div>
+
+            <div id="section-match" class="level-section" style="display:none;">
+                <div class="section-header">
+                    <h3>🔗 Match the Following</h3>
+                    <p class="text-secondary">${matchRounds} rounds with ${MatchBank.length} questions • Match List-I with List-II</p>
+                </div>
+                <div class="level-grid">${matchLevelsHTML}</div>
+            </div>
+
+            <div id="section-ar" class="level-section" style="display:none;">
+                <div class="section-header">
+                    <h3>⚖️ Assertion-Reason</h3>
+                    <p class="text-secondary">${arRounds} rounds with ${AssertionReasonBank.length} questions • Evaluate Assertion & Reason</p>
+                </div>
+                <div class="level-grid">${arLevelsHTML}</div>
+            </div>
         `;
     }
 
@@ -329,7 +388,7 @@ class CUETGame {
 
     viewResult() {
         const { state } = Store;
-        const qCount = state.config.questionsPerLevel;
+        const qCount = state.quiz.questions.length;
         const answers = state.quiz.answers;
         let correctCount = 0;
         let wrongCount = 0;
@@ -407,7 +466,7 @@ class CUETGame {
             return `
                 <div class="glass-card review-item ${isCorrect ? 'correct' : isUnanswered ? 'unanswered' : 'incorrect'}" style="margin-bottom: 2rem; padding: 2rem; border-left: 8px solid ${isCorrect ? 'var(--accent)' : 'var(--error)'}">
                     <div class="q-meta">${q.module} | Question ${idx + 1}</div>
-                    <h3 class="q-text" style="font-size: 1.25rem; margin-bottom: 1rem;">${q.question}</h3>
+                    <h3 class="q-text" style="font-size: 1.25rem; margin-bottom: 1rem; white-space: pre-line;">${q.question}</h3>
                     <div class="review-options">
                         <p><b>Your Answer:</b> ${isUnanswered ? '<i class="text-secondary">Skipped</i>' : q.options[userAns]}</p>
                         <p><b>Correct Answer:</b> <span class="accent-text">${q.options[q.answerIndex]}</span></p>
@@ -435,12 +494,26 @@ class CUETGame {
         `;
     }
 
-    setupQuiz(param) {
-        const level = parseInt(param) || 1;
+    setupQuiz(typeAndLevel) {
+        // Parse type/level from route: 'mcq/3', 'match/1', 'ar/2'
+        let quizType = 'mcq';
+        let level = 1;
+        if (typeAndLevel && typeAndLevel.includes('/')) {
+            const parts = typeAndLevel.split('/');
+            quizType = parts[0] || 'mcq';
+            level = parseInt(parts[1]) || 1;
+        } else {
+            level = parseInt(typeAndLevel) || 1;
+        }
+
         Store.state.currentLevel = level;
+        Store.state.quiz.quizType = quizType;
         Store.state.quiz.active = true;
-        Store.state.quiz.questions = this.getQuestionsForLevel(level);
-        Store.state.quiz.timeRemaining = Store.state.config.timerMinutes * 60;
+        Store.state.quiz.questions = this.getQuestionsForLevel(level, quizType);
+        
+        // Adjust timer: MCQ = 90min, Match/AR = 10min
+        const timerMin = quizType === 'mcq' ? Store.state.config.timerMinutes : 10;
+        Store.state.quiz.timeRemaining = timerMin * 60;
         Store.state.quiz.currentQuestionIndex = 0;
         Store.state.quiz.answers = {};
 
@@ -448,11 +521,21 @@ class CUETGame {
         this.startTimer();
     }
 
-    getQuestionsForLevel(lvl) {
-        const perLvl = Store.state.config.questionsPerLevel;
-        const start = (lvl - 1) * perLvl % (Math.max(1, FullQuestionBank.length - perLvl));
-        const chunk = FullQuestionBank.slice(start, start + perLvl);
-        return [...chunk].sort(() => Math.random() - 0.5);
+    getQuestionsForLevel(lvl, quizType = 'mcq') {
+        if (quizType === 'match') {
+            const perRound = 5;
+            const start = (lvl - 1) * perRound;
+            return [...MatchBank].slice(start, start + perRound);
+        } else if (quizType === 'ar') {
+            const perRound = 5;
+            const start = (lvl - 1) * perRound;
+            return [...AssertionReasonBank].slice(start, start + perRound);
+        } else {
+            const perLvl = Store.state.config.questionsPerLevel;
+            const start = (lvl - 1) * perLvl % (Math.max(1, MCQBank.length - perLvl));
+            const chunk = MCQBank.slice(start, start + perLvl);
+            return [...chunk].sort(() => Math.random() - 0.5);
+        }
     }
 
     renderQuizUI() {
@@ -467,11 +550,11 @@ class CUETGame {
                 <div class="quiz-main">
                     <div class="quiz-header">
                         <div class="timer-box">⏱️ <span id="timer-display">${Store.state.config.timerMinutes}:00</span></div>
-                        <div style="font-weight: 700;">Question ${qIdx + 1} of ${Store.state.config.questionsPerLevel}</div>
+                        <div style="font-weight: 700;">Question ${qIdx + 1} of ${Store.state.quiz.questions.length}</div>
                     </div>
                     <div class="question-card glass-card">
-                        <div class="q-meta">${q.module} | ${q.difficulty}</div>
-                        <h2 class="q-text">${q.question}</h2>
+                        <div class="q-meta">${q.tag === 'Match' ? '🔗 Match the Following' : q.tag === 'Assertion-Reason' ? '⚖️ Assertion-Reason' : q.module} | ${q.difficulty}</div>
+                        <h2 class="q-text" style="white-space: pre-line;">${q.question}</h2>
                         <div class="q-options">
                             ${q.options.map((opt, i) => `
                                 <div class="option-btn ${Store.state.quiz.answers[qIdx] === i ? 'selected' : ''}" onclick="window.game.selectAnswer(${i})">
@@ -526,7 +609,7 @@ class CUETGame {
     }
 
     nextQuestion() {
-        if (Store.state.quiz.currentQuestionIndex < (Store.state.config.questionsPerLevel - 1)) {
+        if (Store.state.quiz.currentQuestionIndex < (Store.state.quiz.questions.length - 1)) {
             Store.state.quiz.currentQuestionIndex++;
             this.renderQuizUI();
         }
@@ -550,6 +633,15 @@ class CUETGame {
         clearInterval(this.timerInterval);
         Store.state.quiz.active = false;
         window.location.hash = '#result';
+    }
+
+    switchSection(section) {
+        ['mcq', 'match', 'ar'].forEach(s => {
+            const el = document.getElementById(`section-${s}`);
+            const tab = document.getElementById(`tab-${s}`);
+            if (el) el.style.display = s === section ? 'block' : 'none';
+            if (tab) tab.classList.toggle('active', s === section);
+        });
     }
 
     attachViewEvents() { }

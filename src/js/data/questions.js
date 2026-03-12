@@ -3752,3 +3752,8 @@ export const QUESTIONS = [
 ];
 
 export const FullQuestionBank = [...QUESTIONS];
+
+// Separate banks by question type
+export const MCQBank = QUESTIONS.filter(q => q.tag !== 'Match' && q.tag !== 'Assertion-Reason');
+export const MatchBank = QUESTIONS.filter(q => q.tag === 'Match');
+export const AssertionReasonBank = QUESTIONS.filter(q => q.tag === 'Assertion-Reason');
