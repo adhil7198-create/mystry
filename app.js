@@ -613,8 +613,14 @@ class CUETGame {
         try {
             if (this.isSignUpMode) {
                 if (!name) throw new Error("Name is required for sign up");
-                await signUpWithEmail(email, password, name);
-                alert('Account created successfully! You can now sign in.');
+                const res = await signUpWithEmail(email, password, name);
+                
+                // Supabase might return no error but require email verification
+                if (res.user && res.user.identities && res.user.identities.length === 0) {
+                     alert('This email is already taken or requires verification!');
+                } else {
+                     alert('Account created successfully! You can now sign in.');
+                }
                 this.toggleAuthMode();
             } else {
                 await signInWithEmail(email, password);
@@ -622,7 +628,9 @@ class CUETGame {
                 window.location.hash = '#dashboard';
             }
         } catch (err) {
-            alert(err.message);
+            console.error("Auth Exception:", err);
+            // Supabase sometimes buries the message, handle it explicitly
+            alert(err.message || "Invalid login credentials or unverified email.");
         } finally {
             btn.innerText = originalText;
             btn.disabled = false;
