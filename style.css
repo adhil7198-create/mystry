@@ -598,6 +598,8 @@ h1, h2, h3, h4, .logo-text, .level-num {
     .hero-section h1 { font-size: 1.8rem; }
 }
 
+.hidden { display: none !important; }
+
 /* Animations */
 @keyframes spin {
     to { transform: rotate(360deg); }

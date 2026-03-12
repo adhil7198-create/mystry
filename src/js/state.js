@@ -35,14 +35,20 @@ class StateManager {
     }
 
     loadState() {
-        const saved = localStorage.getItem('psych_mastery_state');
-        if (saved) {
-            const parsed = JSON.parse(saved);
-            parsed.config = { ...INITIAL_STATE.config };
-            if (parsed.user) {
-                parsed.user.unlockedLevels = 20;
+        try {
+            const saved = localStorage.getItem('psych_mastery_state');
+            if (saved) {
+                const parsed = JSON.parse(saved);
+                // Ensure config is fresh and stats are initialized
+                parsed.config = { ...INITIAL_STATE.config };
+                if (parsed.user) {
+                    parsed.user.unlockedLevels = parsed.user.unlockedLevels || 20;
+                }
+                return parsed;
             }
-            return parsed;
+        } catch (e) {
+            console.warn("State load failed, resetting to initial state:", e);
+            localStorage.removeItem('psych_mastery_state');
         }
         return { ...INITIAL_STATE };
     }

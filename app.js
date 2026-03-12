@@ -11,6 +11,7 @@ class CUETGame {
     }
 
     init() {
+        console.log("CUET Game Initializing...");
         // Initial route
         window.onhashchange = () => this.handleRoute();
 
@@ -88,6 +89,7 @@ class CUETGame {
     }
 
     async renderView(viewName, param) {
+        console.log(`Rendering view: ${viewName}`, param);
         this.currentView = viewName;
         const main = document.getElementById('main-view');
         if (!main) {
@@ -122,17 +124,22 @@ class CUETGame {
                 content = this.viewHome();
             }
 
+            if (!content && viewName !== 'quiz') {
+                throw new Error(`View "${viewName}" returned no content.`);
+            }
+
             main.innerHTML = content;
             this.animateViewTransition();
             this.attachViewEvents();
             this.renderHeader(Store.state); // Update nav highlights
+            console.log(`View ${viewName} rendered successfully.`);
         } catch (err) {
             console.error("View Render Error:", err);
             main.innerHTML = `
-                <div class="glass-card" style="border-color: var(--error);">
-                    <h2>Oops! Something went wrong</h2>
-                    <p>${err.message}</p>
-                    <button class="btn-primary" onclick="window.location.hash='#home'">Go Home</button>
+                <div class="glass-card" style="border-color: var(--error); text-align: center; margin-top: 2rem;">
+                    <h2 style="color: var(--error);">Oops! Loading failed</h2>
+                    <p style="margin: 1rem 0;">${err.message || 'An unexpected error occurred while building the view.'}</p>
+                    <button class="btn-primary" style="margin: 0 auto;" onclick="window.location.hash='#home'">Try Home</button>
                 </div>`;
         }
     }
