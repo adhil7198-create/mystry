@@ -276,8 +276,8 @@ class CUETGame {
 
             <div id="section-mcq" class="level-section">
                 <div class="section-header">
-                    <h3>📝 MCQ Levels</h3>
-                    <p class="text-secondary">20 levels with ${MCQBank.length} questions • Classic Multiple Choice</p>
+                    <h3>📝 Integrated MCQ Levels</h3>
+                    <p class="text-secondary">20 levels with all ${FullQuestionBank.length} questions • Mixed MCQ, Match & Assertion-Reason</p>
                 </div>
                 <div class="level-grid">${mcqLevelsHTML}</div>
             </div>
@@ -532,8 +532,9 @@ class CUETGame {
             return [...AssertionReasonBank].slice(start, start + perRound);
         } else {
             const perLvl = Store.state.config.questionsPerLevel;
-            const start = (lvl - 1) * perLvl % (Math.max(1, MCQBank.length - perLvl));
-            const chunk = MCQBank.slice(start, start + perLvl);
+            // Use FullQuestionBank to mix all types (MCQ, Match, AR) into the 20 levels
+            const start = (lvl - 1) * perLvl % (Math.max(1, FullQuestionBank.length - perLvl));
+            const chunk = FullQuestionBank.slice(start, start + perLvl);
             return [...chunk].sort(() => Math.random() - 0.5);
         }
     }
