@@ -10,7 +10,7 @@ class CUETGame {
         this.init();
     }
 
-    async init() {
+    init() {
         // Initial route
         window.onhashchange = () => this.handleRoute();
 
@@ -21,16 +21,19 @@ class CUETGame {
         // Subscriptions
         Store.subscribe((state) => this.renderHeader(state));
 
-        await this.checkAuthStatus();
-
         // Initial Header Render
         this.renderHeader(Store.state);
 
         // Security / Anti-Cheat
         this.initAntiCheat();
 
-        // Trigger initial route
+        // Trigger initial route instantly
         this.handleRoute();
+
+        // Check auth in background to avoid blocking site load
+        this.checkAuthStatus().then(() => {
+            if (this.currentView === 'dashboard') this.handleRoute();
+        });
     }
 
     async checkAuthStatus() {
