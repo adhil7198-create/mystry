@@ -333,8 +333,8 @@ class CUETGame {
                 </div>
                 <div class="stat-grid">
                     <div class="stat-card"><h3>Total XP</h3><p>${user.xp.toLocaleString()}</p></div>
-                    <div class="stat-card"><h3>Last Test Score</h3><p>${user.lastScore || 0} / 300</p></div>
-                    <div class="stat-card"><h3>Levels Unlocked</h3><p>${user.unlockedLevels}/20</p></div>
+                    <div class="stat-card"><h3>Last Performance</h3><p>${user.lastScore || 0} Marks</p></div>
+                    <div class="stat-card"><h3>Unlocked</h3><p>${user.unlockedLevels}/20 Levels</p></div>
                     <div class="stat-card"><h3>Badges</h3><p>${user.badges.length}</p></div>
                 </div>
                 ${!envOk ? `
@@ -454,11 +454,16 @@ class CUETGame {
 
         return `
             ${congratulationHtml}
-            <div class="result-view glass-card">
-                <h2>Level ${state.currentLevel} - ${passed ? 'Success!' : 'Failed'}</h2>
-                <h1 class="total-score ${passed ? 'success' : 'fail'}">${score} / ${maxScore} Marks</h1>
-                <div class="stat-grid">
+            <div class="result-view glass-card" style="text-align: center;">
+                <div class="q-meta">${state.quiz.quizType.toUpperCase()} | LEVEL ${state.currentLevel}</div>
+                <h2 style="margin-bottom: 0.5rem;">${passed ? '🎉 Level Passed!' : '❌ Try Again'}</h2>
+                
+                <h1 class="total-score ${passed ? 'success' : 'fail'}">${score} / ${maxScore}</h1>
+                <p class="text-secondary" style="font-size: 1.25rem; font-weight: 600; margin-bottom: 2rem;">Total Marks Secured</p>
+
+                <div class="stat-grid" style="grid-template-columns: repeat(3, 1fr);">
                     <div class="stat-card"><h3>Correct</h3><p>${correctCount}</p></div>
+                    <div class="stat-card"><h3>Questions</h3><p>${qCount}</p></div>
                     <div class="stat-card"><h3>Accuracy</h3><p>${Math.round((correctCount / qCount) * 100)}%</p></div>
                 </div>
                 <div class="actions">
