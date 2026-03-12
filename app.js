@@ -195,7 +195,7 @@ class CUETGame {
                 <h1>Master CUET Psychology <span class="accent-text">2026</span></h1>
                 <p>Prepare through a gamified MCQ platform. 20 Levels, 1500+ Questions, AI Predictions.</p>
                 
-                <div class="motivation-quote" style="margin: 1.5rem 0; padding: 1rem; background: var(--surface-light); border-left: 4px solid var(--accent); border-radius: 8px; font-style: italic; color: #cbd5e1; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <div class="motivation-quote">
                     "${randomQuote}"
                 </div>
 
@@ -355,11 +355,11 @@ class CUETGame {
             const randomQuote = ayshaQuotes[Math.floor(Math.random() * ayshaQuotes.length)];
 
             congratulationHtml = `
-                <div class="aysha-popup" id="congrats-popup" onclick="this.remove()" style="cursor: pointer;">
+                <div class="aysha-popup" id="congrats-popup" onclick="this.remove()">
                     <div class="popup-content">
-                        <h2>🎉 Congratulations Aysha! 🎉</h2>
+                        <h2>🎉 Excellent work, Aysha! 🎉</h2>
                         <p class="motivation-quote">"${randomQuote}"</p>
-                        <p style="font-size: 0.9rem; margin-top: 1.5rem; color: #cbd5e1; opacity: 0.7;">Click anywhere to dismiss</p>
+                        <p class="dismiss-hint">Click anywhere to continue</p>
                     </div>
                 </div>
             `;
