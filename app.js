@@ -243,6 +243,7 @@ class CUETGame {
                 </div>
                 <div class="stat-grid">
                     <div class="stat-card"><h3>Total XP</h3><p>${user.xp.toLocaleString()}</p></div>
+                    <div class="stat-card"><h3>Last Test Score</h3><p>${user.lastScore || 0} / 300</p></div>
                     <div class="stat-card"><h3>Levels Unlocked</h3><p>${user.unlockedLevels}/20</p></div>
                     <div class="stat-card"><h3>Badges</h3><p>${user.badges.length}</p></div>
                 </div>
@@ -336,6 +337,7 @@ class CUETGame {
 
         if (passed) Store.unlockLevel(state.currentLevel + 1);
         Store.addXP(Math.max(0, score));
+        Store.updateUser({ lastScore: score });
 
         let congratulationHtml = '';
         if (passed) {
@@ -615,13 +617,18 @@ class CUETGame {
                 if (!name) throw new Error("Name is required for sign up");
                 const res = await signUpWithEmail(email, password, name);
                 
-                // Supabase might return no error but require email verification
-                if (res.user && res.user.identities && res.user.identities.length === 0) {
-                     alert('This email is already taken or requires verification!');
+                if (res.session) {
+                    // Auto login if email confirmation is disabled
+                    await this.checkAuthStatus();
+                    window.location.hash = '#dashboard';
+                    alert(`Welcome, ${name}! Your account has been created.`);
+                } else if (res.user && res.user.identities && res.user.identities.length === 0) {
+                     alert('This email is already taken or invalid!');
+                     this.toggleAuthMode();
                 } else {
-                     alert('Account created successfully! You can now sign in.');
+                     alert('Account created! PLEASE CHECK YOUR EMAIL to verify your account before signing in. (Or disable "Confirm Email" in your Supabase Settings)');
+                     this.toggleAuthMode();
                 }
-                this.toggleAuthMode();
             } else {
                 await signInWithEmail(email, password);
                 await this.checkAuthStatus(); // Reload user state from DB
@@ -629,8 +636,11 @@ class CUETGame {
             }
         } catch (err) {
             console.error("Auth Exception:", err);
-            // Supabase sometimes buries the message, handle it explicitly
-            alert(err.message || "Invalid login credentials or unverified email.");
+            let msg = err.message || "Invalid login credentials";
+            if (msg.includes('Invalid login credentials')) {
+                msg = "Invalid login credentials. Did you verify your email? Check your inbox or turn off 'Confirm Email' in Supabase.";
+            }
+            alert(msg);
         } finally {
             btn.innerText = originalText;
             btn.disabled = false;

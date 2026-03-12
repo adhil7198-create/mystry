@@ -8,7 +8,8 @@ export const INITIAL_STATE = {
         level: 1,
         unlockedLevels: 20,
         badges: [],
-        accuracyTracker: {}
+        accuracyTracker: {},
+        lastScore: 0
     },
     currentLevel: null,
     quiz: {
