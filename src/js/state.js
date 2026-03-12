@@ -6,7 +6,7 @@ export const INITIAL_STATE = {
         name: 'Guest User',
         xp: 0,
         level: 1,
-        unlockedLevels: 1,
+        unlockedLevels: 20,
         badges: [],
         accuracyTracker: {}
     },
@@ -38,6 +38,9 @@ class StateManager {
         if (saved) {
             const parsed = JSON.parse(saved);
             parsed.config = { ...INITIAL_STATE.config };
+            if (parsed.user) {
+                parsed.user.unlockedLevels = 20;
+            }
             return parsed;
         }
         return { ...INITIAL_STATE };

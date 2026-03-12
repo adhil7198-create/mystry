@@ -1,15 +1,16 @@
 import { Store } from './src/js/state.js';
 import { FullQuestionBank } from './src/js/data/questions.js';
-import { supabase, fetchLeaderboard } from './src/js/supabase.js';
+import { supabase, fetchLeaderboard, signUpWithEmail, signInWithEmail, signOut, getSession, fetchUserProfile } from './src/js/supabase.js';
 
 class CUETGame {
     constructor() {
         this.currentView = 'home';
         this.timerInterval = null;
+        this.isSignUpMode = false;
         this.init();
     }
 
-    init() {
+    async init() {
         // Initial route
         window.onhashchange = () => this.handleRoute();
 
@@ -20,6 +21,8 @@ class CUETGame {
         // Subscriptions
         Store.subscribe((state) => this.renderHeader(state));
 
+        await this.checkAuthStatus();
+
         // Initial Header Render
         this.renderHeader(Store.state);
 
@@ -28,6 +31,26 @@ class CUETGame {
 
         // Trigger initial route
         this.handleRoute();
+    }
+
+    async checkAuthStatus() {
+        if (!supabase) return;
+        try {
+            const session = await getSession();
+            if (session && session.user) {
+                const profile = await fetchUserProfile(session.user.id);
+                Store.updateUser({
+                    id: session.user.id,
+                    name: profile ? profile.name : (session.user.user_metadata?.name || 'Player'),
+                    xp: profile ? profile.xp : 0,
+                    unlockedLevels: profile ? profile.unlocked_levels : 20,
+                    badges: profile ? profile.badges : [],
+                    accuracyTracker: profile ? profile.accuracy_tracker : {}
+                });
+            }
+        } catch (e) {
+            console.error("Auth init error:", e);
+        }
     }
 
     initAntiCheat() {
@@ -77,6 +100,8 @@ class CUETGame {
             let content = '';
             if (viewName === 'leaderboard') {
                 content = await this.viewLeaderboard();
+            } else if (viewName === 'auth') {
+                content = this.viewAuth();
             } else if (viewName === 'dashboard') {
                 content = this.viewDashboard();
             } else if (viewName === 'levels') {
@@ -126,10 +151,15 @@ class CUETGame {
         const user = state.user;
 
         if (navStats) {
+            const authAction = user.id 
+                ? `<button class="btn-secondary btn-small" onclick="window.game.handleSignOut()" style="font-size: 0.8rem; padding: 0.4rem 0.8rem; margin-left: 1rem;">Sign Out</button>`
+                : `<button class="btn-primary btn-small" onclick="window.location.hash='#auth'" style="font-size: 0.8rem; padding: 0.4rem 0.8rem; margin-left: 1rem;">Sign In</button>`;
+
             navStats.innerHTML = `
                 <div class="xp-badge">✨ ${user.xp.toLocaleString()} XP</div>
                 <div class="lvl-badge">🏆 Lvl ${user.unlockedLevels}</div>
                 <div class="user-avatar" title="${user.name}">👤 ${user.name.charAt(0)}</div>
+                ${authAction}
             `;
         }
 
@@ -145,10 +175,27 @@ class CUETGame {
     }
 
     viewHome() {
+        const homeQuotes = [
+            "Believe you can and you're halfway there.",
+            "Success is the sum of small efforts, repeated day in and day out.",
+            "Your attitude, not your aptitude, will determine your altitude.",
+            "Don't stop until you're proud.",
+            "The secret of getting ahead is getting started.",
+            "Focus on the step in front of you, not the whole staircase.",
+            "Psychology is meant to be lived, not just studied.",
+            "Your future depends on what you do today."
+        ];
+        const randomQuote = homeQuotes[Math.floor(Math.random() * homeQuotes.length)];
+
         return `
             <div class="hero-section glass-card">
                 <h1>Master CUET Psychology <span class="accent-text">2026</span></h1>
                 <p>Prepare through a gamified MCQ platform. 20 Levels, 1500+ Questions, AI Predictions.</p>
+                
+                <div class="motivation-quote" style="margin: 1.5rem 0; padding: 1rem; background: var(--surface-light); border-left: 4px solid var(--accent); border-radius: 8px; font-style: italic; color: #cbd5e1; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                    "${randomQuote}"
+                </div>
+
                 <div class="hero-actions">
                     <button class="btn-primary" onclick="window.location.hash = '#levels'">🚀 Start Game</button>
                     <button class="btn-secondary" onclick="window.location.hash = '#dashboard'">📊 My Progress</button>
@@ -283,8 +330,9 @@ class CUETGame {
             }
         });
 
-        const score = (correctCount * 4) - (wrongCount * 1);
-        const passed = score >= ((qCount * 4) * 0.5);
+        const score = correctCount * 4;
+        const maxScore = qCount * 4;
+        const passed = score >= (maxScore * 0.5);
 
         if (passed) Store.unlockLevel(state.currentLevel + 1);
         Store.addXP(Math.max(0, score));
@@ -316,7 +364,7 @@ class CUETGame {
             ${congratulationHtml}
             <div class="result-view glass-card">
                 <h2>Level ${state.currentLevel} - ${passed ? 'Success!' : 'Failed'}</h2>
-                <h1 class="total-score ${passed ? 'success' : 'fail'}">${score} XP</h1>
+                <h1 class="total-score ${passed ? 'success' : 'fail'}">${score} / ${maxScore} Marks</h1>
                 <div class="stat-grid">
                     <div class="stat-card"><h3>Correct</h3><p>${correctCount}</p></div>
                     <div class="stat-card"><h3>Accuracy</h3><p>${Math.round((correctCount / qCount) * 100)}%</p></div>
@@ -493,6 +541,93 @@ class CUETGame {
     }
 
     attachViewEvents() { }
+
+    async handleSignOut() {
+        if (!confirm('Are you sure you want to sign out?')) return;
+        try {
+            await signOut();
+            Store.updateUser({
+                id: null,
+                name: 'Guest User',
+                xp: 0,
+                level: 1,
+                unlockedLevels: 20,
+                badges: [],
+                accuracyTracker: {}
+            });
+            window.location.hash = '#home';
+        } catch(e) {
+            console.error(e);
+        }
+    }
+
+    viewAuth() {
+        return `
+            <div class="auth-view glass-card" style="max-width: 400px; margin: 4rem auto; padding: 2rem; position: relative;">
+                <h2 id="auth-title">Sign In</h2>
+                <p id="auth-desc" class="text-secondary" style="margin-bottom: 2rem;">Save your progress across devices.</p>
+                
+                <form id="auth-form" onsubmit="window.game.handleAuthSubmit(event)">
+                    <div id="name-group" style="display: none; margin-bottom: 1rem; text-align: left;">
+                        <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary);">Full Name</label>
+                        <input type="text" id="auth-name" class="btn-secondary" style="width: 100%; text-align: left; cursor: text;" placeholder="Student Name">
+                    </div>
+                    <div style="margin-bottom: 1rem; text-align: left;">
+                        <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary);">Email</label>
+                        <input type="email" id="auth-email" class="btn-secondary" style="width: 100%; text-align: left; cursor: text;" placeholder="student@example.com" required>
+                    </div>
+                    <div style="margin-bottom: 2rem; text-align: left;">
+                        <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary);">Password</label>
+                        <input type="password" id="auth-pwd" class="btn-secondary" style="width: 100%; text-align: left; cursor: text;" placeholder="••••••••" required minlength="6">
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%;" id="auth-submit-btn">Sign In</button>
+                    
+                    <div style="text-align: center; margin-top: 1.5rem;">
+                        <a href="javascript:void(0)" onclick="window.game.toggleAuthMode()" id="auth-toggle-link" class="accent-text" style="text-decoration: none; font-weight: 500;">Need an account? Sign up</a>
+                    </div>
+                </form>
+            </div>
+        `;
+    }
+
+    toggleAuthMode() {
+        this.isSignUpMode = !this.isSignUpMode;
+        document.getElementById('auth-title').innerText = this.isSignUpMode ? 'Create Account' : 'Sign In';
+        document.getElementById('auth-desc').innerText = this.isSignUpMode ? 'Join to start practicing and tracking your prep!' : 'Save your progress across devices.';
+        document.getElementById('name-group').style.display = this.isSignUpMode ? 'block' : 'none';
+        document.getElementById('auth-submit-btn').innerText = this.isSignUpMode ? 'Sign Up' : 'Sign In';
+        document.getElementById('auth-toggle-link').innerText = this.isSignUpMode ? 'Already have an account? Sign in' : 'Need an account? Sign up';
+    }
+
+    async handleAuthSubmit(e) {
+        e.preventDefault();
+        const email = document.getElementById('auth-email').value;
+        const password = document.getElementById('auth-pwd').value;
+        const name = document.getElementById('auth-name').value;
+        const btn = document.getElementById('auth-submit-btn');
+
+        const originalText = btn.innerText;
+        btn.innerText = 'Processing...';
+        btn.disabled = true;
+
+        try {
+            if (this.isSignUpMode) {
+                if (!name) throw new Error("Name is required for sign up");
+                await signUpWithEmail(email, password, name);
+                alert('Account created successfully! You can now sign in.');
+                this.toggleAuthMode();
+            } else {
+                await signInWithEmail(email, password);
+                await this.checkAuthStatus(); // Reload user state from DB
+                window.location.hash = '#dashboard';
+            }
+        } catch (err) {
+            alert(err.message);
+        } finally {
+            btn.innerText = originalText;
+            btn.disabled = false;
+        }
+    }
 }
 
 // Global initialization

@@ -68,3 +68,70 @@ export async function fetchLeaderboard() {
         return [];
     }
 }
+
+/**
+ * Authentication Functions
+ */
+export async function signUpWithEmail(email, password, name) {
+    if (!supabase) throw new Error('Supabase not configured');
+    
+    // 1. Sign up the user
+    const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+            data: {
+                name: name
+            }
+        }
+    });
+
+    if (error) throw error;
+    
+    return data;
+}
+
+export async function signInWithEmail(email, password) {
+    if (!supabase) throw new Error('Supabase not configured');
+    
+    const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password
+    });
+    
+    if (error) throw error;
+    return data;
+}
+
+export async function signOut() {
+    if (!supabase) return;
+    const { error } = await supabase.auth.signOut();
+    if (error) throw error;
+}
+
+export async function getSession() {
+    if (!supabase) return null;
+    const { data: { session }, error } = await supabase.auth.getSession();
+    if (error) {
+        console.error("Get session error:", error);
+        return null;
+    }
+    return session;
+}
+
+export async function fetchUserProfile(userId) {
+    if (!supabase) return null;
+    try {
+        const { data, error } = await supabase
+            .from('profiles')
+            .select('*')
+            .eq('id', userId)
+            .single();
+            
+        if (error) throw error;
+        return data;
+    } catch (err) {
+        console.error("Error fetching user profile:", err.message);
+        return null;
+    }
+}
