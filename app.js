@@ -636,46 +636,64 @@ class CUETGame {
     }
 
     renderQuestionContent(q, isReview = false) {
-        if (q.tag === 'Match') {
+        if (q.tag === 'Match' || q.tag === 'Assertion-Reason') {
             const lines = q.question.split('\n').filter(l => l.trim() !== '');
             let title = lines[0];
             let list1Header = "List I";
             let list2Header = "List II";
-            const items = [];
+            let items1 = [];
+            let items2 = [];
             let footer = "";
 
-            lines.forEach(line => {
-                if (line.includes('|')) {
-                    const parts = line.split('|').map(p => p.trim());
-                    if (line.includes('List-I') || line.includes('List-II')) {
-                        list1Header = parts[0];
-                        list2Header = parts[1];
-                    } else {
-                        items.push({ l1: parts[0], l2: parts[1] });
+            if (q.tag === 'Match') {
+                lines.forEach(line => {
+                    if (line.includes('|')) {
+                        const parts = line.split('|').map(p => p.trim());
+                        if (line.includes('List-I') || line.includes('List-II')) {
+                            list1Header = parts[0];
+                            list2Header = parts[1];
+                        } else {
+                            items1.push(parts[0]);
+                            items2.push(parts[1]);
+                        }
+                    } else if (line.toLowerCase().includes('choose')) {
+                        footer = line;
                     }
-                } else if (line.toLowerCase().includes('choose')) {
-                    footer = line;
-                }
-            });
+                });
+            } else if (q.tag === 'Assertion-Reason') {
+                title = "Assertion & Reason Task";
+                list1Header = "Assertion (A)";
+                list2Header = "Reason (R)";
+                
+                lines.forEach(line => {
+                    if (line.startsWith('Assertion (A):')) {
+                        items1.push(line.replace('Assertion (A):', '').trim());
+                    } else if (line.startsWith('Reason (R):')) {
+                        items2.push(line.replace('Reason (R):', '').trim());
+                    } else if (line.toLowerCase().includes('choose')) {
+                        footer = line;
+                    }
+                });
+            }
 
             return `
-                <div class="match-container">
+                <div class="ibox-container">
                     <h2 class="${isReview ? 'q-text-review' : 'q-text'}" style="margin-bottom: 1.5rem;">${title}</h2>
-                    <div class="match-boxes">
-                        <div class="match-box">
-                            <div class="match-header">${list1Header}</div>
-                            <div class="match-items">
-                                ${items.map(item => `<div class="match-row">${item.l1}</div>`).join('')}
+                    <div class="ibox-row">
+                        <div class="ibox-card">
+                            <div class="ibox-header">${list1Header}</div>
+                            <div class="ibox-body">
+                                ${items1.map(item => `<div class="ibox-item">${item}</div>`).join('')}
                             </div>
                         </div>
-                        <div class="match-box">
-                            <div class="match-header">${list2Header}</div>
-                            <div class="match-items">
-                                ${items.map(item => `<div class="match-row">${item.l2}</div>`).join('')}
+                        <div class="ibox-card">
+                            <div class="ibox-header">${list2Header}</div>
+                            <div class="ibox-body">
+                                ${items2.map(item => `<div class="ibox-item">${item}</div>`).join('')}
                             </div>
                         </div>
                     </div>
-                    ${footer ? `<div class="match-footer" style="margin: 1.5rem 0; font-weight: 600; color: var(--text-secondary);">${footer}</div>` : ''}
+                    ${footer ? `<div class="ibox-footer" style="margin: 1.5rem 0; font-weight: 600; color: var(--text-secondary);">${footer}</div>` : ''}
                 </div>
             `;
         }
