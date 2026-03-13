@@ -663,30 +663,32 @@ class CUETGame {
             // Priority 1: All questions specifically tagged "Superfinal"
             const superPicks = [...SuperfinalBank];
             
-            // Priority 2: Fill remaining slots with a mix of Match, AR, and MCQ
-            const matches = [...MatchBank].filter(q => q.tag !== 'Superfinal').sort(() => Math.random() - 0.5);
-            const ars = [...AssertionReasonBank].filter(q => q.tag !== 'Superfinal').sort(() => Math.random() - 0.5);
-            const generalMcqs = [...MCQBank].filter(q => q.tag !== 'Superfinal').sort(() => Math.random() - 0.5);
+            // Priority 2: Categorize remaining questions into Direct and Indirect
+            // Direct: Facts, NCERT, PYQ, Concepts
+            // Indirect: Applications, Predictions, Match, AR
+            const directTags = ['Fact', 'NCERT', 'PYQ', 'Concept'];
+            const indirectTags = ['Application', 'Predict', 'Match', 'Assertion-Reason'];
+
+            const allRemaining = FullQuestionBank.filter(q => !superPicks.some(sp => sp.id === q.id));
+            
+            const directPool = allRemaining.filter(q => directTags.includes(q.tag)).sort(() => Math.random() - 0.5);
+            const indirectPool = allRemaining.filter(q => indirectTags.includes(q.tag)).sort(() => Math.random() - 0.5);
 
             sourceBank = [...superPicks];
 
-            // Target mix: at least 15 Match, 15 AR if possible
-            const neededMatch = Math.max(0, 15 - sourceBank.filter(q => q.tag === 'Match').length);
-            const neededAR = Math.max(0, 15 - sourceBank.filter(q => q.tag === 'Assertion-Reason').length);
-
-            sourceBank = [
-                ...sourceBank,
-                ...matches.slice(0, neededMatch),
-                ...ars.slice(0, neededAR)
-            ];
-
-            // Fill the rest with MCQ
-            if (sourceBank.length < perLvl) {
-                const remainingNeeded = perLvl - sourceBank.length;
-                sourceBank = [...sourceBank, ...generalMcqs.slice(0, remainingNeeded)];
+            // Aim for a balanced expansion if needed
+            // If we have superPicks, we fill the rest trying to balance Direct/Indirect
+            const needed = perLvl - sourceBank.length;
+            if (needed > 0) {
+                const half = Math.floor(needed / 2);
+                sourceBank = [
+                    ...sourceBank,
+                    ...directPool.slice(0, half),
+                    ...indirectPool.slice(0, needed - half)
+                ];
             }
 
-            // If we STILL don't have 75 (extreme case), just take anything from FullQuestionBank
+            // Final fallback to fill exactly 75
             if (sourceBank.length < perLvl) {
                 const existingIds = new Set(sourceBank.map(q => q.id));
                 const overflow = FullQuestionBank.filter(q => !existingIds.has(q.id)).sort(() => Math.random() - 0.5);
