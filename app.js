@@ -659,39 +659,56 @@ class CUETGame {
         const perLvl = 75; 
         let sourceBank = [];
 
-        // For Superfinal, we want a real NTA mix: MCQ + Match + Assertion
         if (quizType === 'superfinal' || quizType === 'final') {
-            // Mix types
-            const mcqs = [...MCQBank].sort(() => Math.random() - 0.5);
-            const matches = [...MatchBank].sort(() => Math.random() - 0.5);
-            const ars = [...AssertionReasonBank].sort(() => Math.random() - 0.5);
+            // Priority 1: All questions specifically tagged "Superfinal"
+            const superPicks = [...SuperfinalBank];
             
-            // Aim for approx 55 MCQ, 10 Match, 10 AR
+            // Priority 2: Fill remaining slots with a mix of Match, AR, and MCQ
+            const matches = [...MatchBank].filter(q => q.tag !== 'Superfinal').sort(() => Math.random() - 0.5);
+            const ars = [...AssertionReasonBank].filter(q => q.tag !== 'Superfinal').sort(() => Math.random() - 0.5);
+            const generalMcqs = [...MCQBank].filter(q => q.tag !== 'Superfinal').sort(() => Math.random() - 0.5);
+
+            sourceBank = [...superPicks];
+
+            // Target mix: at least 15 Match, 15 AR if possible
+            const neededMatch = Math.max(0, 15 - sourceBank.filter(q => q.tag === 'Match').length);
+            const neededAR = Math.max(0, 15 - sourceBank.filter(q => q.tag === 'Assertion-Reason').length);
+
             sourceBank = [
-                ...mcqs.slice(0, 55),
-                ...matches.slice(0, 10),
-                ...ars.slice(0, 10)
+                ...sourceBank,
+                ...matches.slice(0, neededMatch),
+                ...ars.slice(0, neededAR)
             ];
 
-            // If we still don't have 75 (due to small banks), fill with anything else from FullBank
+            // Fill the rest with MCQ
+            if (sourceBank.length < perLvl) {
+                const remainingNeeded = perLvl - sourceBank.length;
+                sourceBank = [...sourceBank, ...generalMcqs.slice(0, remainingNeeded)];
+            }
+
+            // If we STILL don't have 75 (extreme case), just take anything from FullQuestionBank
             if (sourceBank.length < perLvl) {
                 const existingIds = new Set(sourceBank.map(q => q.id));
-                const remaining = FullQuestionBank.filter(q => !existingIds.has(q.id))
-                    .sort(() => Math.random() - 0.5);
-                sourceBank = [...sourceBank, ...remaining.slice(0, perLvl - sourceBank.length)];
+                const overflow = FullQuestionBank.filter(q => !existingIds.has(q.id)).sort(() => Math.random() - 0.5);
+                sourceBank = [...sourceBank, ...overflow.slice(0, perLvl - sourceBank.length)];
             }
         } else if (quizType === 'match') {
             sourceBank = [...MatchBank];
-            // If match bank is small, cycle or fill from elsewhere to reach 75
-            if (sourceBank.length < perLvl) sourceBank = [...sourceBank, ...FullQuestionBank.slice(0, perLvl - sourceBank.length)];
+            if (sourceBank.length < perLvl) {
+                const overflow = FullQuestionBank.filter(q => q.tag !== 'Match').sort(() => Math.random() - 0.5);
+                sourceBank = [...sourceBank, ...overflow.slice(0, perLvl - sourceBank.length)];
+            }
         } else if (quizType === 'ar') {
             sourceBank = [...AssertionReasonBank];
-            if (sourceBank.length < perLvl) sourceBank = [...sourceBank, ...FullQuestionBank.slice(0, perLvl - sourceBank.length)];
+            if (sourceBank.length < perLvl) {
+                const overflow = FullQuestionBank.filter(q => q.tag !== 'Assertion-Reason').sort(() => Math.random() - 0.5);
+                sourceBank = [...sourceBank, ...overflow.slice(0, perLvl - sourceBank.length)];
+            }
         } else {
             sourceBank = [...FullQuestionBank];
         }
 
-        // Apply Round-Robin module selection for syllabus diversity
+        // Apply Round-Robin module selection for syllabus diversity among the sourceBank
         const grouped = {};
         sourceBank.forEach(q => {
             const mod = q.module || 'General';
@@ -705,8 +722,6 @@ class CUETGame {
         
         let addedCount = 0;
         let moduleIndex = 0;
-        
-        // Flatten for pop
         const lists = moduleNames.map(name => grouped[name].sort(() => Math.random() - 0.5));
 
         while (addedCount < perLvl && addedCount < sourceBank.length) {
@@ -719,7 +734,6 @@ class CUETGame {
             if (moduleIndex > sourceBank.length * 2) break;
         }
 
-        // Final shuffle
         return result.sort(() => Math.random() - 0.5);
     }
 
