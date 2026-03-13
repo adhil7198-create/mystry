@@ -376,7 +376,7 @@ class CUETGame {
                 </div>
                 <div class="stat-grid">
                     <div class="stat-card"><h3>Total XP</h3><p>${user.xp.toLocaleString()}</p></div>
-                    <div class="stat-card"><h3>Last Performance</h3><p>${user.lastScore || 0} Marks</p></div>
+                    <div class="stat-card"><h3>Last CUET Marks</h3><p>${user.lastScore || 0}</p></div>
                     <div class="stat-card"><h3>Unlocked</h3><p>${user.unlockedLevels}/20 Levels</p></div>
                     <div class="stat-card"><h3>Badges</h3><p>${user.badges.length}</p></div>
                 </div>
@@ -460,17 +460,21 @@ class CUETGame {
         const answers = state.quiz.answers;
         let correctCount = 0;
         let wrongCount = 0;
+        let unattemptedCount = 0;
 
         state.quiz.questions.forEach((q, idx) => {
-            if (answers[idx] !== undefined) {
+            if (answers[idx] === undefined) {
+                unattemptedCount++;
+            } else {
                 if (answers[idx] === q.answerIndex) correctCount++;
                 else wrongCount++;
             }
         });
 
-        const score = correctCount * 4;
+        // CUET Marking: +4 for correct, -1 for incorrect
+        const score = (correctCount * 4) - (wrongCount * 1);
         const maxScore = qCount * 4;
-        const passed = score >= (maxScore * 0.5);
+        const passed = score >= (maxScore * 0.4); // 40% passing for CUET style challenge
 
         if (passed) Store.unlockLevel(state.currentLevel + 1);
         Store.addXP(Math.max(0, score));
@@ -506,14 +510,32 @@ class CUETGame {
                 <h2 style="margin-bottom: 0.5rem;">${passed ? '🎉 Level Passed!' : '❌ Try Again'}</h2>
                 
                 <h1 class="total-score ${passed ? 'success' : 'fail'}">${score} / ${maxScore}</h1>
-                <p class="text-secondary" style="font-size: 1.25rem; font-weight: 600; margin-bottom: 2rem;">Total Marks Secured</p>
+                <p class="text-secondary" style="font-size: 1.25rem; font-weight: 600; margin-bottom: 2rem;">Total CUET Marks Secured</p>
 
-                <div class="stat-grid" style="grid-template-columns: repeat(3, 1fr);">
-                    <div class="stat-card"><h3>Correct</h3><p>${correctCount}</p></div>
-                    <div class="stat-card"><h3>Questions</h3><p>${qCount}</p></div>
-                    <div class="stat-card"><h3>Accuracy</h3><p>${Math.round((correctCount / qCount) * 100)}%</p></div>
+                <div class="stat-grid" style="grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+                    <div class="stat-card" style="border-bottom: 4px solid var(--accent);">
+                        <h3 style="color: var(--accent);">Correct (+4)</h3>
+                        <p>${correctCount}</p>
+                        <span class="text-secondary" style="font-size: 0.8rem;">+${correctCount * 4} Marks</span>
+                    </div>
+                    <div class="stat-card" style="border-bottom: 4px solid var(--error);">
+                        <h3 style="color: var(--error);">Incorrect (-1)</h3>
+                        <p>${wrongCount}</p>
+                        <span class="text-secondary" style="font-size: 0.8rem;">-${wrongCount} Marks</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Unattempted</h3>
+                        <p>${unattemptedCount}</p>
+                        <span class="text-secondary" style="font-size: 0.8rem;">0 Marks</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Accuracy</h3>
+                        <p>${qCount > unattemptedCount ? Math.round((correctCount / (qCount - unattemptedCount)) * 100) : 0}%</p>
+                        <span class="text-secondary" style="font-size: 0.8rem;">Attempted: ${qCount - unattemptedCount}</span>
+                    </div>
                 </div>
-                <div class="actions">
+
+                <div class="actions" style="margin-top: 3rem;">
                     <button class="btn-secondary" onclick="window.location.hash = '#levels'">Back to Levels</button>
                     <button class="btn-secondary" onclick="window.location.hash = '#review'">🔍 Review Answers</button>
                     ${passed && state.currentLevel < 20 ? `<button class="btn-primary" onclick="window.location.hash = '#quiz/${state.currentLevel + 1}'">Next Level</button>` : ''}
@@ -535,18 +557,36 @@ class CUETGame {
             const userAns = answers[idx];
             const isCorrect = userAns === q.answerIndex;
             const isUnanswered = userAns === undefined;
+            
+            let statusColor = 'var(--error)';
+            let statusLabel = 'Incorrect (-1)';
+            let marksLabel = '-1 Mark';
+
+            if (isCorrect) {
+                statusColor = 'var(--accent)';
+                statusLabel = 'Correct (+4)';
+                marksLabel = '+4 Marks';
+            } else if (isUnanswered) {
+                statusColor = 'var(--secondary)';
+                statusLabel = 'Unattempted (0)';
+                marksLabel = '0 Marks';
+            }
 
             return `
-                <div class="glass-card review-item ${isCorrect ? 'correct' : isUnanswered ? 'unanswered' : 'incorrect'}" style="margin-bottom: 2rem; padding: 2rem; border-left: 8px solid ${isCorrect ? 'var(--accent)' : 'var(--error)'}">
-                    <div class="q-meta">${q.module} | Question ${idx + 1}</div>
+                <div class="glass-card review-item" style="margin-bottom: 2rem; padding: 2rem; border-left: 8px solid ${statusColor}">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                        <div class="q-meta">${q.module} | Question ${idx + 1}</div>
+                        <div style="background: ${statusColor}20; color: ${statusColor}; padding: 0.4rem 0.8rem; border-radius: 8px; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;">${statusLabel}</div>
+                    </div>
                     ${this.renderQuestionContent(q, true)}
-                    <div class="review-options">
-                        <p><b>Your Answer:</b> ${isUnanswered ? '<i class="text-secondary">Skipped</i>' : q.options[userAns]}</p>
+                    <div class="review-options" style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 16px; margin: 1.5rem 0;">
+                        <p style="margin-bottom: 0.5rem;"><b>Your Answer:</b> ${isUnanswered ? '<i class="text-secondary">Not Attempted</i>' : `<span>${q.options[userAns]}</span>`}</p>
                         <p><b>Correct Answer:</b> <span class="accent-text">${q.options[q.answerIndex]}</span></p>
                     </div>
-                    <div class="explanation-box" style="background: var(--surface-light); padding: 1rem; border-radius: 12px; margin-top: 1.5rem;">
+                    <div class="explanation-box" style="background: var(--surface-light); padding: 1rem; border-radius: 12px; border: 1px dashed var(--surface-border);">
                         <p><b>💡 Explanation:</b> ${q.explanation}</p>
                     </div>
+                    <div style="text-align: right; margin-top: 1rem; font-weight: 700; color: ${statusColor};">${marksLabel}</div>
                 </div>
             `;
         }).join('');
@@ -554,14 +594,14 @@ class CUETGame {
         return `
             <div class="review-view">
                 <div class="view-header">
-                    <h2>Test Review - Level ${state.currentLevel}</h2>
-                    <p>Learn from your mistakes to master CUET Psychology.</p>
+                    <h2>CUET Challenge Review</h2>
+                    <p>Analysis of your level ${state.currentLevel} performance.</p>
                 </div>
                 <div class="review-list">
                     ${reviewHTML}
                 </div>
-                <div class="sticky-footer" style="position: sticky; bottom: 2rem; text-align: center; margin-top: 3rem;">
-                    <button class="btn-primary" onclick="window.location.hash='#levels'">Back to Levels</button>
+                <div class="sticky-footer" style="position: sticky; bottom: 2rem; text-align: center; margin-top: 3rem; background: rgba(2,6,23,0.8); backdrop-filter: blur(10px); padding: 1.5rem; border-radius: 24px; border: 1px solid var(--surface-border);">
+                    <button class="btn-primary" onclick="window.location.hash='#levels'" style="margin: 0 auto;">Finish Review</button>
                 </div>
             </div>
         `;
