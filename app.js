@@ -1,5 +1,5 @@
 import { Store } from './src/js/state.js';
-import { FullQuestionBank, MCQBank, MatchBank, AssertionReasonBank } from './src/js/data/questions.js';
+import { FullQuestionBank, MCQBank, MatchBank, AssertionReasonBank, SuperfinalBank } from './src/js/data/questions.js';
 import { supabase, fetchLeaderboard, signUpWithEmail, signInWithEmail, signOut, getSession, fetchUserProfile } from './src/js/supabase.js';
 
 class CUETGame {
@@ -317,6 +317,18 @@ class CUETGame {
             `;
         }
 
+        // Superfinal Mock Levels (10 levels)
+        let superfinalLevelsHTML = '';
+        for (let i = 1; i <= 10; i++) {
+            superfinalLevelsHTML += `
+                <div class="level-card glass-card superfinal-card" onclick="window.location.hash = '#quiz/superfinal/${i}'">
+                    <div class="level-num">⭐ ${i}</div>
+                    <div class="level-status">✨ Superfinal Mock</div>
+                    <div class="level-difficulty">${i === 10 ? 'ULTIMATE' : 'Pro Mock'}</div>
+                </div>
+            `;
+        }
+
         return `
             <div class="view-header">
                 <h2>Choose Your Challenge</h2>
@@ -328,12 +340,13 @@ class CUETGame {
                 <button class="section-tab" onclick="window.game.switchSection('match')" id="tab-match">🔗 Match items</button>
                 <button class="section-tab" onclick="window.game.switchSection('ar')" id="tab-ar">⚖️ Assertion Task</button>
                 <button class="section-tab" onclick="window.game.switchSection('final')" id="tab-final">🏆 Final Mock</button>
+                <button class="section-tab" onclick="window.game.switchSection('superfinal')" id="tab-superfinal">⭐ Superfinal</button>
             </div>
 
             <div id="section-mcq" class="level-section">
                 <div class="section-header">
                     <h3>📝 Integrated MCQ Levels</h3>
-                    <p class="text-secondary">20 levels • Mixed MCQ, Match & Assertion-Reason</p>
+                    <p class="text-secondary">20 levels • Mixed MCQ, Match & Assertion-Reason • 75 Qs | 90 Mins</p>
                 </div>
                 <div class="level-grid">${mcqLevelsHTML}</div>
             </div>
@@ -341,7 +354,7 @@ class CUETGame {
             <div id="section-match" class="level-section" style="display:none;">
                 <div class="section-header">
                     <h3>🔗 Match the Following</h3>
-                    <p class="text-secondary">${matchRounds} rounds • Match List-I with List-II</p>
+                    <p class="text-secondary">${matchRounds} rounds • Match List-I with List-II • 75 Qs | 90 Mins</p>
                 </div>
                 <div class="level-grid">${matchLevelsHTML}</div>
             </div>
@@ -349,7 +362,7 @@ class CUETGame {
             <div id="section-ar" class="level-section" style="display:none;">
                 <div class="section-header">
                     <h3>⚖️ Assertion-Reason</h3>
-                    <p class="text-secondary">${arRounds} rounds • Evaluate Assertion & Reason</p>
+                    <p class="text-secondary">${arRounds} rounds • Evaluate Assertion & Reason • 75 Qs | 90 Mins</p>
                 </div>
                 <div class="level-grid">${arLevelsHTML}</div>
             </div>
@@ -360,6 +373,14 @@ class CUETGame {
                     <p class="text-secondary">6 levels • 75 Questions each • Real Exam Simulator</p>
                 </div>
                 <div class="level-grid">${finalLevelsHTML}</div>
+            </div>
+
+            <div id="section-superfinal" class="level-section" style="display:none;">
+                <div class="section-header">
+                    <h3>⭐ Superfinal Mastery Mock</h3>
+                    <p class="text-secondary">10 levels • Advanced Psychology & AI Predictions</p>
+                </div>
+                <div class="level-grid">${superfinalLevelsHTML}</div>
             </div>
         `;
     }
@@ -622,12 +643,8 @@ class CUETGame {
         Store.state.currentLevel = level;
         Store.state.quiz.quizType = quizType;
         Store.state.quiz.active = true;
-        Store.state.quiz.questions = this.getQuestionsForLevel(level, quizType);
-        
-        // Adjust timer: MCQ = 90min, Match/AR = 10min, Final = 90min
-        let timerMin = Store.state.config.timerMinutes;
-        if (quizType === 'match' || quizType === 'ar') timerMin = 10;
-        if (quizType === 'final') timerMin = 90;
+        // CUET Official Scaling: All tests are 90 Minutes for 75 Questions
+        let timerMin = 90;
 
         Store.state.quiz.timeRemaining = timerMin * 60;
         Store.state.quiz.currentQuestionIndex = 0;
@@ -638,28 +655,51 @@ class CUETGame {
     }
 
     getQuestionsForLevel(lvl, quizType = 'mcq') {
+        const perLvl = 75; // All levels are now 75 questions per real CUET standard
+        let sourceBank = [];
+
         if (quizType === 'match') {
-            const perRound = 5;
-            const start = (lvl - 1) * perRound;
-            return [...MatchBank].slice(start, start + perRound);
+            sourceBank = [...MatchBank];
         } else if (quizType === 'ar') {
-            const perRound = 5;
-            const start = (lvl - 1) * perRound;
-            return [...AssertionReasonBank].slice(start, start + perRound);
+            sourceBank = [...AssertionReasonBank];
+        } else if (quizType === 'superfinal') {
+            sourceBank = [...SuperfinalBank];
         } else if (quizType === 'final') {
-            const perMock = 75;
-            // For final mocks, we shuffle the whole bank and take 75
-            // This ensures each of the 6 mocks feels different even with 250 total questions
-            return [...FullQuestionBank]
-                .sort(() => Math.random() - 0.5)
-                .slice(0, perMock);
+            sourceBank = [...FullQuestionBank];
         } else {
-            const perLvl = Store.state.config.questionsPerLevel;
-            // Use FullQuestionBank to mix all types (MCQ, Match, AR) into the 20 levels
-            const start = (lvl - 1) * perLvl % (Math.max(1, FullQuestionBank.length - perLvl));
-            const chunk = FullQuestionBank.slice(start, start + perLvl);
-            return [...chunk].sort(() => Math.random() - 0.5);
+            sourceBank = [...FullQuestionBank];
         }
+
+        // Apply Round-Robin module selection for syllabus diversity
+        const grouped = {};
+        sourceBank.forEach(q => {
+            if (!grouped[q.module]) grouped[q.module] = [];
+            grouped[q.module].push(q);
+        });
+
+        Object.values(grouped).forEach(list => list.sort(() => Math.random() - 0.5));
+
+        const result = [];
+        const moduleNames = Object.keys(grouped).sort();
+        let addedCount = 0;
+        let moduleIndex = 0;
+        const totalAvailable = sourceBank.length;
+
+        // Special case for Match/AR: they are small, so we might just take sequential chunks
+        // But for consistency, we try to balance.
+        while (addedCount < perLvl && addedCount < totalAvailable) {
+            const currentModule = moduleNames[moduleIndex % moduleNames.length];
+            const moduleList = grouped[currentModule];
+            
+            if (moduleList && moduleList.length > 0) {
+                result.push(moduleList.pop());
+                addedCount++;
+            }
+            moduleIndex++;
+            if (moduleIndex > totalAvailable * 2) break; 
+        }
+
+        return result.sort(() => Math.random() - 0.5);
     }
 
     renderQuizUI() {
@@ -688,20 +728,38 @@ class CUETGame {
                         </div>
                     </div>
                     <div class="quiz-controls">
-                        <button class="btn-secondary" onclick="window.game.prevQuestion()" ${qIdx === 0 ? 'disabled' : ''}>Previous</button>
-                        <button class="btn-primary" onclick="window.game.nextQuestion()">Next Question</button>
+                        <div class="exam-actions">
+                            <button class="btn-secondary" onclick="window.game.prevQuestion()" ${qIdx === 0 ? 'disabled' : ''}>← Previous Participant</button>
+                            <button class="btn-secondary" onclick="window.game.markForReview(${qIdx})">🔖 Mark for Review</button>
+                            <button class="btn-primary" onclick="window.game.nextQuestion()">Save & Next Question →</button>
+                        </div>
                     </div>
                 </div>
-                <div class="quiz-sidebar glass-card">
-                    <h3>Review Grid</h3>
-                    <div class="question-grid">
-                        ${Store.state.quiz.questions.map((_, i) => `
-                            <div class="q-grid-item ${i === qIdx ? 'active' : ''} ${Store.state.quiz.answers[i] !== undefined ? 'answered' : ''}" onclick="window.game.goToQuestion(${i})">
-                                ${i + 1}
-                            </div>
-                        `).join('')}
+                <div class="quiz-sidebar glass-card exam-window">
+                    <div class="exam-info">
+                        <h3>Question Palette</h3>
+                        <div class="legend">
+                            <span class="legend-item"><span class="dot val-answered"></span> Answered</span>
+                            <span class="legend-item"><span class="dot val-review"></span> Review</span>
+                            <span class="legend-item"><span class="dot val-unvisited"></span> Not Visited</span>
+                        </div>
                     </div>
-                    <button class="btn-primary submit-btn" onclick="window.game.submitQuiz()">Submit Test</button>
+                    <div class="question-grid">
+                        ${Store.state.quiz.questions.map((_, i) => {
+                            const isMarked = Store.state.quiz.marked.has(i);
+                            const isAnswered = Store.state.quiz.answers[i] !== undefined;
+                            let statusClass = '';
+                            if (i === qIdx) statusClass = 'active';
+                            else if (isMarked) statusClass = 'marked';
+                            else if (isAnswered) statusClass = 'answered';
+                            
+                            return `<div class="q-grid-item ${statusClass}" onclick="window.game.goToQuestion(${i})">${i + 1}</div>`;
+                        }).join('')}
+                    </div>
+                    <div class="exam-footer">
+                        <button class="btn-primary submit-btn" onclick="window.game.submitQuiz()">Submit Test</button>
+                        <p class="final-warning">System: ID #882-CUET-2026</p>
+                    </div>
                 </div>
             </div>
         `;
@@ -749,6 +807,16 @@ class CUETGame {
     goToQuestion(i) {
         Store.state.quiz.currentQuestionIndex = i;
         this.renderQuizUI();
+    }
+
+    markForReview(idx) {
+        if (Store.state.quiz.marked.has(idx)) {
+            Store.state.quiz.marked.delete(idx);
+        } else {
+            Store.state.quiz.marked.add(idx);
+        }
+        this.renderQuizUI();
+        Store.saveState();
     }
 
     submitQuiz(auto = false) {
@@ -826,7 +894,7 @@ class CUETGame {
     }
 
     switchSection(section) {
-        ['mcq', 'match', 'ar', 'final'].forEach(s => {
+        ['mcq', 'match', 'ar', 'final', 'superfinal'].forEach(s => {
             const el = document.getElementById(`section-${s}`);
             const tab = document.getElementById(`tab-${s}`);
             if (el) el.style.display = s === section ? 'block' : 'none';

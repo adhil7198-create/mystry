@@ -10,7 +10,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Spatial intelligence involves the potential to recognize and use patterns of wide space and more confined areas.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Medium",
         "tag": "Predict"
     },
@@ -25,7 +25,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Practical intelligence is the ability to adapt to, shape, and select everyday environments.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -40,7 +40,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Fluid intelligence is the ability to think logically and solve problems in novel situations, independent of acquired knowledge.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Hard",
         "tag": "Application"
     },
@@ -55,7 +55,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "IQ is calculated as (Mental Age / Chronological Age) x 100. (12/10) * 100 = 120.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -70,7 +70,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Interpersonal intelligence is the ability to understand and interact effectively with others.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Easy",
         "tag": "Application"
     },
@@ -85,7 +85,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Spearman (1927) proposed intelligence consists of a general 'g' factor and specific 's' factors.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -100,7 +100,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "PASS stands for Planning, Attention-arousal, Simultaneous and Successive processing.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Hard",
         "tag": "PYQ"
     },
@@ -115,7 +115,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Wundt established the first experimental psychology lab in 1879.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Easy",
         "tag": "Fact"
     },
@@ -130,7 +130,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "An IQ significantly below average (typically <70) and deficits in adaptive functioning indicate intellectual disability.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -145,7 +145,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Musical ability is a part of Gardner's multiple intelligences, not Thurstone's primary mental abilities.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Medium",
         "tag": "Concept"
     },
@@ -160,7 +160,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Rationalization involves making up acceptable excuses for unacceptable behaviors or failures.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -175,7 +175,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Reaction formation involves acting entirely opposite to one's unconscious true feelings.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Hard",
         "tag": "Application"
     },
@@ -190,7 +190,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Conscientiousness is a trait marked by organization, dependability, and discipline.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -205,7 +205,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Displacement involves redirecting an emotional response from a dangerous target to a safe one.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Hard",
         "tag": "Application"
     },
@@ -220,7 +220,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Regression involves reverting to an earlier, more immature stage of development under stress.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -235,7 +235,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Archetypes are universally inherited, primitive symbols in the collective unconscious.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Easy",
         "tag": "PYQ"
     },
@@ -250,7 +250,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 3,
         "explanation": "The Id is the primitive and instinctual part of the mind that contains sexual and aggressive drives.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -265,7 +265,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Friedman and Rosenman linked Type A behavior (impatience, hostility) to heart disease.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Medium",
         "tag": "PYQ"
     },
@@ -280,7 +280,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 3,
         "explanation": "The Rorschach Inkblot Test uses 10 symmetrical inkblots to uncover unconscious parts of personality.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Easy",
         "tag": "Concept"
     },
@@ -295,7 +295,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Carl Rogers emphasized unconditional positive regard in his client-centered therapy.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -310,7 +310,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Burnout is a state of physical, emotional, and mental exhaustion caused by long-term involvement in emotionally demanding situations.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -325,7 +325,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Task-oriented coping focuses on dealing directly with the stressor to resolve the problem.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -340,7 +340,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Avoidance-oriented coping involves dodging the stressor and the emotions associated with it.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "Application"
     },
@@ -355,7 +355,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "The alarm reaction is the initial fight-or-flight response triggered by a stressor.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -370,7 +370,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Eustress is good, positive stress that motivates us to achieve goals.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "Application"
     },
@@ -385,7 +385,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Hans Selye developed the GAS model to explain the physical response to chronic stress.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -400,7 +400,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Primary appraisal is the assessment of an event to determine its significance to our well-being.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Concept"
     },
@@ -415,7 +415,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Secondary appraisal is the assessment of our coping resources to manage the threat.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "PYQ"
     },
@@ -430,7 +430,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Resilience is the dynamic process of positive adaptation in the face of significant adversity.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "Concept"
     },
@@ -445,7 +445,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "The sympathetic nervous system activates the body's resources during an emergency.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "Fact"
     },
@@ -460,7 +460,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Agoraphobia is the fear of being in places or situations from which escape might be difficult or embarrassing.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Hard",
         "tag": "Application"
     },
@@ -475,7 +475,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Delusions of reference involve the false belief that neutral events or remarks are meant specifically for the individual.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Hard",
         "tag": "Application"
     },
@@ -490,7 +490,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Obsessions are persistent thoughts/images; compulsions are repetitive behaviors meant to neutralize the anxiety.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -505,7 +505,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Conversion disorder involves a sudden loss of motor or sensory function without a neurological cause.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Hard",
         "tag": "Application"
     },
@@ -520,7 +520,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Bipolar disorder involves dramatic shifts in mood, energy, and activity levels (mania and depression).",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -535,7 +535,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "The diathesis-stress model proposes that disorders develop from a genetic vulnerability combined with stressful conditions.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "PYQ"
     },
@@ -550,7 +550,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Negative symptoms reflect a decrease or loss of normal functions, such as alogia or flat affect.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Hard",
         "tag": "NCERT"
     },
@@ -565,7 +565,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "DID was historically called Multiple Personality Disorder.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Easy",
         "tag": "Fact"
     },
@@ -580,7 +580,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Narcissistic Personality Disorder is characterized by a strong sense of entitlement and lack of empathy.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "Concept"
     },
@@ -595,7 +595,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Bulimia involves cycles of overeating followed by purging (vomiting, laxatives, excessive exercise).",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "PYQ"
     },
@@ -610,7 +610,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "CBT focuses on identifying, challenging, and changing cognitive distortions and behaviors.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -625,7 +625,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Systematic desensitization employs a graduated hierarchy of fear combined with relaxation training.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -640,7 +640,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Transference occurs when a client redirects feelings meant for others onto the therapist.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Hard",
         "tag": "Application"
     },
@@ -655,7 +655,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "A token economy uses secondary reinforcers (tokens) to encourage desirable behaviors.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Easy",
         "tag": "Application"
     },
@@ -670,7 +670,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Client-Centered Therapy, developed by Carl Rogers, utilizes empathy and unconditional positive regard.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -685,7 +685,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Freudian psychoanalysis aims to uncover repressed conflicts and bring them into conscious awareness.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "NCERT"
     },
@@ -700,7 +700,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Albert Ellis developed REBT, which focuses on resolving emotional and behavioral problems by challenging irrational beliefs.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Easy",
         "tag": "PYQ"
     },
@@ -715,7 +715,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Logotherapy was developed by Victor Frankl, focusing on the search for meaning.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "Concept"
     },
@@ -730,7 +730,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "ECT is a medical intervention that targets biological functioning.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Easy",
         "tag": "Concept"
     },
@@ -745,7 +745,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "The Empty Chair technique helps individuals role-play and confront unresolved internal or external conflicts.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Hard",
         "tag": "NCERT"
     },
@@ -760,7 +760,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Self-serving bias is the habit of attributing positive events to one's own character, but attributing negative events to external factors.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -775,7 +775,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "The Halo Effect is a cognitive bias wherein our overall impression of someone influences our feelings about their specific traits.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Hard",
         "tag": "Application"
     },
@@ -790,7 +790,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Cognitive Dissonance is the mental distress from holding contradictory beliefs or behaviors, often leading to a change in one to restore harmony.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -805,7 +805,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "The Fundamental Attribution Error is the tendency to overemphasize internal characteristics to explain someone's behavior while ignoring situational factors.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "Application"
     },
@@ -820,7 +820,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "A self-fulfilling prophecy happens when an initial expectation leads to behaviors that cause the expectation to come true.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Hard",
         "tag": "Application"
     },
@@ -835,7 +835,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Attitudes consist of emotional (Affective), action (Behavioral), and thought (Cognitive) components.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -850,7 +850,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Heider's Balance Theory uses the P-O-X triangle to explain attitude consistency.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "PYQ"
     },
@@ -865,7 +865,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Prejudice represents the affective (emotional) component, stereotypes the cognitive, and discrimination the behavioral.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Concept"
     },
@@ -880,7 +880,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "A stereotype is a generalized (sometimes accurate but often overgeneralized) belief about a group of people.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "Concept"
     },
@@ -895,7 +895,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Prosocial behavior is any action intended to help others (e.g., altruism).",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "Fact"
     },
@@ -910,7 +910,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Social loafing is the phenomenon of a person exerting less effort to achieve a goal when working in a group.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -925,7 +925,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Group polarization refers to the tendency for a group to make decisions that are more extreme than the initial inclination of its members.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Hard",
         "tag": "Application"
     },
@@ -940,7 +940,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Normative social influence occurs when one conforms to be liked or accepted by others.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -955,7 +955,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "The bystander effect occurs when the presence of others discourages an individual from intervening.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "Application"
     },
@@ -970,7 +970,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Groupthink occurs when the desire for harmony in a decision-making group overrides a realistic appraisal of alternatives.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -985,7 +985,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Asch's studies showed that people will often conform to a group's blatantly incorrect judgment.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "PYQ"
     },
@@ -1000,7 +1000,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Milgram's controversial obedience experiments required participants to administer shocks to a 'learner'.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -1015,7 +1015,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Compliance is yielding to a direct request, while obedience is yielding to an order.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Concept"
     },
@@ -1030,7 +1030,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "The foot-in-the-door technique builds compliance starting from small, agreeable requests.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "PYQ"
     },
@@ -1045,7 +1045,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Social facilitation is the tendency for individuals to perform better on simple tasks when being observed.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Hard",
         "tag": "NCERT"
     },
@@ -1060,7 +1060,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "The alarm reaction is the rapid initial biological 'shock' response marking the fight-or-flight phase.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -1075,7 +1075,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Oscillating between mania (hyperactivity) and depression (lethargy) is the hallmark of Bipolar Disorder.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Hard",
         "tag": "Clinical Application"
     },
@@ -1090,7 +1090,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Self-serving bias protects ego by attributing failure to external events and success to internal capabilities.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "Application"
     },
@@ -1105,7 +1105,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Group cohesion and fear of breaking consensus leads to poor decision making: Groupthink.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -1120,7 +1120,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Creative (Experiential) intelligence involves dealing effectively with novel situations and automating cognitive processes.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -1135,7 +1135,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Sthitaprajna refers to one with steady wisdom who has mastered emotions and remains calm in all circumstances.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Hard",
         "tag": "NCERT"
     },
@@ -1150,7 +1150,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Reliability refers to the consistency and stability of test scores over repeated administrations.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -1165,7 +1165,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Cardinal traits are so dominant that they define a person's entire life and identity (e.g., Mother Teresa's altruism).",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Medium",
         "tag": "NCERT"
     },
@@ -1180,7 +1180,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Intrapersonal intelligence is the capacity to understand oneself, including one's feelings, motivations, and fears.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -1195,7 +1195,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "The Barnum Effect explains why people believe horoscopes and generic personality profiles apply specifically to them.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Hard",
         "tag": "Concept"
     },
@@ -1210,7 +1210,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Self-efficacy is one's belief in their capability to execute behaviors necessary to produce specific outcomes.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Medium",
         "tag": "PYQ"
     },
@@ -1225,7 +1225,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "PTSD involves re-experiencing, avoidance, and hyperarousal symptoms persisting for more than one month after a traumatic event.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -1240,7 +1240,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "The DSM-5 (Diagnostic and Statistical Manual of Mental Disorders) is published by the American Psychiatric Association.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Easy",
         "tag": "Fact"
     },
@@ -1255,7 +1255,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Anorexia Nervosa involves an intense fear of weight gain, distorted body image, and extreme restriction of caloric intake.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -1270,7 +1270,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Major Depressive Disorder involves persistent depressed mood, loss of interest, and other symptoms lasting at least two weeks.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -1285,7 +1285,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Flooding exposes the client directly to the maximum intensity of the feared stimulus without gradual steps.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "Concept"
     },
@@ -1300,7 +1300,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Beck's Cognitive Therapy identifies and restructures automatic negative thoughts such as catastrophizing and overgeneralizing.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "NCERT"
     },
@@ -1315,7 +1315,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Aversive conditioning pairs an undesirable behavior with an unpleasant stimulus to reduce that behavior.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -1330,7 +1330,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Family therapy views the family as an interconnected system, where change in one part affects the whole.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -1345,7 +1345,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "The dark street (previously neutral) has been paired with shock and now elicits fear on its own, making it a Conditioned Stimulus.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -1360,7 +1360,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Holmes and Rahe developed the SRRS to measure the impact of major life changes on stress and health.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "PYQ"
     },
@@ -1375,7 +1375,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 3,
         "explanation": "Kobasa's concept of hardiness includes the 3 C's: Commitment, Control, and Challenge — not Conformity.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Hard",
         "tag": "NCERT"
     },
@@ -1390,7 +1390,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "The Resistance stage is where the body attempts to adapt and cope with the ongoing stressor after the initial alarm.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -1405,7 +1405,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Festinger's $1/$20 experiment showed that participants paid less ($1) changed their attitudes more to reduce dissonance.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Hard",
         "tag": "Concept"
     },
@@ -1420,7 +1420,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "The door-in-the-face technique starts with a large request (expected to be refused), followed by a smaller, more reasonable request.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Concept"
     },
@@ -1435,7 +1435,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Deindividuation is the loss of self-awareness in groups, which can lead to impulsive, deviant behaviors (e.g., mob psychology).",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "NCERT"
     },
@@ -1450,7 +1450,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "The peripheral route involves persuasion through superficial cues (appearance, celebrity endorsement) rather than argument quality.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Hard",
         "tag": "Concept"
     },
@@ -1465,7 +1465,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "The contact hypothesis (Allport) states that intergroup prejudice can be reduced by contact under favorable conditions.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "PYQ"
     },
@@ -1480,7 +1480,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Zimbardo's experiment showed how assigned social roles and situational demands can dramatically alter behavior.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "PYQ"
     },
@@ -1495,7 +1495,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Martin Seligman's learned helplessness experiments showed that uncontrollable events lead to passive acceptance of negative outcomes.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "PYQ"
     },
@@ -1510,7 +1510,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Crystallized intelligence (Gc) reflects acquired knowledge and skills developed through experience and education.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -1525,7 +1525,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Mental age represents the level of intellectual functioning, determined by the age group whose average performance the child matches.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Easy",
         "tag": "Concept"
     },
@@ -1540,7 +1540,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Vygotsky's ZPD describes the gap between what a learner can do independently and what they can do with guidance.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Medium",
         "tag": "PYQ"
     },
@@ -1555,7 +1555,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Gifted children typically show high adaptability, rapid learning, creativity, and advanced cognitive abilities.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Medium",
         "tag": "NCERT"
     },
@@ -1570,7 +1570,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Technological intelligence in the Indian concept of Buddhi refers to mental effort, determination, and cognitive competence.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Hard",
         "tag": "NCERT"
     },
@@ -1585,7 +1585,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Erikson identified adolescence as the stage where individuals struggle to establish a sense of personal identity.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Medium",
         "tag": "NCERT"
     },
@@ -1600,7 +1600,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 3,
         "explanation": "Optimistic personality involves a general expectation that good things will happen, leading to better stress coping.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Easy",
         "tag": "Application"
     },
@@ -1615,7 +1615,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "TAT presents ambiguous pictures and asks subjects to create stories, revealing unconscious motives and conflicts.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -1630,7 +1630,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Projection involves attributing one's own unacceptable thoughts or desires onto others.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -1645,7 +1645,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Maslow proposed that basic physiological needs (food, water, shelter) must be met before higher-order needs.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Easy",
         "tag": "PYQ"
     },
@@ -1660,7 +1660,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "The Oedipus complex develops during the phallic stage (3-6 years), where the child develops unconscious desires for the opposite-sex parent.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Medium",
         "tag": "NCERT"
     },
@@ -1675,7 +1675,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Sublimation redirects unacceptable impulses into socially acceptable and even admirable activities.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -1690,7 +1690,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Dollard et al. proposed that frustration always leads to some form of aggression, and aggression is always caused by frustration.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Hard",
         "tag": "Concept"
     },
@@ -1705,7 +1705,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Approach-approach conflict involves choosing between two desirable goals (e.g., two good job offers).",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -1720,7 +1720,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 3,
         "explanation": "Double approach-avoidance conflict involves two options, each with both attractive and unattractive aspects.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Hard",
         "tag": "Application"
     },
@@ -1735,7 +1735,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Jacobson's technique involves systematically tensing and releasing muscles to reduce physical tension and mental stress.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Concept"
     },
@@ -1750,7 +1750,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Learned helplessness occurs when repeated failure leads to a belief that one's actions cannot influence outcomes.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -1765,7 +1765,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Type C personality involves suppressing negative emotions, being overly cooperative, and difficulty expressing anger.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Hard",
         "tag": "Concept"
     },
@@ -1780,7 +1780,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "GAD involves chronic, free-floating anxiety about multiple life domains, unlike phobias which focus on specific triggers.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "NCERT"
     },
@@ -1795,7 +1795,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Auditory hallucinations involve hearing sounds or voices without any external stimulus. They are common in schizophrenia.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Easy",
         "tag": "Application"
     },
@@ -1810,7 +1810,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Antisocial PD involves a persistent pattern of manipulating, exploiting, or violating others' rights without remorse.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "NCERT"
     },
@@ -1825,7 +1825,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Flat affect is a 'negative' symptom (diminished emotional expression). Positive symptoms are additions to behavior (hallucinations, delusions).",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "PYQ"
     },
@@ -1840,7 +1840,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Dissociative fugue involves sudden travel and confusion about identity, often triggered by severe stress.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Hard",
         "tag": "Concept"
     },
@@ -1855,7 +1855,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Low levels of serotonin are strongly linked to depressive disorders, which is why SSRIs are commonly prescribed.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "Fact"
     },
@@ -1870,7 +1870,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Substance dependence involves tolerance, withdrawal, and compulsive use — not simple recreational use.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -1885,7 +1885,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Free association encourages uncensored reporting of all thoughts to access unconscious material.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -1900,7 +1900,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Unconditional positive regard means accepting and supporting the client without conditions or judgment.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -1915,7 +1915,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Bandura developed modeling therapy where clients learn desired behaviors by observing others (models) perform them.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Easy",
         "tag": "PYQ"
     },
@@ -1930,7 +1930,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Marsha Linehan developed DBT specifically for treating Borderline Personality Disorder and chronic suicidality.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Hard",
         "tag": "Concept"
     },
@@ -1945,7 +1945,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Deep brain stimulation involves surgically implanting electrodes that deliver electrical impulses to specific brain areas.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Hard",
         "tag": "Fact"
     },
@@ -1960,7 +1960,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "The primacy effect means that information presented first tends to have a greater impact on forming impressions.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Concept"
     },
@@ -1975,7 +1975,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Scapegoating involves displacing aggression from the source of frustration onto a weaker, innocent group.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -1990,7 +1990,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "The sleeper effect occurs when people forget the source but remember the message, increasing its persuasive impact over time.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Hard",
         "tag": "Concept"
     },
@@ -2005,7 +2005,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "The just world hypothesis is a cognitive bias where people assume the world is fair and outcomes are deserved.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Hard",
         "tag": "Concept"
     },
@@ -2020,7 +2020,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Fritz Heider is considered the father of attribution theory, explaining how people interpret causes of behavior.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Fact"
     },
@@ -2035,7 +2035,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Sherif found that superordinate goals — goals requiring both groups to cooperate — effectively reduced intergroup hostility.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Hard",
         "tag": "PYQ"
     },
@@ -2050,7 +2050,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Conformity is voluntarily changing behavior to align with group norms without explicit requests or orders.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "Application"
     },
@@ -2065,7 +2065,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Risky shift is the tendency for groups to make more extreme, riskier decisions than individual members would independently.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Concept"
     },
@@ -2080,7 +2080,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Informational influence leads to conformity when people look to others as a source of information in ambiguous situations.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "NCERT"
     },
@@ -2095,7 +2095,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "The Hawthorne Effect describes how individuals modify behavior simply because they know they are being observed.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Fact"
     },
@@ -2110,7 +2110,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Culture-fair tests use non-verbal, culture-neutral tasks to minimize the advantage of any particular cultural background.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -2125,7 +2125,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "WAIS measures multiple cognitive domains including verbal comprehension, perceptual reasoning, working memory, and processing speed.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Medium",
         "tag": "PYQ"
     },
@@ -2140,7 +2140,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "IQ scores between 90-109 fall in the 'average' range on standard intelligence classifications.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Easy",
         "tag": "Fact"
     },
@@ -2155,7 +2155,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Savant syndrome involves extraordinary talent in a narrow area (music, art, math) while having overall intellectual disability.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Medium",
         "tag": "Concept"
     },
@@ -2170,7 +2170,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "High openness is associated with intellectual curiosity, creativity, and a preference for variety and novelty.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -2185,7 +2185,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Horney argued that Freud's theories were biased toward men and proposed 'womb envy' as an alternative perspective.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Hard",
         "tag": "PYQ"
     },
@@ -2200,7 +2200,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Cattell used factor analysis to identify 16 source traits and developed the 16PF questionnaire to measure them.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -2215,7 +2215,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Eysenck's PEN model originally focused on Extraversion-Introversion and Neuroticism-Stability, later adding Psychoticism.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Medium",
         "tag": "PYQ"
     },
@@ -2230,7 +2230,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Self-concept is the totality of beliefs, perceptions, and attitudes a person holds about themselves.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -2245,7 +2245,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Self-esteem reflects the overall evaluation of one's own worth, combining self-judgment with emotional reactions.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -2260,7 +2260,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Yoga and meditation activate the parasympathetic response (rest-and-digest), reducing cortisol and promoting calmness.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -2275,7 +2275,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Tangible support involves material or practical assistance, such as financial help or providing food and shelter.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -2290,7 +2290,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Walter Cannon first described the body's acute stress response of either fighting or fleeing from perceived threats.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Fact"
     },
@@ -2305,7 +2305,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Life skills include assertiveness, time management, and communication — medication management is a clinical intervention, not a life skill.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -2320,7 +2320,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Psychoneuroimmunology studies how stress and psychological states affect immune system functioning.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Hard",
         "tag": "Concept"
     },
@@ -2335,7 +2335,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Panic disorder involves sudden, recurrent episodes of intense fear accompanied by physical symptoms like heart palpitations.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "NCERT"
     },
@@ -2350,7 +2350,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "The biopsychosocial model views mental disorders as resulting from a complex interaction of biological, psychological, and social influences.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -2365,7 +2365,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "The dopamine hypothesis suggests that excessive dopamine activity in certain brain pathways contributes to schizophrenia symptoms.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "PYQ"
     },
@@ -2380,7 +2380,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Somatic Symptom Disorder involves excessive preoccupation with bodily symptoms leading to significant distress and daily impairment.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Hard",
         "tag": "Concept"
     },
@@ -2395,7 +2395,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Phobias are a type of anxiety disorder characterized by intense, irrational fear of specific objects or situations.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -2410,7 +2410,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Cognitive restructuring helps clients identify distorted thinking patterns and replace them with more realistic, balanced thoughts.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -2425,7 +2425,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Ellis's REBT focuses on how Activating events trigger irrational Beliefs that lead to emotional and behavioral Consequences.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "NCERT"
     },
@@ -2440,7 +2440,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Group therapy provides peer support, universality (realizing others share similar struggles), and opportunities for social learning.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -2455,7 +2455,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Biofeedback uses electronic sensors to give real-time data about body functions (heart rate, muscle tension) so clients can learn self-regulation.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "Concept"
     },
@@ -2470,7 +2470,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Confidentiality is the ethical duty to protect client information shared during therapy from unauthorized disclosure.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -2485,7 +2485,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Tajfel's Social Identity Theory explains how people derive self-esteem from their group memberships and in-group favoritism.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "PYQ"
     },
@@ -2500,7 +2500,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "The actor-observer bias: we see our own actions as situationally driven but view others' actions as reflecting their character.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -2515,7 +2515,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Discrimination is the behavioral component of prejudice — taking action against someone based on their group membership.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "Application"
     },
@@ -2530,7 +2530,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 3,
         "explanation": "Attitudes are learned through conditioning, modeling, socialization, and experience — they are not solely genetically inherited.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -2545,7 +2545,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "The mere exposure effect shows that familiarity breeds liking — the more we see something, the more we tend to like it.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Concept"
     },
@@ -2560,7 +2560,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Injunctive norms dictate what behaviors are socially approved or disapproved, while descriptive norms describe what people actually do.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Hard",
         "tag": "Concept"
     },
@@ -2575,7 +2575,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Moscovici found that a consistent and unwavering minority can gradually shift the majority opinion through informational influence.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Hard",
         "tag": "PYQ"
     },
@@ -2590,7 +2590,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Lewin identified Authoritarian (autocratic), Democratic (participative), and Laissez-faire (delegative) leadership styles.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "NCERT"
     },
@@ -2605,7 +2605,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Group cohesion refers to the forces that bind group members together, including shared goals, trust, and complementary abilities.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -2620,7 +2620,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Evolutionary theory explains altruism through kin selection (helping relatives increases shared gene survival) and reciprocal altruism.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Hard",
         "tag": "Concept"
     },
@@ -2635,7 +2635,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Emotional intelligence involves four branches: perceiving emotions, using emotions to facilitate thought, understanding, and managing them.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Medium",
         "tag": "NCERT"
     },
@@ -2650,7 +2650,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Goleman proposed five components: self-awareness, self-regulation, motivation, empathy, and social skills.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Medium",
         "tag": "PYQ"
     },
@@ -2665,7 +2665,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "MMPI is a widely used self-report inventory with true/false items designed to assess personality traits and psychopathology.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Easy",
         "tag": "Fact"
     },
@@ -2680,7 +2680,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Adler believed that humans are primarily motivated by a drive to overcome feelings of inferiority and achieve superiority.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Medium",
         "tag": "NCERT"
     },
@@ -2695,7 +2695,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Sentence completion tests are semi-projective, providing sentence stems that individuals complete with their own words, revealing attitudes and conflicts.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Medium",
         "tag": "Concept"
     },
@@ -2710,7 +2710,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "In the exhaustion stage, the body's resources are depleted after prolonged stress, leading to susceptibility to disease and potential collapse.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -2725,7 +2725,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Secondary appraisal focuses on evaluating what coping resources and strategies are available to deal with the stressor.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -2740,7 +2740,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 3,
         "explanation": "Environmental stressors are external (noise, crowding, disasters). Internal personality conflicts are psychological stressors, not environmental.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -2755,7 +2755,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Selective mutism involves consistent failure to speak in certain social settings (like school) despite ability to speak in other contexts (like home).",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Hard",
         "tag": "Concept"
     },
@@ -2770,7 +2770,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Binge Eating Disorder involves recurrent binge episodes with distress but without the purging behaviors characteristic of bulimia.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "Concept"
     },
@@ -2785,7 +2785,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "This disorder involves persistent experiences of unreality, detachment, or being an outside observer of one's own thoughts and body.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Hard",
         "tag": "Concept"
     },
@@ -2800,7 +2800,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Anxiolytics (such as benzodiazepines) are specifically designed to reduce anxiety symptoms.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Easy",
         "tag": "Fact"
     },
@@ -2815,7 +2815,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "SFBT is a goal-directed approach that focuses on solutions, strengths, and desired outcomes rather than analyzing problems.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "Concept"
     },
@@ -2830,7 +2830,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "The therapeutic alliance (trust, rapport, collaboration) is consistently found to be a key predictor of positive therapy outcomes across all approaches.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "Concept"
     },
@@ -2845,7 +2845,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "Direct personal experience with an object or situation is one of the most powerful ways attitudes are formed and changed.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -2860,7 +2860,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "The chameleon effect refers to the automatic, unconscious tendency to mimic the behaviors and mannerisms of interaction partners.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Hard",
         "tag": "Concept"
     },
@@ -2875,7 +2875,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Festinger found that people often change their attitudes (rather than behavior) to reduce the discomfort of cognitive dissonance.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -2890,7 +2890,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "The low-ball technique involves getting commitment to an attractive offer, then revealing additional costs or less favorable terms.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Application"
     },
@@ -2905,7 +2905,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Realistic conflict theory suggests that competition over scarce resources is a major driver of intergroup prejudice and conflict.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "NCERT"
     },
@@ -2920,7 +2920,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Diffusion of responsibility occurs when each person assumes someone else will take action, reducing any single person's likelihood of helping.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -2935,7 +2935,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Lewis Terman of Stanford University adapted Binet's original test for American use, creating the Stanford-Binet Intelligence Scale.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Medium",
         "tag": "Fact"
     },
@@ -2950,7 +2950,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Jung proposed that the collective unconscious contains archetypes — universal, inherited patterns shared by all humans across cultures.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Medium",
         "tag": "NCERT"
     },
@@ -2965,7 +2965,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Occupations requiring high emotional labor (healthcare, teaching, social work) are associated with greater occupational stress and burnout.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "Application"
     },
@@ -2980,7 +2980,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Specific phobias involve intense, irrational fear and avoidance of a particular stimulus (animals, heights, blood, etc.).",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Easy",
         "tag": "NCERT"
     },
@@ -2995,7 +2995,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Play therapy uses play as a medium for children to communicate feelings, resolve conflicts, and heal from trauma.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Easy",
         "tag": "Concept"
     },
@@ -3010,7 +3010,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Spearman → Two-Factor (g & s), Gardner → Multiple Intelligences, Sternberg → Triarchic, J.P. Das → PASS Model.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Hard",
         "tag": "Match"
     },
@@ -3025,7 +3025,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Fluid = raw reasoning, Crystallized = accumulated knowledge, Emotional = managing emotions, Spatial = mental visualization.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Medium",
         "tag": "Match"
     },
@@ -3040,7 +3040,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Binet-Terman → Stanford-Binet, Wechsler → WAIS, Rorschach → Inkblot Test, Murray → TAT.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Hard",
         "tag": "Match"
     },
@@ -3055,7 +3055,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 1,
         "explanation": "Projection = accusing others of own feelings, Displacement = redirecting to safer target, Rationalization = making excuses, Sublimation = channeling into acceptable activity.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Hard",
         "tag": "Match"
     },
@@ -3070,7 +3070,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Freud → Id/Ego/Superego, Jung → Archetypes, Adler → Inferiority Complex, Maslow → Self-Actualization.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Medium",
         "tag": "Match"
     },
@@ -3085,7 +3085,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Neuroticism = emotional instability, Extraversion = sociability, Conscientiousness = organization, Agreeableness = cooperativeness.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Medium",
         "tag": "Match"
     },
@@ -3100,7 +3100,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Alarm = fight-or-flight, Resistance = coping and adapting, Exhaustion = resource depletion.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Match"
     },
@@ -3115,7 +3115,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Problem-focused = direct action (study plan), Emotion-focused = emotional support, Avoidance = escaping the stressor.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "Match"
     },
@@ -3130,7 +3130,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "OCD = obsessions/compulsions, Bipolar = mood swings, Schizophrenia = hallucinations/delusions, Phobia = specific fear.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "Match"
     },
@@ -3145,7 +3145,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Anxiety → Agoraphobia, Mood → Depression, Dissociative → DID, Personality → Antisocial PD.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "Match"
     },
@@ -3160,7 +3160,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Positive = additions like hallucinations, Negative = losses like flat affect, Cognitive = poor thinking/planning.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Hard",
         "tag": "Match"
     },
@@ -3175,7 +3175,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Psychoanalysis → Free Association, Behavior → Desensitization, Humanistic → UPR, REBT → Challenging beliefs.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "Match"
     },
@@ -3190,7 +3190,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Rogers → Client-Centered, Frankl → Logotherapy, Ellis → REBT, Beck → Cognitive Therapy.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "Match"
     },
@@ -3205,7 +3205,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Festinger → Cognitive Dissonance, Miller/Ross → Self-Serving Bias, Heider → Balance Theory, Allport → Contact Hypothesis.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Hard",
         "tag": "Match"
     },
@@ -3220,7 +3220,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Affective = feelings (anger), Behavioral = actions (discrimination), Cognitive = beliefs (stereotypes).",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "Match"
     },
@@ -3235,7 +3235,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Asch → Conformity, Milgram → Obedience, Zimbardo → Prison, Sherif → Robbers Cave.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Match"
     },
@@ -3250,7 +3250,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Social Loafing = less effort in group, Facilitation = better performance when observed, Deindividuation = loss of identity, Groupthink = harmony over critical thinking.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Match"
     },
@@ -3265,7 +3265,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Foot-in-the-door = small first, Door-in-the-face = large first, Low-ball = hide true costs.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Match"
     },
@@ -3280,7 +3280,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Average = 90-109, Superior = 120-129, Gifted = 130+, Intellectual Disability = below 70.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Easy",
         "tag": "Match"
     },
@@ -3295,7 +3295,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Id operates on pleasure principle, Ego on reality principle, Superego on morality principle.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Easy",
         "tag": "Match"
     },
@@ -3310,7 +3310,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Anorexia = restriction, Bulimia = binge + purge, Binge Eating = binge without purge.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Easy",
         "tag": "Match"
     },
@@ -3325,7 +3325,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "CBT = Cognitive-Behavioral, Psychoanalysis = Psychodynamic, ECT = Biomedical, Client-Centered = Humanistic.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Easy",
         "tag": "Match"
     },
@@ -3340,7 +3340,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Low serotonin → Depression, Excess dopamine → Schizophrenia, Low GABA → Anxiety.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Hard",
         "tag": "Match"
     },
@@ -3355,7 +3355,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Selye → GAS, Cannon → Fight-or-Flight, Lazarus → Cognitive Appraisal, Holmes & Rahe → SRRS.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Match"
     },
@@ -3370,7 +3370,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "FAE = overweight personality, Self-Serving = credit self/blame others, Actor-Observer = different attributions for self vs others.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Match"
     },
@@ -3385,7 +3385,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Das developed the PASS model precisely based on Luria's neuropsychological framework of brain functioning.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Hard",
         "tag": "Assertion-Reason"
     },
@@ -3400,7 +3400,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "An IQ of 130+ is classified as 'gifted' because it indicates significantly superior cognitive ability.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Easy",
         "tag": "Assertion-Reason"
     },
@@ -3415,7 +3415,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "A is debatable but widely supported by Goleman. R is false — Stanford-Binet measures IQ, not emotional intelligence.",
-        "module": "Variations in Psychological Attributes",
+        "module": "Intelligence",
         "difficulty": "Medium",
         "tag": "Assertion-Reason"
     },
@@ -3430,7 +3430,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "The Id indeed operates on the pleasure principle because it demands immediate satisfaction of basic drives.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Easy",
         "tag": "Assertion-Reason"
     },
@@ -3445,7 +3445,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Rogers advocated UPR precisely because conditional acceptance (conditions of worth) leads to self-concept incongruence.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Hard",
         "tag": "Assertion-Reason"
     },
@@ -3460,7 +3460,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "A is true (Rorschach is projective). R is false — projective tests use AMBIGUOUS stimuli, not structured objective questions.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Medium",
         "tag": "Assertion-Reason"
     },
@@ -3475,7 +3475,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "The hostility and competitiveness of Type A creates chronic stress, directly contributing to cardiovascular disease risk.",
-        "module": "Self and Personality",
+        "module": "Personality",
         "difficulty": "Medium",
         "tag": "Assertion-Reason"
     },
@@ -3490,7 +3490,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "A is false — eustress is beneficial, not harmful. R is true — eustress motivates and enhances performance.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "Assertion-Reason"
     },
@@ -3505,7 +3505,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "The 3 C's of hardiness (commitment, control, challenge) are the mechanisms through which hardy people buffer against stress.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Assertion-Reason"
     },
@@ -3520,7 +3520,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "A is false — burnout develops gradually, not suddenly. R is true — it results from chronic emotional exhaustion.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Assertion-Reason"
     },
@@ -3535,7 +3535,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "A is false — social support is a major stress buffer. R is true — it provides multiple forms of support.",
-        "module": "Meeting Life Challenges",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "Assertion-Reason"
     },
@@ -3550,7 +3550,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "A is false — Schizophrenia is a psychotic disorder, not a mood disorder. R is true — those are its defining symptoms.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Easy",
         "tag": "Assertion-Reason"
     },
@@ -3565,7 +3565,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Compulsions exist specifically to neutralize the distress caused by obsessive thoughts, making R the explanation of A.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "Assertion-Reason"
     },
@@ -3580,7 +3580,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Memory disruption in DID occurs because different personality states may not share memories, making R the explanation.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Hard",
         "tag": "Assertion-Reason"
     },
@@ -3595,7 +3595,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "A is false — the model requires BOTH genetic predisposition AND environmental stress. R correctly states the interaction.",
-        "module": "Psychological Disorders",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "Assertion-Reason"
     },
@@ -3610,7 +3610,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "A is true — a fear hierarchy is used. R is false — exposure starts from LEAST feared (gradual), not most feared (that would be Flooding).",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "Assertion-Reason"
     },
@@ -3625,7 +3625,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Transference is central to psychoanalysis precisely because it reveals unconscious patterns of relating to others.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Medium",
         "tag": "Assertion-Reason"
     },
@@ -3640,7 +3640,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "A is true — CBT integrates cognitive restructuring with behavioral techniques. R is false — CBT also targets thinking patterns.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Easy",
         "tag": "Assertion-Reason"
     },
@@ -3655,7 +3655,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Token economy uses operant conditioning principles because tokens act as reinforcers that strengthen desired behaviors.",
-        "module": "Therapeutic Approaches",
+        "module": "Abnormal and Clinical Psychology",
         "difficulty": "Easy",
         "tag": "Assertion-Reason"
     },
@@ -3670,7 +3670,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "A is false — attitudes don't always predict behavior (attitude-behavior gap). R is true — situational factors create inconsistency.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Medium",
         "tag": "Assertion-Reason"
     },
@@ -3685,7 +3685,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "A is false — prejudice is the AFFECTIVE (emotional) component, not cognitive. R is true — it involves negative feelings.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Hard",
         "tag": "Assertion-Reason"
     },
@@ -3700,7 +3700,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "The discomfort from inconsistency (R) is precisely what motivates people to change their attitudes (A) to restore harmony.",
-        "module": "Attitude and Social Cognition",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "Assertion-Reason"
     },
@@ -3715,7 +3715,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "A is false — conformity levels off after about 3-5 people. R is true — maximum conformity was reached with small unanimous groups.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Hard",
         "tag": "Assertion-Reason"
     },
@@ -3730,7 +3730,7 @@ export const QUESTIONS = [
         ],
         "answerIndex": 0,
         "explanation": "Diffusion of responsibility is the primary mechanism behind the bystander effect — more people = less individual responsibility felt.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "Assertion-Reason"
     },
@@ -3745,15 +3745,442 @@ export const QUESTIONS = [
         ],
         "answerIndex": 2,
         "explanation": "A is false — they are different phenomena. R correctly distinguishes them: obedience = authority orders, conformity = group pressure.",
-        "module": "Social Influence and Group Processes",
+        "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "Assertion-Reason"
+    },
+    {
+        "id": 251,
+        "question": "In the context of Indian Psychology, which concept refers to the 'witness consciousness' that remains unaffected by the fluctuations of the mind?",
+        "options": [
+            "Manas",
+            "Buddhi",
+            "Purusha",
+            "Ahamkara"
+        ],
+        "answerIndex": 2,
+        "explanation": "In Samkhya philosophy, Purusha is the pure, eternal consciousness that observes Prakriti (nature) without being involved in its changes.",
+        "module": "Introduction to Psychology",
+        "difficulty": "Hard",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 252,
+        "question": "Which brain structure, when damaged, leads to 'Klüver-Bucy Syndrome', characterized by hypersexuality, placidity, and oral tendencies?",
+        "options": [
+            "Hippocampus",
+            "Amygdala",
+            "Thalamus",
+            "Cerebellum"
+        ],
+        "answerIndex": 1,
+        "explanation": "Bilateral damage to the temporal lobes, specifically the amygdala, results in Klüver-Bucy Syndrome.",
+        "module": "Biological bases of Behavior",
+        "difficulty": "Hard",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 253,
+        "question": "The 'Zeigarnik Effect' suggests that people remember:",
+        "options": [
+            "Pleasant tasks better than unpleasant ones",
+            "Uncompleted tasks better than completed ones",
+            "Tasks done in the morning better than evening",
+            "Names better than faces"
+        ],
+        "answerIndex": 1,
+        "explanation": "Bluma Zeigarnik found that interrupted or unfinished tasks create a 'psychological tension' that keeps them in memory.",
+        "module": "Learning, Memory",
+        "difficulty": "Medium",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 254,
+        "question": "The 'Fechner-Weber Law' primarily relates to:",
+        "options": [
+            "The limit of human hearing",
+            "The relationship between physical stimulus intensity and perceived sensation",
+            "The speed of neural transmission",
+            "The distribution of rods and cones in the retina"
+        ],
+        "answerIndex": 1,
+        "explanation": "It states that the perceived change in a stimulus is proportional to the initial intensity of the stimulus.",
+        "module": "Sensation and Perception",
+        "difficulty": "Hard",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 255,
+        "question": "According to the 'Incentive Theory' of motivation, behavior is pulled by:",
+        "options": [
+            "Internal biological needs",
+            "External stimuli or rewards",
+            "Unconscious drives",
+            "Peer pressure"
+        ],
+        "answerIndex": 1,
+        "explanation": "Incentive theory focuses on external goals (reinforcers) that pull the organism toward a behavior.",
+        "module": "Emotion and Motivation",
+        "difficulty": "Medium",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 256,
+        "question": "The 'Flynn Effect' refers to:",
+        "options": [
+            "The decline of intelligence with age",
+            "The substantial and sustained increase in IQ scores measured in many parts of the world over the 20th century",
+            "The correlation between brain size and intelligence",
+            "The impact of stress on cognitive performance"
+        ],
+        "answerIndex": 1,
+        "explanation": "James Flynn documented the rising trend of IQ scores across generations.",
+        "module": "Intelligence",
+        "difficulty": "Hard",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 257,
+        "question": "Who proposed the concept of 'Functional Autonomy', suggesting that adult motives may become independent of their historical origins?",
+        "options": [
+            "Gordon Allport",
+            "Raymond Cattell",
+            "Hans Eysenck",
+            "Sigmund Freud"
+        ],
+        "answerIndex": 0,
+        "explanation": "Allport argued that a behavior may continue for reasons quite different from those that originally started it.",
+        "module": "Personality",
+        "difficulty": "Hard",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 258,
+        "question": "Which type of validity is most concerned with whether a test covers a representative sample of the domain it aims to measure?",
+        "options": [
+            "Predictive Validity",
+            "Construct Validity",
+            "Content Validity",
+            "Concurrent Validity"
+        ],
+        "answerIndex": 2,
+        "explanation": "Content validity ensures that the items on the test are a representative sample of the subject matter.",
+        "module": "Psychological Testing",
+        "difficulty": "Medium",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 259,
+        "question": "'Waxy flexibility' is a classic symptom often associated with which subtype of Schizophrenia (historically)?",
+        "options": [
+            "Paranoid",
+            "Catatonic",
+            "Disorganized",
+            "Undifferentiated"
+        ],
+        "answerIndex": 1,
+        "explanation": "Catatonic schizophrenia involves motor disturbances, including holding rigid poses for long periods (waxy flexibility).",
+        "module": "Abnormal and Clinical Psychology",
+        "difficulty": "Hard",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 260,
+        "question": "The 'Robbers Cave Experiment' by Muzafer Sherif demonstrated that intergroup conflict can be reduced through:",
+        "options": [
+            "Simple contact",
+            "Competitive sports",
+            "Superordinate goals",
+            "Punishing aggressive behavior"
+        ],
+        "answerIndex": 2,
+        "explanation": "Sherif found that groups must work together toward a common goal that neither can achieve alone to reduce hostility.",
+        "module": "Introduction to Psychology",
+        "difficulty": "Medium",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 261,
+        "question": "Who is often called the 'Father of Indian Psychology' for his pioneering work in establishing the first psychology department at Calcutta University in 1916?",
+        "options": [
+            "Dr. N.N. Sengupta",
+            "Prof. G. Bose",
+            "Dr. S.C. Mitra",
+            "Prof. Jadunath Sinha"
+        ],
+        "answerIndex": 0,
+        "explanation": "Narendra Nath Sengupta, a student of Hugo Münsterberg, established the first psychology laboratory and department in India.",
+        "module": "History of Psychology",
+        "difficulty": "Hard",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 262,
+        "question": "In Piaget's theory of cognitive development, the ability to understand that certain physical characteristics of objects remain the same even when their outward appearance changes is known as:",
+        "options": [
+            "Object Permanence",
+            "Centration",
+            "Conservation",
+            "Reversibility"
+        ],
+        "answerIndex": 2,
+        "explanation": "Conservation is a hallmark of the concrete operational stage (7-11 years).",
+        "module": "Life-span Development",
+        "difficulty": "Medium",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 263,
+        "question": "Which of the following describes the 'Standard Error of the Mean' (SEM)?",
+        "options": [
+            "The standard deviation of the population",
+            "The standard deviation of the sampling distribution of the mean",
+            "The error made during data entry",
+            "The difference between the highest and lowest scores"
+        ],
+        "answerIndex": 1,
+        "explanation": "SEM measures how much the sample mean is likely to vary from the true population mean.",
+        "module": "Statistics for Psychology",
+        "difficulty": "Hard",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 264,
+        "question": "The 'Frustration-Aggression Hypothesis' suggests that aggression is always a consequence of frustration. This theory was originally proposed by:",
+        "options": [
+            "Albert Bandura",
+            "John Dollard and Neal Miller",
+            "Konrad Lorenz",
+            "Sigmund Freud"
+        ],
+        "answerIndex": 1,
+        "explanation": "Dollard, Miller, et al. (1939) proposed that frustration (blocking of a goal) produces an instigation to aggression.",
+        "module": "Introduction to Psychology",
+        "difficulty": "Medium",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 265,
+        "question": "In 'Rational Emotive Behavior Therapy' (REBT), the 'B' in the A-B-C model stands for:",
+        "options": [
+            "Behavior",
+            "Belief system",
+            "Biological response",
+            "Brain waves"
+        ],
+        "answerIndex": 1,
+        "explanation": "REBT posits that it is not the Activating Event (A) that causes emotional consequences, but our Belief (B) about the event.",
+        "module": "Abnormal and Clinical Psychology",
+        "difficulty": "Medium",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 266,
+        "question": "Which school of thought in psychology, led by Edward Titchener, aimed to analyze the 'atoms' of the mind using introspection?",
+        "options": ["Functionalism", "Structuralism", "Behaviorism", "Gestalt Psychology"],
+        "answerIndex": 1,
+        "explanation": "Structuralism sought to identify the basic structures (elements) of conscious experience.",
+        "module": "Schools of Psychology",
+        "difficulty": "Easy",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 267,
+        "question": "The 'Law of Pragnanz' (simplicity) is a core principle of which school of psychology?",
+        "options": ["Psychoanalysis", "Behaviorism", "Gestalt Psychology", "Humanistic Psychology"],
+        "answerIndex": 2,
+        "explanation": "Gestalt psychology emphasizes that the brain perceives objects in their simplest possible form.",
+        "module": "Schools of Psychology",
+        "difficulty": "Medium",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 268,
+        "question": "The resting potential of a typical neuron is approximately:",
+        "options": ["+40 mV", "0 mV", "-70 mV", "-55 mV"],
+        "answerIndex": 2,
+        "explanation": "At rest, the interior of a neuron is negatively charged compared to the outside, typically -70 mV.",
+        "module": "Biological bases of Behavior",
+        "difficulty": "Hard",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 269,
+        "question": "Which neurotransmitter is primarily implicated in the 'reward system' of the brain and linked to Parkinson's disease when deficient?",
+        "options": ["Serotonin", "Dopamine", "Acetylcholine", "GABA"],
+        "answerIndex": 1,
+        "explanation": "Dopamine is associated with pleasure/reward and motor control.",
+        "module": "Biological bases of Behavior",
+        "difficulty": "Medium",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 270,
+        "question": "In Pavlov's experiments, the bell, after being repeatedly paired with food, became a:",
+        "options": ["Unconditioned Stimulus", "Unconditioned Response", "Conditioned Stimulus", "Conditioned Response"],
+        "answerIndex": 2,
+        "explanation": "The bell starts as a neutral stimulus and becomes a CS through association.",
+        "module": "Learning, Memory",
+        "difficulty": "Easy",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 271,
+        "question": "The 'Method of Loci' is a mnemonic technique that relies on:",
+        "options": ["Rhyming", "Visualizing familiar spatial environments", "Acrostics", "Chunking"],
+        "answerIndex": 1,
+        "explanation": "It involves associating items to be remembered with specific locations in a well-known place.",
+        "module": "Learning, Memory",
+        "difficulty": "Medium",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 272,
+        "question": "The specific area of the retina that contains only cones and provides the sharpest vision is the:",
+        "options": ["Blind spot", "Fovea", "Optic disc", "Cornea"],
+        "answerIndex": 1,
+        "explanation": "The fovea is the center of the macula and is responsible for acute central vision.",
+        "module": "Sensation and Perception",
+        "difficulty": "Easy",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 273,
+        "question": "The 'phi phenomenon' is an illusion of:",
+        "options": ["Size", "Movement", "Depth", "Color"],
+        "answerIndex": 1,
+        "explanation": "It is the illusion of movement created by lights blinking in sequence (Gestalt principle).",
+        "module": "Sensation and Perception",
+        "difficulty": "Medium",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 274,
+        "question": "Which theory of emotion suggests that external stimuli trigger physiological arousal, which we then interpret to feel an emotion?",
+        "options": ["Cannon-Bard", "James-Lange", "Two-Factor Theory", "Lazarus Theory"],
+        "answerIndex": 1,
+        "explanation": "James-Lange theory: Stimulus -> Physiological response -> Emotion.",
+        "module": "Emotion and Motivation",
+        "difficulty": "Medium",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 275,
+        "question": "Abraham Maslow's 'Need Hierarchy' theory culminates in which final level?",
+        "options": ["Esteem needs", "Safety needs", "Self-actualization", "Self-transcendence"],
+        "answerIndex": 2, // Note: Maslow later added transcendence, but Self-actualization is the standard final stage in most curricula
+        "explanation": "Self-actualization is the realization of one's full potential.",
+        "module": "Emotion and Motivation",
+        "difficulty": "Easy",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 276,
+        "question": "If a test measures what it consistently claims to measure, it is said to have high:",
+        "options": ["Reliability", "Validity", "Standardization", "Objectivity"],
+        "answerIndex": 1,
+        "explanation": "Validity refers to the accuracy of the test (measuring what it's supposed to).",
+        "module": "Psychological Testing",
+        "difficulty": "Easy",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 277,
+        "question": "A 'Projective Test' like the TAT is designed to measure:",
+        "options": ["Conscious attitudes", "Unconscious motives and conflicts", "IQ", "Physical reflexes"],
+        "answerIndex": 1,
+        "explanation": "Projective tests use ambiguous stimuli to uncover hidden aspects of personality.",
+        "module": "Psychological Testing",
+        "difficulty": "Medium",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 278,
+        "question": "The 'Apgar Scale' is used to assess:",
+        "options": ["Cognitive development in elderly", "Health of a newborn immediately after birth", "Grief stages", "Adolescent identity crisis"],
+        "answerIndex": 1,
+        "explanation": "It evaluates heart rate, respiration, muscle tone, reflex, and color in newborns.",
+        "module": "Life-span Development",
+        "difficulty": "Easy",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 279,
+        "question": "Erik Erikson's stage of 'Generativity vs. Stagnation' occurs during:",
+        "options": ["Adolescence", "Early Adulthood", "Middle Adulthood", "Late Adulthood"],
+        "answerIndex": 2,
+        "explanation": "This stage usually occurs between the ages of 40 and 65.",
+        "module": "Life-span Development",
+        "difficulty": "Medium",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 280,
+        "question": "In a Normal Distribution, approximately what percentage of scores fall within one standard deviation above and below the mean?",
+        "options": ["50%", "95%", "68%", "99%"],
+        "answerIndex": 2,
+        "explanation": "The 68-95-99.7 rule states 68% falls within +/- 1 SD.",
+        "module": "Statistics for Psychology",
+        "difficulty": "Medium",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 281,
+        "question": "Which correlation coefficient indicates the strongest relationship between two variables?",
+        "options": ["+0.50", "0.00", "-0.85", "+0.70"],
+        "answerIndex": 2,
+        "explanation": "Strength is determined by the absolute value. 0.85 is stronger than 0.70.",
+        "module": "Statistics for Psychology",
+        "difficulty": "Hard",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 282,
+        "question": "The branch of psychology that deals with the study of the history of the discipline itself is called:",
+        "options": ["Historiography", "Philosophy of Science", "Evolutionary Psychology", "Experimental Psychology"],
+        "answerIndex": 0,
+        "explanation": "Historiography transition in psychology focuses on how the narrative of its history is constructed.",
+        "module": "History of Psychology",
+        "difficulty": "Medium",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 283,
+        "question": "Who is credited with starting the 'Functionalist' movement in America?",
+        "options": ["William James", "John B. Watson", "Sigmund Freud", "Wilhelm Wundt"],
+        "answerIndex": 0,
+        "explanation": "James was interested in how the mind functions to help us adapt (Principles of Psychology, 1890).",
+        "module": "History of Psychology",
+        "difficulty": "Easy",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 284,
+        "question": "The 'Father of Modern Psychology' who established the first laboratory in 1879 is:",
+        "options": ["Sigmund Freud", "Wilhelm Wundt", "Ivan Pavlov", "B.F. Skinner"],
+        "answerIndex": 1,
+        "explanation": "Wundt is celebrated as the founder of experimental psychology.",
+        "module": "History of Psychology",
+        "difficulty": "Easy",
+        "tag": "Superfinal"
+    },
+    {
+        "id": 285,
+        "question": "Which subfield of psychology focuses on the relationship between psychological factors and physical health/illness?",
+        "options": ["Clinical Psychology", "Health Psychology", "Industrial Psychology", "Social Psychology"],
+        "answerIndex": 1,
+        "explanation": "Health psychology (or behavioral medicine) explores how mind and behavior affect physical well-being.",
+        "module": "Introduction to Psychology",
+        "difficulty": "Easy",
+        "tag": "Superfinal"
     }
 ];
 
 export const FullQuestionBank = [...QUESTIONS];
 
 // Separate banks by question type
-export const MCQBank = QUESTIONS.filter(q => q.tag !== 'Match' && q.tag !== 'Assertion-Reason');
+export const MCQBank = QUESTIONS.filter(q => q.tag !== 'Match' && q.tag !== 'Assertion-Reason' && q.tag !== 'Superfinal');
 export const MatchBank = QUESTIONS.filter(q => q.tag === 'Match');
 export const AssertionReasonBank = QUESTIONS.filter(q => q.tag === 'Assertion-Reason');
+export const SuperfinalBank = QUESTIONS.filter(q => q.tag === 'Superfinal');
+

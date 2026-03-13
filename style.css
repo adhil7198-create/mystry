@@ -375,6 +375,23 @@ h1, h2, h3, h4, .logo-text, .level-num {
     color: #fbbf24;
 }
 
+.level-card.superfinal-card:hover {
+    border-color: #f59e0b;
+    box-shadow: 0 0 40px rgba(245, 158, 11, 0.4);
+}
+
+.level-card.superfinal-card .level-num {
+    background: linear-gradient(135deg, #fff, #f59e0b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 3.5rem;
+}
+
+.level-card.superfinal-card .level-status {
+    color: #f59e0b;
+}
+
 /* Level Section Animation */
 .level-section {
     animation: fadeInSection 0.3s ease-out;
@@ -605,9 +622,73 @@ h1, h2, h3, h4, .logo-text, .level-num {
     border-color: var(--primary);
 }
 
-.submit-btn {
+/* Exam Window Specifics */
+.exam-window {
+    background: rgba(2, 6, 23, 0.9) !important;
+    border-color: var(--primary) !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.exam-info h3 {
+    color: var(--primary);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+}
+
+.legend {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--surface-border);
+}
+
+.legend-item {
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.val-answered { background: var(--accent); }
+.val-review { background: #f59e0b; }
+.val-unvisited { background: var(--surface-light); }
+
+.q-grid-item.marked {
+    background: #f59e0b;
+    color: white;
+    border-color: #f59e0b;
+}
+
+.exam-actions {
+    display: flex;
+    gap: 1rem;
     width: 100%;
+}
+
+.exam-footer {
+    margin-top: auto;
+    padding-top: 2rem;
+}
+
+.final-warning {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    opacity: 0.5;
     margin-top: 1rem;
+    text-align: center;
 }
 
 /* Dashboard & Stats */
