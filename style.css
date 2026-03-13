@@ -772,7 +772,10 @@ h1, h2, h3, h4, .logo-text, .level-num {
 
 .loader-overlay {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: var(--background);
     display: flex;
     justify-content: center;

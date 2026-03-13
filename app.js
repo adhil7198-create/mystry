@@ -12,8 +12,9 @@ class CUETGame {
 
     init() {
         console.log("CUET Game Initializing...");
-        // Initial route
-        window.onhashchange = () => this.handleRoute();
+        
+        // Ensure we only handle route after DOM is ready
+        window.addEventListener('hashchange', () => this.handleRoute());
 
         // Logo click = home
         const logo = document.querySelector('.logo');
@@ -28,13 +29,36 @@ class CUETGame {
         // Security / Anti-Cheat
         this.initAntiCheat();
 
-        // Trigger initial route instantly
+        // If no hash, set it to #home initially
+        if (!window.location.hash) {
+            window.location.hash = '#home';
+        }
+
+        // Trigger initial route
         this.handleRoute();
 
-        // Check auth in background to avoid blocking site load
+        // Check auth in background
         this.checkAuthStatus().then(() => {
-            if (this.currentView === 'dashboard') this.handleRoute();
+            // Re-render if we are on a view that depends on user stats
+            // This ensures a smooth experience without manual refresh on mobile
+            const authViews = ['dashboard', 'levels', 'leaderboard', 'home'];
+            if (authViews.includes(this.currentView)) {
+                console.log("Auth confirmed, refreshing current view...");
+                this.handleRoute();
+            }
         });
+
+        // Fail-safe: Remove loader after 6 seconds if still present
+        setTimeout(() => {
+            const loader = document.getElementById('loader');
+            const main = document.getElementById('main-view');
+            if (loader && main) {
+                console.warn("Loader fail-safe triggered");
+                if (main.contains(loader)) {
+                    this.handleRoute(); // Try one last time
+                }
+            }
+        }, 6000);
     }
 
     async checkAuthStatus() {
@@ -98,8 +122,14 @@ class CUETGame {
             return;
         }
 
-        // Show loader
-        main.innerHTML = `<div class="loader-overlay"><div class="brain-loader"></div></div>`;
+        // Show loader with consistent ID for fail-safe
+        main.innerHTML = `
+            <div id="loader" class="loader-overlay">
+                <div style="text-align: center;">
+                    <div class="brain-loader" style="margin: 0 auto 1.5rem;"></div>
+                    <p class="text-secondary" style="font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; opacity: 0.8;">Syncing Psychology Data...</p>
+                </div>
+            </div>`;
         main.style.opacity = "1";
 
         try {
@@ -113,6 +143,7 @@ class CUETGame {
             } else if (viewName === 'levels') {
                 content = this.viewLevels();
             } else if (viewName === 'quiz') {
+                this.isRendering = null;
                 this.setupQuiz(param);
                 return;
             } else if (viewName === 'result') {
@@ -125,17 +156,26 @@ class CUETGame {
                 content = this.viewHome();
             }
 
+            // --- RACE CONDITION CHECK ---
+            // If the user navigated elsewhere while we were fetching data, abort this render
+            if (this.currentView !== viewName) {
+                console.warn(`Render of ${viewName} aborted: user navigated to ${this.currentView}`);
+                return;
+            }
+
             if (!content && viewName !== 'quiz') {
                 throw new Error(`View "${viewName}" returned no content.`);
             }
 
             main.innerHTML = content;
+            window.scrollTo(0, 0); // Reset scroll on view change
             this.animateViewTransition();
             this.attachViewEvents();
-            this.renderHeader(Store.state); // Update nav highlights
+            this.renderHeader(Store.state); 
             console.log(`View ${viewName} rendered successfully.`);
         } catch (err) {
             console.error("View Render Error:", err);
+            // Ensure loader is removed even on error
             main.innerHTML = `
                 <div class="glass-card" style="border-color: var(--error); text-align: center; margin-top: 2rem;">
                     <h2 style="color: var(--error);">Oops! Loading failed</h2>
@@ -166,10 +206,13 @@ class CUETGame {
                 ? `<button class="btn-secondary btn-small" onclick="window.game.handleSignOut()" style="font-size: 0.8rem; padding: 0.4rem 0.8rem; margin-left: 1rem;">Sign Out</button>`
                 : `<button class="btn-primary btn-small" onclick="window.location.hash='#auth'" style="font-size: 0.8rem; padding: 0.4rem 0.8rem; margin-left: 1rem;">Sign In</button>`;
 
+            const userName = user.name || 'Guest';
+            const userAvatar = userName.charAt(0).toUpperCase();
+
             navStats.innerHTML = `
                 <div class="xp-badge">✨ ${user.xp.toLocaleString()} XP</div>
                 <div class="lvl-badge">🏆 Lvl ${user.unlockedLevels}</div>
-                <div class="user-avatar" title="${user.name}">👤 ${user.name.charAt(0)}</div>
+                <div class="user-avatar" title="${userName}">👤 ${userAvatar}</div>
                 ${authAction}
             `;
         }
@@ -354,7 +397,11 @@ class CUETGame {
 
     async viewLeaderboard() {
         try {
-            const topStudents = await fetchLeaderboard();
+            // Add a timeout fallback for mobile networks
+            const fetchPromise = fetchLeaderboard();
+            const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error("Timeout")), 5000));
+            
+            const topStudents = await Promise.race([fetchPromise, timeoutPromise]);
             const rows = topStudents && topStudents.length > 0
                 ? topStudents.map((s, i) => `
                     <tr>
@@ -853,6 +900,13 @@ class CUETGame {
     }
 }
 
-// Global initialization
-window.game = new CUETGame();
-window.Store = Store;
+// Global initialization with DOM safety
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        window.game = new CUETGame();
+        window.Store = Store;
+    });
+} else {
+    window.game = new CUETGame();
+    window.Store = Store;
+}
