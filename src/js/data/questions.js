@@ -4173,12 +4173,656 @@ export const QUESTIONS = [
         "module": "Introduction to Psychology",
         "difficulty": "Easy",
         "tag": "Superfinal"
-    }
+    },
+{
+    "id": 286,
+    "question": "A researcher studies the relationship between sleep hours and exam performance but cannot manipulate the sleep hours due to ethical constraints. This is an example of:",
+    "options": [
+        "Experimental research",
+        "Correlational research",
+        "Case study",
+        "Naturalistic observation"
+    ],
+    "answerIndex": 1,
+    "explanation": "Correlational research looks for relationships without manipulating variables.",
+    "module": "Introduction to Psychology",
+    "difficulty": "Medium",
+    "tag": "Superfinal"
+},
+{
+    "id": 287,
+    "question": "The ethical principle of 'Informed Consent' requires that participants:",
+    "options": [
+        "Must be paid for their time",
+        "Must be told the full results before the study",
+        "Must understand the nature and risks of the study before agreeing",
+        "Must never be told the hypothesis"
+    ],
+    "answerIndex": 2,
+    "explanation": "Participants must give voluntary consent based on balanced information.",
+    "module": "Introduction to Psychology",
+    "difficulty": "Easy",
+    "tag": "Superfinal"
+},
+{
+    "id": 288,
+    "question": "Which research method offers the most in-depth look at a single individual or a small group?",
+    "options": [
+        "Survey",
+        "Experiment",
+        "Case Study",
+        "Correlation"
+    ],
+    "answerIndex": 2,
+    "explanation": "Case studies provide detailed, qualitative insights into specific instances.",
+    "module": "Introduction to Psychology",
+    "difficulty": "Easy",
+    "tag": "Superfinal"
+},
+{
+    "id": 289,
+    "question": "In a double-blind study, who is unaware of which participants are in the experimental vs. control group?",
+    "options": [
+        "Only the participants",
+        "Only the researcher",
+        "Both the participants and the researcher",
+        "Neither"
+    ],
+    "answerIndex": 2,
+    "explanation": "This design prevents bias from both expectations and researcher interaction.",
+    "module": "Introduction to Psychology",
+    "difficulty": "Medium",
+    "tag": "Superfinal"
+},
+{
+    "id": 290,
+    "question": "Assertion (A): Correlation does not imply causation.\nReason (R): Two variables might be related because of a third unknown variable (confounding variable).\nChoose the correct option:",
+    "options": [
+        "Both A and R are true and R is the correct explanation of A",
+        "Both A and R are true but R is not the correct explanation of A",
+        "A is true but R is false",
+        "A is false but R is true"
+    ],
+    "answerIndex": 0,
+    "explanation": "Correlation only shows a relationship; causation requires experimental manipulation.",
+    "module": "Introduction to Psychology",
+    "difficulty": "Hard",
+    "tag": "Assertion-Reason"
+},
+{
+    "id": 291,
+    "question": "The 1913 manifesto 'Psychology as the Behaviorist Views It' was written by:",
+    "options": [
+        "B.F. Skinner",
+        "John B. Watson",
+        "Ivan Pavlov",
+        "Edward Thorndike"
+    ],
+    "answerIndex": 1,
+    "explanation": "Watson founded Behaviorism with this influential publication.",
+    "module": "History of Psychology",
+    "difficulty": "Medium",
+    "tag": "Superfinal"
+},
+{
+    "id": 292,
+    "question": "Match List-I with List-II:\nList-I (Psychologist) | List-II (Key Contribution)\nA. Wilhelm Wundt | I. Functionalism\nB. William James | II. Structuralism\nC. Max Wertheimer | III. Psychoanalysis\nD. Sigmund Freud | IV. Gestalt Psychology\nChoose the correct sequence:",
+    "options": [
+        "A-II, B-I, C-IV, D-III",
+        "A-I, B-II, C-III, D-IV",
+        "A-II, B-III, C-IV, D-I",
+        "A-IV, B-I, C-II, D-III"
+    ],
+    "answerIndex": 0,
+    "explanation": "Wundt=Structuralism, James=Functionalism, Wertheimer=Gestalt, Freud=Psychoanalysis.",
+    "module": "History of Psychology",
+    "difficulty": "Hard",
+    "tag": "Match"
+},
+{
+    "id": 293,
+    "question": "Which historical approach emphasized that the 'whole is greater than the sum of its parts'?",
+    "options": [
+        "Structuralism",
+        "Behaviorism",
+        "Gestalt Psychology",
+        "Cognitivism"
+    ],
+    "answerIndex": 2,
+    "explanation": "Gestalt psychology focused on holistic perception.",
+    "module": "History of Psychology",
+    "difficulty": "Easy",
+    "tag": "Superfinal"
+},
+{
+    "id": 294,
+    "question": "Carl Rogers and Abraham Maslow are the leading figures of which school?",
+    "options": [
+        "Behaviorism",
+        "Cognitivism",
+        "Humanistic Psychology",
+        "Evolutionary Psychology"
+    ],
+    "answerIndex": 2,
+    "explanation": "Humanism focuses on human potential and self-actualization.",
+    "module": "Schools of Psychology",
+    "difficulty": "Easy",
+    "tag": "Superfinal"
+},
+{
+    "id": 295,
+    "question": "Psychoanalysis focuses primarily on:",
+    "options": [
+        "Observable behaviors",
+        "Unconscious conflicts",
+        "Brain chemistry",
+        "Social learning"
+    ],
+    "answerIndex": 1,
+    "explanation": "Freud's school emphasizes the role of the unconscious mind.",
+    "module": "Schools of Psychology",
+    "difficulty": "Easy",
+    "tag": "Superfinal"
+},
+{
+    "id": 296,
+    "question": "Assertion (A): Humanistic psychology is often called the 'Third Force' in psychology.\nReason (R): It emerged as an alternative to the perceived narrowness of Behaviorism and Psychoanalysis.\nChoose the correct option:",
+    "options": [
+        "Both A and R are true and R is the correct explanation of A",
+        "Both A and R are true but R is not the correct explanation of A",
+        "A is true but R is false",
+        "A is false but R is true"
+    ],
+    "answerIndex": 0,
+    "explanation": "Humanism provided a more positive and holistic view of human nature.",
+    "module": "Schools of Psychology",
+    "difficulty": "Medium",
+    "tag": "Assertion-Reason"
+},
+{
+    "id": 297,
+    "question": "The part of the brain responsible for higher-order thinking, planning, and judgment is the:",
+    "options": [
+        "Occipital lobe",
+        "Temporal lobe",
+        "Frontal lobe",
+        "Parietal lobe"
+    ],
+    "answerIndex": 2,
+    "explanation": "The frontal lobe houses the prefrontal cortex.",
+    "module": "Biological bases of Behavior",
+    "difficulty": "Easy",
+    "tag": "Superfinal"
+},
+{
+    "id": 298,
+    "question": "Which division of the nervous system prepares the body for 'fight or flight'?",
+    "options": [
+        "Parasympathetic",
+        "Sympathetic",
+        "Somatic",
+        "Central"
+    ],
+    "answerIndex": 1,
+    "explanation": "The sympathetic nervous system activates during stress.",
+    "module": "Biological bases of Behavior",
+    "difficulty": "Medium",
+    "tag": "Superfinal"
+},
+{
+    "id": 299,
+    "question": "The gap between two neurons where chemical messages are transmitted is the:",
+    "options": [
+        "Axon",
+        "Dendrite",
+        "Synapse",
+        "Myelin sheath"
+    ],
+    "answerIndex": 2,
+    "explanation": "Neurotransmitters carry signals across the synaptic cleft.",
+    "module": "Biological bases of Behavior",
+    "difficulty": "Easy",
+    "tag": "Superfinal"
+},
+{
+    "id": 300,
+    "question": "Match List-I with List-II:\nList-I (Brain Area) | List-II (Function)\nA. Hippocampus | I. Fear and Emotion\nB. Amygdala | II. Memory Formation\nC. Cerebellum | III. Visual Processing\nD. Occipital Lobe | IV. Motor Coordination\nChoose the correct sequence:",
+    "options": [
+        "A-II, B-I, C-IV, D-III",
+        "A-I, B-II, C-III, D-IV",
+        "A-III, B-I, C-II, D-IV",
+        "A-II, B-IV, C-I, D-III"
+    ],
+    "answerIndex": 0,
+    "explanation": "Hippocampus=Memory, Amygdala=Emotion, Cerebellum=Motor, Occipital=Visual.",
+    "module": "Biological bases of Behavior",
+    "difficulty": "Hard",
+    "tag": "Match"
+},
+{
+    "id": 301,
+    "question": "In operant conditioning, a schedule that reinforces behavior after an unpredictable number of responses is:",
+    "options": [
+        "Fixed-ratio",
+        "Variable-ratio",
+        "Fixed-interval",
+        "Variable-interval"
+    ],
+    "answerIndex": 1,
+    "explanation": "Variable-ratio schedules (like slot machines) produce high, steady response rates.",
+    "module": "Learning, Memory",
+    "difficulty": "Medium",
+    "tag": "Superfinal"
+},
+{
+    "id": 302,
+    "question": "Which type of memory has an almost unlimited capacity and can last for a lifetime?",
+    "options": [
+        "Sensory memory",
+        "Short-term memory",
+        "Working memory",
+        "Long-term memory"
+    ],
+    "answerIndex": 3,
+    "explanation": "Long-term memory stores vast amounts of information indefinitely.",
+    "module": "Learning, Memory",
+    "difficulty": "Easy",
+    "tag": "Superfinal"
+},
+{
+    "id": 303,
+    "question": "Assertion (A): Negative reinforcement increases the likelihood of a behavior.\nReason (R): It involves the removal of an unpleasant stimulus after the behavior occurs.\nChoose the correct option:",
+    "options": [
+        "Both A and R are true and R is the correct explanation of A",
+        "Both A and R are true but R is not the correct explanation of A",
+        "A is true but R is false",
+        "A is false but R is true"
+    ],
+    "answerIndex": 0,
+    "explanation": "Reinforcement always increases behavior; negative means removing something aversive.",
+    "module": "Learning, Memory",
+    "difficulty": "Hard",
+    "tag": "Assertion-Reason"
+},
+{
+    "id": 304,
+    "question": "The process of grouping individual pieces of information into larger, more meaningful units to improve memory is called:",
+    "options": [
+        "Encoding",
+        "Rehearsal",
+        "Chunking",
+        "Retrieval"
+    ],
+    "answerIndex": 2,
+    "explanation": "Chunking overcomes the limited capacity of short-term memory (~7 ± 2 items).",
+    "module": "Learning, Memory",
+    "difficulty": "Easy",
+    "tag": "Superfinal"
+},
+{
+    "id": 305,
+    "question": "The minimum intensity of a stimulus needed for it to be detected 50% of the time is called:",
+    "options": [
+        "Difference threshold",
+        "Absolute threshold",
+        "Sensory adaptation",
+        "Signal detection"
+    ],
+    "answerIndex": 1,
+    "explanation": "Absolute threshold marks the boundary between detection and non-detection.",
+    "module": "Sensation and Perception",
+    "difficulty": "Easy",
+    "tag": "Superfinal"
+},
+{
+    "id": 306,
+    "question": "Assertion (A): We perceive objects as having a constant size even as their distance from us changes.\nReason (R): Size constancy is a learned perceptual skill that relies on distance cues.\nChoose the correct option:",
+    "options": [
+        "Both A and R are true and R is the correct explanation of A",
+        "Both A and R are true but R is not the correct explanation of A",
+        "A is true but R is false",
+        "A is false but R is true"
+    ],
+    "answerIndex": 1,
+    "explanation": "Both are true, but R explains why we have it, not just the definition of constancy.",
+    "module": "Sensation and Perception",
+    "difficulty": "Medium",
+    "tag": "Assertion-Reason"
+},
+{
+    "id": 307,
+    "question": "The trichromatic theory of color vision suggests we have receptors for which three colors?",
+    "options": [
+        "Red, Green, Blue",
+        "Red, Yellow, Blue",
+        "Black, White, Gray",
+        "Cyan, Magenta, Yellow"
+    ],
+    "answerIndex": 0,
+    "explanation": "Young-Helmholtz theory posits sensitive cones for red, green, and blue light.",
+    "module": "Sensation and Perception",
+    "difficulty": "Medium",
+    "tag": "Superfinal"
+},
+{
+    "id": 308,
+    "question": "According to the Yerkes-Dodson Law, performance is best when arousal is:",
+    "options": [
+        "Very low",
+        "Very high",
+        "Moderate",
+        "Absent"
+    ],
+    "answerIndex": 2,
+    "explanation": "An inverted-U relationship exists between arousal and performance.",
+    "module": "Emotion and Motivation",
+    "difficulty": "Medium",
+    "tag": "Superfinal"
+},
+{
+    "id": 309,
+    "question": "Match List-I with List-II:\nList-I (Theory) | List-II (Main Concept)\nA. James-Lange | I. Physiological arousal + Cognitive label\nB. Cannon-Bard | II. Physiological response causes emotion\nC. Schachter-Singer | III. Arousal and emotion occur simultaneously\nD. Lazarus Theory | IV. Cognitive appraisal precedes emotion\nChoose the correct sequence:",
+    "options": [
+        "A-II, B-III, C-I, D-IV",
+        "A-I, B-II, C-III, D-IV",
+        "A-II, B-I, C-III, D-IV",
+        "A-III, B-II, C-IV, D-I"
+    ],
+    "answerIndex": 0,
+    "explanation": "Standard emotion theory mappings.",
+    "module": "Emotion and Motivation",
+    "difficulty": "Hard",
+    "tag": "Match"
+},
+{
+    "id": 310,
+    "question": "Which of the following is considered a 'secondary' or 'social' motive?",
+    "options": [
+        "Thirst",
+        "Hunger",
+        "Achievement",
+        "Sleep"
+    ],
+    "answerIndex": 2,
+    "explanation": "Achievement is a learned, social motive unlike biological drives.",
+    "module": "Emotion and Motivation",
+    "difficulty": "Easy",
+    "tag": "Superfinal"
+},
+{
+    "id": 311,
+    "question": "Match List-I with List-II:\nList-I (Intelligence Theory) | List-II (Proponent)\nA. Multiple Intelligences | I. Charles Spearman\nB. Triarchic Theory | II. Howard Gardner\nC. Two-Factor Theory | III. Robert Sternberg\nD. Primary Mental Abilities | IV. Louis Thurstone\nChoose the correct sequence:",
+    "options": [
+        "A-II, B-III, C-I, D-IV",
+        "A-I, B-II, C-III, D-IV",
+        "A-III, B-I, C-IV, D-II",
+        "A-II, B-IV, C-I, D-III"
+    ],
+    "answerIndex": 0,
+    "explanation": "Gardner=MI, Sternberg=Triarchic, Spearman=g/s, Thurstone=PMAs.",
+    "module": "Intelligence",
+    "difficulty": "Hard",
+    "tag": "Match"
+},
+{
+    "id": 312,
+    "question": "Emotional Intelligence (EQ) was popularized by:",
+    "options": [
+        "Daniel Goleman",
+        "David Wechsler",
+        "Francis Galton",
+        "Lewis Terman"
+    ],
+    "answerIndex": 0,
+    "explanation": "Goleman's 1995 book brought EQ to the mainstream.",
+    "module": "Intelligence",
+    "difficulty": "Easy",
+    "tag": "Superfinal"
+},
+{
+    "id": 313,
+    "question": "Assertion (A): Practical intelligence is also known as 'Street Smarts'.\nReason (R): It involves the ability to adapt to everyday challenges that are not typically taught in school.\nChoose the correct option:",
+    "options": [
+        "Both A and R are true and R is the correct explanation of A",
+        "Both A and R are true but R is not the correct explanation of A",
+        "A is true but R is false",
+        "A is false but R is true"
+    ],
+    "answerIndex": 0,
+    "explanation": "Sternberg's practical intelligence focuses on context and real-world adaptation.",
+    "module": "Intelligence",
+    "difficulty": "Medium",
+    "tag": "Assertion-Reason"
+},
+{
+    "id": 314,
+    "question": "According to Freud, the personality component that operates on the 'Reality Principle' is the:",
+    "options": [
+        "Id",
+        "Ego",
+        "Superego",
+        "Libido"
+    ],
+    "answerIndex": 1,
+    "explanation": "The Ego mediates between Id impulses and Superego constraints.",
+    "module": "Personality",
+    "difficulty": "Easy",
+    "tag": "Superfinal"
+},
+{
+    "id": 315,
+    "question": "Match List-I with List-II:\nList-I (Big Five Trait) | List-II (Description)\nA. Openness | I. Degree of sociability\nB. Conscientiousness | II. Originality and curiosity\nC. Extraversion | III. Emotional stability vs. instability\nD. Neuroticism | IV. Organization and responsibility\nChoose the correct sequence:",
+    "options": [
+        "A-II, B-IV, C-I, D-III",
+        "A-I, B-II, C-III, D-IV",
+        "A-IV, B-II, C-I, D-III",
+        "A-II, B-I, C-IV, D-III"
+    ],
+    "answerIndex": 0,
+    "explanation": "OCEAN traits definitions.",
+    "module": "Personality",
+    "difficulty": "Hard",
+    "tag": "Match"
+},
+{
+    "id": 316,
+    "question": "The concept of 'Collective Unconscious' and 'Archetypes' was proposed by:",
+    "options": [
+        "Alfred Adler",
+        "Karen Horney",
+        "Carl Jung",
+        "Erik Erikson"
+    ],
+    "answerIndex": 2,
+    "explanation": "Jung's analytical psychology emphasizes shared ancestral memories.",
+    "module": "Personality",
+    "difficulty": "Medium",
+    "tag": "Superfinal"
+},
+{
+    "id": 317,
+    "question": "Which of the following is a 'projective' personality test?",
+    "options": [
+        "MMPI-2",
+        "16PF",
+        "Rorschach Inkblot Test",
+        "NEO-PI-R"
+    ],
+    "answerIndex": 2,
+    "explanation": "Rorschach uses ambiguous inkblots to reveal unconscious projections.",
+    "module": "Psychological Testing",
+    "difficulty": "Easy",
+    "tag": "Superfinal"
+},
+{
+    "id": 318,
+    "question": "Reliability refers to a test's:",
+    "options": [
+        "Accuracy in measuring a construct",
+        "Consistency of scores over time or across items",
+        "Alignment with curriculum",
+        "Length and difficulty"
+    ],
+    "answerIndex": 1,
+    "explanation": "A reliable test yields stable results upon repeated administration.",
+    "module": "Psychological Testing",
+    "difficulty": "Easy",
+    "tag": "Superfinal"
+},
+{
+    "id": 319,
+    "question": "Assertion (A): Standardization is necessary for interpreting individual test scores.\nReason (R): It provides norms (comparative data) from a representative group.\nChoose the correct option:",
+    "options": [
+        "Both A and R are true and R is the correct explanation of A",
+        "Both A and R are true but R is not the correct explanation of A",
+        "A is true but R is false",
+        "A is false but R is true"
+    ],
+    "answerIndex": 0,
+    "explanation": "Standardization ensures uniform procedures and normative comparisons.",
+    "module": "Psychological Testing",
+    "difficulty": "Medium",
+    "tag": "Assertion-Reason"
+},
+{
+    "id": 320,
+    "question": "Vygotsky's concept of the difference between what a learner can do without help and what they can do with help is known as:",
+    "options": [
+        "Scaffolding",
+        "Zone of Proximal Development (ZPD)",
+        "Assimilation",
+        "Centration"
+    ],
+    "answerIndex": 1,
+    "explanation": "ZPD is the range of tasks a child is close to mastering with guidance.",
+    "module": "Life-span Development",
+    "difficulty": "Easy",
+    "tag": "Superfinal"
+},
+{
+    "id": 321,
+    "question": "Match List-I with List-II:\nList-I (Erikson's Stage) | List-II (Core Conflict)\nA. Infancy | I. Identity vs. Role Confusion\nB. Preschool | II. Trust vs. Mistrust\nC. Adolescence | III. Integrity vs. Despair\nD. Late Adulthood | IV. Initiative vs. Guilt\nChoose the correct sequence:",
+    "options": [
+        "A-II, B-IV, C-I, D-III",
+        "A-I, B-II, C-III, D-IV",
+        "A-II, B-I, C-IV, D-III",
+        "A-IV, B-II, C-I, D-III"
+    ],
+    "answerIndex": 0,
+    "explanation": "Erikson's psychosocial stages.",
+    "module": "Life-span Development",
+    "difficulty": "Hard",
+    "tag": "Match"
+},
+{
+    "id": 322,
+    "question": "Assertion (A): Piaget's sensorimotor stage is characterized by 'Object Permanence'.\nReason (R): During this stage, infants learn that objects continue to exist even when they cannot be seen.\nChoose the correct option:",
+    "options": [
+        "Both A and R are true and R is the correct explanation of A",
+        "Both A and R are true but R is not the correct explanation of A",
+        "A is true but R is false",
+        "A is false but R is true"
+    ],
+    "answerIndex": 0,
+    "explanation": "Object permanence usually develops around 8-9 months within this stage.",
+    "module": "Life-span Development",
+    "difficulty": "Medium",
+    "tag": "Assertion-Reason"
+},
+{
+    "id": 323,
+    "question": "The therapeutic approach that focuses on changing irrational, self-defeating thoughts and behaviors is:",
+    "options": [
+        "Psychoanalysis",
+        "Client-Centered Therapy",
+        "Cognitive-Behavioral Therapy (CBT)",
+        "Gestalt Therapy"
+    ],
+    "answerIndex": 2,
+    "explanation": "CBT aims to restructure maladaptive cognitions.",
+    "module": "Abnormal and Clinical Psychology",
+    "difficulty": "Easy",
+    "tag": "Superfinal"
+},
+{
+    "id": 324,
+    "question": "Which disorder is characterized by persistent, uncontrollable, and irrational worries about various daily events?",
+    "options": [
+        "Panic Disorder",
+        "Generalized Anxiety Disorder (GAD)",
+        "Obsessive-Compulsive Disorder (OCD)",
+        "Bipolar Disorder"
+    ],
+    "answerIndex": 1,
+    "explanation": "GAD involves pervasive and excessive anxiety and worry.",
+    "module": "Abnormal and Clinical Psychology",
+    "difficulty": "Easy",
+    "tag": "Superfinal"
+},
+{
+    "id": 325,
+    "question": "Assertion (A): Selective Serotonin Reuptake Inhibitors (SSRIs) are commonly prescribed for depression.\nReason (R): They increase the level of serotonin in the synaptic cleft by blocking its reabsorption.\nChoose the correct option:",
+    "options": [
+        "Both A and R are true and R is the correct explanation of A",
+        "Both A and R are true but R is not the correct explanation of A",
+        "A is true but R is false",
+        "A is false but R is true"
+    ],
+    "answerIndex": 0,
+    "explanation": "SSRIs enhance neurotransmission of mood-regulating serotonin.",
+    "module": "Abnormal and Clinical Psychology",
+    "difficulty": "Hard",
+    "tag": "Assertion-Reason"
+},
+{
+    "id": 326,
+    "question": "The most appropriate measure of central tendency for a highly skewed distribution is the:",
+    "options": [
+        "Mean",
+        "Median",
+        "Mode",
+        "Range"
+    ],
+    "answerIndex": 1,
+    "explanation": "The median is resistant to outliers (extreme scores).",
+    "module": "Statistics for Psychology",
+    "difficulty": "Medium",
+    "tag": "Superfinal"
+},
+{
+    "id": 327,
+    "question": "A p-value of < 0.05 typically means that the result is:",
+    "options": [
+        "Statistically significant",
+        "Due to chance",
+        "Clinically meaningless",
+        "Incorrectly calculated"
+    ],
+    "answerIndex": 0,
+    "explanation": "It indicates a less than 5% probability that the result occurred by chance alone.",
+    "module": "Statistics for Psychology",
+    "difficulty": "Easy",
+    "tag": "Superfinal"
+},
+{
+    "id": 328,
+    "question": "Assertion (A): A t-test is used to compare the means of two independent groups.\nReason (R): It determines if the observed difference between the means is statistically significant or due to chance.\nChoose the correct option:",
+    "options": [
+        "Both A and R are true and R is the correct explanation of A",
+        "Both A and R are true but R is not the correct explanation of A",
+        "A is true but R is false",
+        "A is false but R is true"
+    ],
+    "answerIndex": 0,
+    "explanation": "T-tests evaluate whether differences are likely reflecting real population differences.",
+    "module": "Statistics for Psychology",
+    "difficulty": "Medium",
+    "tag": "Assertion-Reason"
+}
 ];
 
-export const FullQuestionBank = [...QUESTIONS];
-
 // Separate banks by question type
+export const FullQuestionBank = [...QUESTIONS];
 export const MCQBank = QUESTIONS.filter(q => q.tag !== 'Match' && q.tag !== 'Assertion-Reason' && q.tag !== 'Superfinal');
 export const MatchBank = QUESTIONS.filter(q => q.tag === 'Match');
 export const AssertionReasonBank = QUESTIONS.filter(q => q.tag === 'Assertion-Reason');

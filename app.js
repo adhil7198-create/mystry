@@ -643,6 +643,7 @@ class CUETGame {
         Store.state.currentLevel = level;
         Store.state.quiz.quizType = quizType;
         Store.state.quiz.active = true;
+        Store.state.quiz.questions = this.getQuestionsForLevel(level, quizType);
         // CUET Official Scaling: All tests are 90 Minutes for 75 Questions
         let timerMin = 90;
 
@@ -655,17 +656,37 @@ class CUETGame {
     }
 
     getQuestionsForLevel(lvl, quizType = 'mcq') {
-        const perLvl = 75; // All levels are now 75 questions per real CUET standard
+        const perLvl = 75; 
         let sourceBank = [];
 
-        if (quizType === 'match') {
+        // For Superfinal, we want a real NTA mix: MCQ + Match + Assertion
+        if (quizType === 'superfinal' || quizType === 'final') {
+            // Mix types
+            const mcqs = [...MCQBank].sort(() => Math.random() - 0.5);
+            const matches = [...MatchBank].sort(() => Math.random() - 0.5);
+            const ars = [...AssertionReasonBank].sort(() => Math.random() - 0.5);
+            
+            // Aim for approx 55 MCQ, 10 Match, 10 AR
+            sourceBank = [
+                ...mcqs.slice(0, 55),
+                ...matches.slice(0, 10),
+                ...ars.slice(0, 10)
+            ];
+
+            // If we still don't have 75 (due to small banks), fill with anything else from FullBank
+            if (sourceBank.length < perLvl) {
+                const existingIds = new Set(sourceBank.map(q => q.id));
+                const remaining = FullQuestionBank.filter(q => !existingIds.has(q.id))
+                    .sort(() => Math.random() - 0.5);
+                sourceBank = [...sourceBank, ...remaining.slice(0, perLvl - sourceBank.length)];
+            }
+        } else if (quizType === 'match') {
             sourceBank = [...MatchBank];
+            // If match bank is small, cycle or fill from elsewhere to reach 75
+            if (sourceBank.length < perLvl) sourceBank = [...sourceBank, ...FullQuestionBank.slice(0, perLvl - sourceBank.length)];
         } else if (quizType === 'ar') {
             sourceBank = [...AssertionReasonBank];
-        } else if (quizType === 'superfinal') {
-            sourceBank = [...SuperfinalBank];
-        } else if (quizType === 'final') {
-            sourceBank = [...FullQuestionBank];
+            if (sourceBank.length < perLvl) sourceBank = [...sourceBank, ...FullQuestionBank.slice(0, perLvl - sourceBank.length)];
         } else {
             sourceBank = [...FullQuestionBank];
         }
@@ -673,32 +694,32 @@ class CUETGame {
         // Apply Round-Robin module selection for syllabus diversity
         const grouped = {};
         sourceBank.forEach(q => {
-            if (!grouped[q.module]) grouped[q.module] = [];
-            grouped[q.module].push(q);
+            const mod = q.module || 'General';
+            if (!grouped[mod]) grouped[mod] = [];
+            grouped[mod].push(q);
         });
-
-        Object.values(grouped).forEach(list => list.sort(() => Math.random() - 0.5));
 
         const result = [];
         const moduleNames = Object.keys(grouped).sort();
+        if (moduleNames.length === 0) return sourceBank.slice(0, perLvl);
+        
         let addedCount = 0;
         let moduleIndex = 0;
-        const totalAvailable = sourceBank.length;
+        
+        // Flatten for pop
+        const lists = moduleNames.map(name => grouped[name].sort(() => Math.random() - 0.5));
 
-        // Special case for Match/AR: they are small, so we might just take sequential chunks
-        // But for consistency, we try to balance.
-        while (addedCount < perLvl && addedCount < totalAvailable) {
-            const currentModule = moduleNames[moduleIndex % moduleNames.length];
-            const moduleList = grouped[currentModule];
-            
-            if (moduleList && moduleList.length > 0) {
-                result.push(moduleList.pop());
+        while (addedCount < perLvl && addedCount < sourceBank.length) {
+            const currentList = lists[moduleIndex % lists.length];
+            if (currentList.length > 0) {
+                result.push(currentList.pop());
                 addedCount++;
             }
             moduleIndex++;
-            if (moduleIndex > totalAvailable * 2) break; 
+            if (moduleIndex > sourceBank.length * 2) break;
         }
 
+        // Final shuffle
         return result.sort(() => Math.random() - 0.5);
     }
 
@@ -708,6 +729,16 @@ class CUETGame {
 
         const qIdx = Store.state.quiz.currentQuestionIndex;
         const q = Store.state.quiz.questions[qIdx];
+
+        if (!q) {
+            main.innerHTML = `
+                <div class="glass-card" style="text-align: center; margin-top: 2rem;">
+                    <h3>Oops! Questions not loaded</h3>
+                    <p class="text-secondary">Something went wrong while fetching the exam data.</p>
+                    <button class="btn-primary" style="margin: 1rem auto;" onclick="window.location.hash='#levels'">Back to Levels</button>
+                </div>`;
+            return;
+        }
 
         main.innerHTML = `
             <div class="quiz-interface">
@@ -785,7 +816,13 @@ class CUETGame {
     }
 
     selectAnswer(idx) {
-        Store.state.quiz.answers[Store.state.quiz.currentQuestionIndex] = idx;
+        const qIdx = Store.state.quiz.currentQuestionIndex;
+        if (Store.state.quiz.answers[qIdx] === idx) {
+            // Unselect if same index clicked again
+            delete Store.state.quiz.answers[qIdx];
+        } else {
+            Store.state.quiz.answers[qIdx] = idx;
+        }
         this.renderQuizUI();
         Store.saveState();
     }

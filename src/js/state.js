@@ -44,6 +44,14 @@ class StateManager {
                 if (parsed.user) {
                     parsed.user.unlockedLevels = parsed.user.unlockedLevels || 20;
                 }
+                
+                // Set Handling for serialization
+                if (parsed.quiz && parsed.quiz.marked) {
+                    parsed.quiz.marked = new Set(Array.isArray(parsed.quiz.marked) ? parsed.quiz.marked : []);
+                } else if (parsed.quiz) {
+                    parsed.quiz.marked = new Set();
+                }
+
                 return parsed;
             }
         } catch (e) {
@@ -54,7 +62,16 @@ class StateManager {
     }
 
     saveState() {
-        localStorage.setItem('psych_mastery_state', JSON.stringify(this.state));
+        // Convert Set to Array for JSON serialization
+        const stateToSave = { ...this.state };
+        if (stateToSave.quiz && stateToSave.quiz.marked instanceof Set) {
+            stateToSave.quiz = { 
+                ...stateToSave.quiz, 
+                marked: Array.from(stateToSave.quiz.marked) 
+            };
+        }
+
+        localStorage.setItem('psych_mastery_state', JSON.stringify(stateToSave));
         this.notify();
         this.syncToSupabase();
     }
