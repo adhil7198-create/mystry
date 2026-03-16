@@ -11,54 +11,51 @@ class CUETGame {
     }
 
     init() {
-        console.log("CUET Game Initializing...");
+        console.log("CUET Game Initializing system...");
         
+        // Assign to window immediately to ensure view methods can find it
+        window.game = this;
+
         // Ensure we only handle route after DOM is ready
         window.addEventListener('hashchange', () => this.handleRoute());
 
-        // Logo click = home
+        // View subscriptions
+        Store.subscribe((state) => this.renderHeader(state));
+        this.renderHeader(Store.state);
+
+        // UI Listeners
         const logo = document.querySelector('.logo');
         if (logo) logo.onclick = () => (window.location.hash = '#home');
 
-        // Subscriptions
-        Store.subscribe((state) => this.renderHeader(state));
-
-        // Initial Header Render
-        this.renderHeader(Store.state);
-
-        // Security / Anti-Cheat
         this.initAntiCheat();
 
-        // If no hash, set it to #home initially
-        if (!window.location.hash) {
-            window.location.hash = '#home';
-        }
-
-        // Trigger initial route
-        this.handleRoute();
-
-        // Check auth in background
-        this.checkAuthStatus().then(() => {
-            // Re-render if we are on a view that depends on user stats
-            // This ensures a smooth experience without manual refresh on mobile
-            const authViews = ['dashboard', 'levels', 'leaderboard', 'home'];
-            if (authViews.includes(this.currentView)) {
-                console.log("Auth confirmed, refreshing current view...");
-                this.handleRoute();
+        // Robust initial navigation
+        const startApp = () => {
+            if (!window.location.hash) {
+                window.location.hash = '#home';
             }
-        });
+            this.handleRoute();
+            
+            // Background check for auth
+            this.checkAuthStatus().then(() => {
+                const authViews = ['dashboard', 'levels', 'leaderboard', 'home'];
+                if (authViews.includes(this.currentView)) {
+                    this.handleRoute();
+                }
+            });
+        };
 
-        // Fail-safe: Remove loader after 6 seconds if still present
+        // Executes after current execution stack to ensure game is on window
+        setTimeout(startApp, 0);
+
+        // Fail-safe loader removal
         setTimeout(() => {
             const loader = document.getElementById('loader');
-            const main = document.getElementById('main-view');
-            if (loader && main) {
-                console.warn("Loader fail-safe triggered");
-                if (main.contains(loader)) {
-                    this.handleRoute(); // Try one last time
-                }
+            if (loader && loader.parentElement) {
+                console.warn("Loader cleanup triggered");
+                loader.style.display = 'none';
             }
-        }, 6000);
+        }, 8000);
     }
 
     async checkAuthStatus() {
@@ -127,7 +124,7 @@ class CUETGame {
             <div id="loader" class="loader-overlay">
                 <div style="text-align: center;">
                     <div class="brain-loader" style="margin: 0 auto 1.5rem;"></div>
-                    <p class="text-secondary" style="font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; opacity: 0.8;">Syncing Psychology Data...</p>
+                    <p class="text-secondary" style="font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; opacity: 0.8;">Syncing Data...</p>
                 </div>
             </div>`;
         main.style.opacity = "1";
@@ -157,17 +154,19 @@ class CUETGame {
             }
 
             // --- RACE CONDITION CHECK ---
-            // If the user navigated elsewhere while we were fetching data, abort this render
-            if (this.currentView !== viewName) {
-                console.warn(`Render of ${viewName} aborted: user navigated to ${this.currentView}`);
-                return;
-            }
+            if (this.currentView !== viewName) return;
 
             if (!content && viewName !== 'quiz') {
-                throw new Error(`View "${viewName}" returned no content.`);
+                content = this.viewHome(); // Fallback
             }
 
             main.innerHTML = content;
+            main.scrollTop = 0;
+            
+            // Optional: Auto-switch to MCQ section if we are on levels
+            if (viewName === 'levels') {
+                this.switchSection('mcq');
+            }
             window.scrollTo(0, 0); // Reset scroll on view change
             this.animateViewTransition();
             this.attachViewEvents();
@@ -210,9 +209,9 @@ class CUETGame {
             const userAvatar = userName.charAt(0).toUpperCase();
 
             navStats.innerHTML = `
-                <div class="xp-badge">✨ ${user.xp.toLocaleString()} XP</div>
-                <div class="lvl-badge">🏆 Lvl ${user.unlockedLevels}</div>
-                <div class="user-avatar" title="${userName}">👤 ${userAvatar}</div>
+                <div class="xp-badge">✨ ${user.xp.toLocaleString()}</div>
+                <div class="lvl-badge">🏆 Level ${user.unlockedLevels}</div>
+                <div class="user-avatar" title="${userName}" style="width: 32px; height: 32px; background: rgba(255,255,255,0.05); border: 1px solid var(--surface-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.8rem; color: #fff;"> ${userAvatar}</div>
                 ${authAction}
             `;
         }
@@ -274,38 +273,36 @@ class CUETGame {
                 <div class="level-card glass-card ${isLocked ? 'locked' : ''}" onclick="${!isLocked ? `window.location.hash = '#quiz/mcq/${i}'` : ''}">
                     <div class="level-num">${i}</div>
                     <div class="level-status">${isLocked ? '🔒 Locked' : '✨ Unlocked'}</div>
-                    <div class="level-difficulty">${i <= 5 ? 'Basic' : i <= 15 ? 'Advanced' : 'Grand Mock'}</div>
+                    <div class="level-difficulty">75 Questions</div>
                 </div>
             `;
         }
 
         // Match the Following Rounds
-        const matchRounds = Math.ceil(MatchBank.length / 5);
+        const matchRounds = Math.ceil(MatchBank.length / 5) || 5; 
         let matchLevelsHTML = '';
-        for (let i = 1; i <= matchRounds; i++) {
+        for (let i = 1; i <= 10; i++) {
             matchLevelsHTML += `
                 <div class="level-card glass-card match-card" onclick="window.location.hash = '#quiz/match/${i}'">
                     <div class="level-num">🔗 ${i}</div>
-                    <div class="level-status">✨ Open</div>
-                    <div class="level-difficulty">5 Questions</div>
+                    <div class="level-status">✨ Training</div>
+                    <div class="level-difficulty">75 Questions</div>
                 </div>
             `;
         }
 
         // Assertion-Reason Rounds
-        const arRounds = Math.ceil(AssertionReasonBank.length / 5);
-        let arLevelsHTML = '';
-        for (let i = 1; i <= arRounds; i++) {
-            arLevelsHTML += `
+        for (let i = 1; i <= 10; i++) {
+            matchLevelsHTML += `
                 <div class="level-card glass-card ar-card" onclick="window.location.hash = '#quiz/ar/${i}'">
                     <div class="level-num">⚖️ ${i}</div>
-                    <div class="level-status">✨ Open</div>
-                    <div class="level-difficulty">5 Questions</div>
+                    <div class="level-status">✨ Training</div>
+                    <div class="level-difficulty">75 Questions</div>
                 </div>
             `;
         }
 
-        // Final Mock Levels (6 levels, 75 questions each)
+        // Final Mock Levels
         let finalLevelsHTML = '';
         for (let i = 1; i <= 6; i++) {
             finalLevelsHTML += `
@@ -317,68 +314,60 @@ class CUETGame {
             `;
         }
 
-        // Superfinal Mock Levels (10 levels)
+        // Superfinal Mock Levels (Elite)
         let superfinalLevelsHTML = '';
         for (let i = 1; i <= 10; i++) {
+            const isUltimate = i === 10;
             superfinalLevelsHTML += `
-                <div class="level-card glass-card superfinal-card" onclick="window.location.hash = '#quiz/superfinal/${i}'">
-                    <div class="level-num">⭐ ${i}</div>
-                    <div class="level-status">✨ Superfinal Mock</div>
-                    <div class="level-difficulty">${i === 10 ? 'ULTIMATE' : 'Pro Mock'}</div>
+                <div class="level-card glass-card superfinal-card ${isUltimate ? 'ultimate-card' : ''}" onclick="window.location.hash = '#quiz/superfinal/${i}'">
+                    <div class="level-num">${isUltimate ? '👑' : '⭐'} ${i}</div>
+                    <div class="level-status">${isUltimate ? '🔥 ULTIMATE MOCK' : '💎 Elite Mock'}</div>
+                    <div class="level-difficulty">${isUltimate ? 'BOSS LEVEL' : '75 Questions'}</div>
                 </div>
             `;
         }
 
         return `
             <div class="view-header">
-                <h2>Choose Your Challenge</h2>
-                <p>Practice like the real CUET exam — Standard, Specialized, or Full Mock.</p>
+                <h2 style="font-size: 3rem; margin-bottom: 1rem; background: linear-gradient(135deg, #fff, var(--primary-bright)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Syllabus Mastery</h2>
+                <p class="text-secondary" style="max-width: 600px; margin: 0 auto;">Select a pathway to begin your preparation. All levels are scaled to the official CUET 2026 format.</p>
             </div>
 
             <div class="section-tabs">
-                <button class="section-tab active" onclick="window.game.switchSection('mcq')" id="tab-mcq">📝 curriculum</button>
-                <button class="section-tab" onclick="window.game.switchSection('match')" id="tab-match">🔗 Match items</button>
-                <button class="section-tab" onclick="window.game.switchSection('ar')" id="tab-ar">⚖️ Assertion Task</button>
-                <button class="section-tab" onclick="window.game.switchSection('final')" id="tab-final">🏆 Final Mock</button>
-                <button class="section-tab" onclick="window.game.switchSection('superfinal')" id="tab-superfinal">⭐ Superfinal</button>
+                <button class="section-tab active" onclick="window.game.switchSection('mcq')" id="tab-mcq">📋 Core curriculum</button>
+                <button class="section-tab" onclick="window.game.switchSection('skill')" id="tab-skill">⚡ Skill Training</button>
+                <button class="section-tab" onclick="window.game.switchSection('final')" id="tab-final">🏆 Grand Mocks</button>
+                <button class="section-tab" onclick="window.game.switchSection('superfinal')" id="tab-superfinal">💎 Super Final</button>
             </div>
 
             <div id="section-mcq" class="level-section">
                 <div class="section-header">
-                    <h3>📝 Integrated MCQ Levels</h3>
-                    <p class="text-secondary">20 levels • Mixed MCQ, Match & Assertion-Reason • 75 Qs | 90 Mins</p>
+                    <h3>📋 Integrated MCQ Levels</h3>
+                    <p class="text-secondary">Progressive learning modules covering the entire Psychology syllabus. Mixed question types included.</p>
                 </div>
                 <div class="level-grid">${mcqLevelsHTML}</div>
             </div>
 
-            <div id="section-match" class="level-section" style="display:none;">
+            <div id="section-skill" class="level-section" style="display:none;">
                 <div class="section-header">
-                    <h3>🔗 Match the Following</h3>
-                    <p class="text-secondary">${matchRounds} rounds • Match List-I with List-II • 75 Qs | 90 Mins</p>
+                    <h3>⚡ Specialized Skill Training</h3>
+                    <p class="text-secondary">Intensive drills focused specifically on Match the Following and Assertion-Reasoning logic.</p>
                 </div>
                 <div class="level-grid">${matchLevelsHTML}</div>
             </div>
 
-            <div id="section-ar" class="level-section" style="display:none;">
-                <div class="section-header">
-                    <h3>⚖️ Assertion-Reason</h3>
-                    <p class="text-secondary">${arRounds} rounds • Evaluate Assertion & Reason • 75 Qs | 90 Mins</p>
-                </div>
-                <div class="level-grid">${arLevelsHTML}</div>
-            </div>
-
             <div id="section-final" class="level-section" style="display:none;">
                 <div class="section-header">
-                    <h3>🏆 Grand Final Mocks</h3>
-                    <p class="text-secondary">6 levels • 75 Questions each • Real Exam Simulator</p>
+                    <h3>🏆 Full Exam Simulations</h3>
+                    <p class="text-secondary">Official 90-minute mocks designed to test your stamina and comprehensive knowledge.</p>
                 </div>
                 <div class="level-grid">${finalLevelsHTML}</div>
             </div>
 
             <div id="section-superfinal" class="level-section" style="display:none;">
                 <div class="section-header">
-                    <h3>⭐ Superfinal Mastery Mock</h3>
-                    <p class="text-secondary">10 levels • Advanced Psychology & AI Predictions</p>
+                    <h3 style="color: var(--accent);">💎 Super Final Mastery Arena</h3>
+                    <p class="text-secondary">The ultimate challenge. Mixed elite questions with AI-predicted patterns for 2026.</p>
                 </div>
                 <div class="level-grid">${superfinalLevelsHTML}</div>
             </div>
@@ -516,8 +505,8 @@ class CUETGame {
             congratulationHtml = `
                 <div class="aysha-popup" id="congrats-popup" onclick="this.remove()">
                     <div class="popup-content">
-                        <h2>🎉 Excellent work, Aysha! 🎉</h2>
-                        <p class="motivation-quote">"${randomQuote}"</p>
+                        <h2 style="font-family: 'Manrope', sans-serif;">🎉 Excellent work!</h2>
+                        <p class="motivation-quote" style="border-left: 4px solid var(--accent);">"${randomQuote}"</p>
                         <p class="dismiss-hint">Click anywhere to continue</p>
                     </div>
                 </div>
@@ -594,10 +583,10 @@ class CUETGame {
             }
 
             return `
-                <div class="glass-card review-item" style="margin-bottom: 2rem; padding: 2rem; border-left: 8px solid ${statusColor}">
+                <div class="glass-card review-item" style="margin-bottom: 1.5rem; padding: 1.5rem; border-left: 6px solid ${statusColor}; border-radius: 12px;">
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-                        <div class="q-meta">${q.module} | Question ${idx + 1}</div>
-                        <div style="background: ${statusColor}20; color: ${statusColor}; padding: 0.4rem 0.8rem; border-radius: 8px; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;">${statusLabel}</div>
+                        <div class="q-meta" style="font-weight: 600;">${q.module} | Question ${idx + 1}</div>
+                        <div style="background: ${statusColor}15; color: ${statusColor}; padding: 0.3rem 0.6rem; border-radius: 6px; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em;">${statusLabel}</div>
                     </div>
                     ${this.renderQuestionContent(q, true)}
                     <div class="review-options" style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 16px; margin: 1.5rem 0;">
@@ -947,7 +936,7 @@ class CUETGame {
     }
 
     switchSection(section) {
-        ['mcq', 'match', 'ar', 'final', 'superfinal'].forEach(s => {
+        ['mcq', 'skill', 'final', 'superfinal'].forEach(s => {
             const el = document.getElementById(`section-${s}`);
             const tab = document.getElementById(`tab-${s}`);
             if (el) el.style.display = s === section ? 'block' : 'none';
