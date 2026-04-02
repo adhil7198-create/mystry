@@ -113,6 +113,7 @@ class CUETGame {
     async renderView(viewName, param) {
         console.log(`Rendering view: ${viewName}`, param);
         this.currentView = viewName;
+        document.body.className = `view-${viewName}`;
         const main = document.getElementById('main-view');
         if (!main) {
             console.error('Critical Error: #main-view not found in DOM.');
@@ -185,13 +186,32 @@ class CUETGame {
     }
 
     animateViewTransition() {
-        if (window.gsap) {
-            gsap.from('#main-view > *', {
+        if (!window.gsap) return;
+
+        // Base entrance for all views
+        gsap.from('#main-view > *', {
+            opacity: 0,
+            y: 15,
+            duration: 0.4,
+            ease: "expo.out",
+            stagger: 0.08
+        });
+
+        // Specific enhancements for Home view
+        if (this.currentView === 'home') {
+            gsap.from('.hero-section h1', {
+                scale: 0.95,
                 opacity: 0,
-                y: 10,
-                duration: 0.3,
-                ease: "power1.out",
-                stagger: 0.05
+                duration: 1,
+                delay: 0.2,
+                ease: "elastic.out(1, 0.8)"
+            });
+
+            gsap.from('.silver-text', {
+                letterSpacing: "0.2em",
+                duration: 1.5,
+                delay: 0.1,
+                ease: "power3.out"
             });
         }
     }
@@ -241,22 +261,77 @@ class CUETGame {
         const randomQuote = homeQuotes[Math.floor(Math.random() * homeQuotes.length)];
 
         return `
-            <div class="hero-section glass-card">
-                <h1>Master CUET Psychology <span class="accent-text">2026</span></h1>
-                <p>Prepare through a gamified MCQ platform. 20 Levels, 1500+ Questions, AI Predictions.</p>
-                
-                <div class="motivation-quote">
-                    "${randomQuote}"
+            <div class="home-container">
+                <!-- Immersive Hero -->
+                <section class="hero-section glass-card">
+                    <div class="hero-content">
+                        <div class="launch-tag">🚀 CUET 2026 EDITION</div>
+                        <h1><span class="silver-text">Master CUET</span> Psychology <span class="accent-text">2026</span></h1>
+                        <p class="hero-p">The definitive gamified platform for NCERT Psychology. Engineered for 100th percentile performance.</p>
+                        
+                        <div class="hero-actions">
+                            <button class="btn-primary main-start" onclick="window.location.hash = '#levels'">🚀 Begin Your Journey</button>
+                            <button class="btn-secondary" onclick="window.location.hash = '#dashboard'">📊 View Performance</button>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-badges">
+                        <div class="badge-item">🎯 NCERT Master</div>
+                        <div class="badge-item">🧠 Memory Guru</div>
+                        <div class="badge-item">⚡ 2026 Predictions</div>
+                    </div>
+                </section>
+
+                <!-- Strategic Pathways (Features) -->
+                <section class="pathways-section">
+                    <div class="section-title">
+                        <h2>Choose Your Pathway</h2>
+                        <p>Master every unit with specialized training modules</p>
+                    </div>
+                    
+                    <div class="pathway-cards">
+                        <div class="pathway-card glass-card" onclick="window.game.switchSection('mcq'); window.location.hash='#levels';">
+                            <div class="card-icon">📚</div>
+                            <h3>Core Curriculum</h3>
+                            <p>20 progressive levels covering the full NCERT syllabus in detail.</p>
+                            <div class="card-footer">Explore Levels →</div>
+                        </div>
+                        
+                        <div class="pathway-card glass-card" onclick="window.game.switchSection('skill'); window.location.hash='#levels';">
+                            <div class="card-icon">⚖️</div>
+                            <h3>Logic Training</h3>
+                            <p>Master Assertion-Reason and Match-Following logic questions.</p>
+                            <div class="card-footer">Start Training →</div>
+                        </div>
+                        
+                        <div class="pathway-card glass-card" onclick="window.game.switchSection('final'); window.location.hash='#levels';">
+                            <div class="card-icon">🏆</div>
+                            <h3>Grand Mocks</h3>
+                            <p>Official 90-minute simulations for real-time exam preparedness.</p>
+                            <div class="card-footer">Practice Mocks →</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Stats & Motivation Banner -->
+                <div class="feature-banner glass-card">
+                    <div class="stat-item">
+                        <span class="stat-num">1500+</span>
+                        <span class="stat-label">MCQ Challenges</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">100%</span>
+                        <span class="stat-label">NCERT Alignment</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">24/7</span>
+                        <span class="stat-label">AI Predictions</span>
+                    </div>
                 </div>
 
-                <div class="hero-actions">
-                    <button class="btn-primary" onclick="window.location.hash = '#levels'">🚀 Start Game</button>
-                    <button class="btn-secondary" onclick="window.location.hash = '#dashboard'">📊 My Progress</button>
-                </div>
-                <div class="hero-badges">
-                    <div class="badge-item">🎯 NCERT Master</div>
-                    <div class="badge-item">🧠 Memory Guru</div>
-                    <div class="badge-item">⚡ 2026 Predictions</div>
+                <div class="motivation-quote glass-card">
+                    <div class="quote-header">💌 Daily Motivation</div>
+                    <p>"${randomQuote}"</p>
                 </div>
             </div>
         `;
