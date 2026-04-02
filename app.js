@@ -264,114 +264,22 @@ class CUETGame {
 
     viewLevels() {
         const { unlockedLevels } = Store.state.user;
+        const mcqLevelsHTML = Array.from({ length: 20 }, (_, i) => {
+            const num = i + 1;
+            const isLocked = num > unlockedLevels;
+            const clickAction = !isLocked ? `window.location.hash = '#quiz/mcq/${num}'` : '';
+            return `<div class="level-card glass-card mcq-card ${isLocked ? 'locked' : ''}" onclick="${clickAction}"><div class="level-num">${num}</div><div class="level-status">${isLocked ? '🔒 Locked' : '✨ Unlocked'}</div><div class="level-difficulty">75 Questions</div></div>`;
+        }).join('');
+        const matchLevelsHTML = Array.from({ length: 10 }, (_, i) => `<div class="level-card glass-card match-card" onclick="window.location.hash = '#quiz/match/${i + 1}'"><div class="level-num">🔗 ${i + 1}</div><div class="level-status">✨ Training</div><div class="level-difficulty">75 Questions</div></div>`).join('');
+        const arLevelsHTML = Array.from({ length: 10 }, (_, i) => `<div class="level-card glass-card ar-card" onclick="window.location.hash = '#quiz/ar/${i + 1}'"><div class="level-num">⚖️ ${i + 1}</div><div class="level-status">✨ Training</div><div class="level-difficulty">75 Questions</div></div>`).join('');
+        const finalLevelsHTML = Array.from({ length: 6 }, (_, i) => `<div class="level-card glass-card final-card" onclick="window.location.hash = '#quiz/final/${i + 1}'"><div class="level-num">🏆 ${i + 1}</div><div class="level-status">⚡ Grand Mock</div><div class="level-difficulty">75 Questions</div></div>`).join('');
+        const superfinalLevelsHTML = Array.from({ length: 10 }, (_, i) => {
+            const num = i + 1;
+            const isUltimate = num === 10;
+            return `<div class="level-card glass-card superfinal-card ${isUltimate ? 'ultimate-card' : ''}" onclick="window.location.hash = '#quiz/superfinal/${num}'"><div class="level-num">${isUltimate ? '👑' : '⭐'} ${num}</div><div class="level-status">${isUltimate ? '🔥 ULTIMATE MOCK' : '💎 Elite Mock'}</div><div class="level-difficulty">${isUltimate ? 'BOSS LEVEL' : '75 Questions'}</div></div>`;
+        }).join('');
 
-        // MCQ Levels (20 levels)
-        let mcqLevelsHTML = '';
-        for (let i = 1; i <= 20; i++) {
-            const isLocked = i > unlockedLevels;
-            mcqLevelsHTML += `
-                <div class="level-card glass-card ${isLocked ? 'locked' : ''}" onclick="${!isLocked ? `window.location.hash = '#quiz/mcq/${i}'` : ''}">
-                    <div class="level-num">${i}</div>
-                    <div class="level-status">${isLocked ? '🔒 Locked' : '✨ Unlocked'}</div>
-                    <div class="level-difficulty">75 Questions</div>
-                </div>
-            `;
-        }
-
-        // Match the Following Rounds
-        const matchRounds = Math.ceil(MatchBank.length / 5) || 5; 
-        let matchLevelsHTML = '';
-        for (let i = 1; i <= 10; i++) {
-            matchLevelsHTML += `
-                <div class="level-card glass-card match-card" onclick="window.location.hash = '#quiz/match/${i}'">
-                    <div class="level-num">🔗 ${i}</div>
-                    <div class="level-status">✨ Training</div>
-                    <div class="level-difficulty">75 Questions</div>
-                </div>
-            `;
-        }
-
-        // Assertion-Reason Rounds
-        for (let i = 1; i <= 10; i++) {
-            matchLevelsHTML += `
-                <div class="level-card glass-card ar-card" onclick="window.location.hash = '#quiz/ar/${i}'">
-                    <div class="level-num">⚖️ ${i}</div>
-                    <div class="level-status">✨ Training</div>
-                    <div class="level-difficulty">75 Questions</div>
-                </div>
-            `;
-        }
-
-        // Final Mock Levels
-        let finalLevelsHTML = '';
-        for (let i = 1; i <= 6; i++) {
-            finalLevelsHTML += `
-                <div class="level-card glass-card final-card" onclick="window.location.hash = '#quiz/final/${i}'">
-                    <div class="level-num">🏆 ${i}</div>
-                    <div class="level-status">⚡ Grand Mock</div>
-                    <div class="level-difficulty">75 Questions</div>
-                </div>
-            `;
-        }
-
-        // Superfinal Mock Levels (Elite)
-        let superfinalLevelsHTML = '';
-        for (let i = 1; i <= 10; i++) {
-            const isUltimate = i === 10;
-            superfinalLevelsHTML += `
-                <div class="level-card glass-card superfinal-card ${isUltimate ? 'ultimate-card' : ''}" onclick="window.location.hash = '#quiz/superfinal/${i}'">
-                    <div class="level-num">${isUltimate ? '👑' : '⭐'} ${i}</div>
-                    <div class="level-status">${isUltimate ? '🔥 ULTIMATE MOCK' : '💎 Elite Mock'}</div>
-                    <div class="level-difficulty">${isUltimate ? 'BOSS LEVEL' : '75 Questions'}</div>
-                </div>
-            `;
-        }
-
-        return `
-            <div class="view-header">
-                <h2 style="font-size: 3rem; margin-bottom: 1rem; background: linear-gradient(135deg, #fff, var(--primary-bright)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Syllabus Mastery</h2>
-                <p class="text-secondary" style="max-width: 600px; margin: 0 auto;">Select a pathway to begin your preparation. All levels are scaled to the official CUET 2026 format.</p>
-            </div>
-
-            <div class="section-tabs">
-                <button class="section-tab active" onclick="window.game.switchSection('mcq')" id="tab-mcq">📋 Core curriculum</button>
-                <button class="section-tab" onclick="window.game.switchSection('skill')" id="tab-skill">⚡ Skill Training</button>
-                <button class="section-tab" onclick="window.game.switchSection('final')" id="tab-final">🏆 Grand Mocks</button>
-                <button class="section-tab" onclick="window.game.switchSection('superfinal')" id="tab-superfinal">💎 Super Final</button>
-            </div>
-
-            <div id="section-mcq" class="level-section">
-                <div class="section-header">
-                    <h3>📋 Integrated MCQ Levels</h3>
-                    <p class="text-secondary">Progressive learning modules covering the entire Psychology syllabus. Mixed question types included.</p>
-                </div>
-                <div class="level-grid">${mcqLevelsHTML}</div>
-            </div>
-
-            <div id="section-skill" class="level-section" style="display:none;">
-                <div class="section-header">
-                    <h3>⚡ Specialized Skill Training</h3>
-                    <p class="text-secondary">Intensive drills focused specifically on Match the Following and Assertion-Reasoning logic.</p>
-                </div>
-                <div class="level-grid">${matchLevelsHTML}</div>
-            </div>
-
-            <div id="section-final" class="level-section" style="display:none;">
-                <div class="section-header">
-                    <h3>🏆 Full Exam Simulations</h3>
-                    <p class="text-secondary">Official 90-minute mocks designed to test your stamina and comprehensive knowledge.</p>
-                </div>
-                <div class="level-grid">${finalLevelsHTML}</div>
-            </div>
-
-            <div id="section-superfinal" class="level-section" style="display:none;">
-                <div class="section-header">
-                    <h3 style="color: var(--accent);">💎 Super Final Mastery Arena</h3>
-                    <p class="text-secondary">The ultimate challenge. Mixed elite questions with AI-predicted patterns for 2026.</p>
-                </div>
-                <div class="level-grid">${superfinalLevelsHTML}</div>
-            </div>
-        `;
+        return `<div class="view-header" style="margin-bottom: 2rem;"><h2 style="font-size: 2.5rem; margin-bottom: 0.5rem; background: linear-gradient(135deg, var(--text-primary), var(--primary)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Syllabus Mastery</h2><p class="text-secondary" style="font-weight: 500;">Select a pathway to begin. All levels match CUET 2026 standards.</p></div><div class="section-tabs" style="margin-bottom: 2rem;"><button class="section-tab active" onclick="window.game.switchSection('mcq')" id="tab-mcq">📋 Core curriculum</button><button class="section-tab" onclick="window.game.switchSection('skill')" id="tab-skill">⚡ Skill Training</button><button class="section-tab" onclick="window.game.switchSection('final')" id="tab-final">🏆 Grand Mocks</button><button class="section-tab" onclick="window.game.switchSection('superfinal')" id="tab-superfinal">💎 Super Final</button></div><div id="section-mcq" class="level-section"><div class="section-header"><h3>📋 Integrated MCQ Levels</h3><p class="text-secondary">Progressive learning modules.</p></div><div class="level-grid">${mcqLevelsHTML}</div></div><div id="section-skill" class="level-section" style="display:none;"><div class="section-header"><h3>⚡ Specialized Skill Training</h3><p class="text-secondary">Match and AR logic.</p></div><div class="level-grid">${matchLevelsHTML}${arLevelsHTML}</div></div><div id="section-final" class="level-section" style="display:none;"><div class="section-header"><h3>🏆 Full Exam Simulations</h3><p class="text-secondary">Official 90-minute mocks.</p></div><div class="level-grid">${finalLevelsHTML}</div></div><div id="section-superfinal" class="level-section" style="display:none;"><div class="section-header"><h3 style="color: var(--accent);">💎 Super Final Arena</h3><p class="text-secondary">Elite challenges for 2026.</p></div><div class="level-grid">${superfinalLevelsHTML}</div></div>`;
     }
 
     viewDashboard() {
@@ -749,16 +657,21 @@ class CUETGame {
             <div class="quiz-interface">
                 <div class="quiz-main">
                     <div class="quiz-header">
-                        <div class="timer-box">⏱️ <span id="timer-display">${Store.state.config.timerMinutes}:00</span></div>
+                        <div class="timer-box">⏱️ <span id="timer-display">${Math.floor(Store.state.quiz.timeRemaining / 60)}:${(Store.state.quiz.timeRemaining % 60).toString().padStart(2, '0')}</span></div>
                         <div style="font-weight: 700;">Question ${qIdx + 1} of ${Store.state.quiz.questions.length}</div>
                     </div>
                     <div class="question-card glass-card">
                         <div class="q-meta">${q.tag === 'Match' ? '🔗 Match the Following' : q.tag === 'Assertion-Reason' ? '⚖️ Assertion-Reason' : q.module} | ${q.difficulty}</div>
                         ${this.renderQuestionContent(q)}
-                        <div class="q-options">
+                        <div class="q-options" id="options-container">
                             ${q.options.map((opt, i) => `
-                                <div class="option-btn ${Store.state.quiz.answers[qIdx] === i ? 'selected' : ''}" onclick="window.game.selectAnswer(${i})">
-                                    <span class="opt-label">${String.fromCharCode(65 + i)}</span> ${opt}
+                                <div class="option-btn ${Store.state.quiz.answers[qIdx] === i ? 'selected' : ''}" 
+                                     onclick="window.game.selectAnswer(${i})" 
+                                     role="button" 
+                                     tabindex="0"
+                                     aria-pressed="${Store.state.quiz.answers[qIdx] === i}">
+                                    <span class="opt-label">${String.fromCharCode(65 + i)}</span> 
+                                    <div class="opt-text">${opt}</div>
                                 </div>
                             `).join('')}
                         </div>
@@ -821,15 +734,65 @@ class CUETGame {
     }
 
     selectAnswer(idx) {
+        console.log(`Selecting answer: ${idx}`);
         const qIdx = Store.state.quiz.currentQuestionIndex;
-        if (Store.state.quiz.answers[qIdx] === idx) {
+        
+        // Ensure idx is a number
+        const numericIdx = parseInt(idx);
+        
+        if (Store.state.quiz.answers[qIdx] === numericIdx) {
             // Unselect if same index clicked again
             delete Store.state.quiz.answers[qIdx];
         } else {
-            Store.state.quiz.answers[qIdx] = idx;
+            Store.state.quiz.answers[qIdx] = numericIdx;
         }
-        this.renderQuizUI();
+        
+        // Update ONLY the options container to prevent full re-render and timer blink
+        this.updateOptionsUI();
+        
+        // Still save state
         Store.saveState();
+    }
+
+    updateOptionsUI() {
+        const container = document.getElementById('options-container');
+        if (!container) {
+            this.renderQuizUI();
+            return;
+        }
+
+        const qIdx = Store.state.quiz.currentQuestionIndex;
+        const q = Store.state.quiz.questions[qIdx];
+        if (!q) return;
+
+        container.innerHTML = q.options.map((opt, i) => `
+            <div class="option-btn ${Store.state.quiz.answers[qIdx] === i ? 'selected' : ''}" 
+                 onclick="window.game.selectAnswer(${i})"
+                 role="button" 
+                 tabindex="0"
+                 aria-pressed="${Store.state.quiz.answers[qIdx] === i}">
+                <span class="opt-label">${String.fromCharCode(65 + i)}</span> 
+                <div class="opt-text">${opt}</div>
+            </div>
+        `).join('');
+
+        // Update question grid in sidebar too
+        this.updateSidebarGrid();
+    }
+
+    updateSidebarGrid() {
+        const gridItems = document.querySelectorAll('.q-grid-item');
+        const qIdx = Store.state.quiz.currentQuestionIndex;
+        
+        gridItems.forEach((item, i) => {
+            const isMarked = Store.state.quiz.marked.has(i);
+            const isAnswered = Store.state.quiz.answers[i] !== undefined;
+            
+            item.classList.remove('active', 'marked', 'answered');
+            if (i === qIdx) item.classList.add('active');
+            else if (isMarked) item.classList.add('marked');
+            else if (isAnswered) item.classList.add('answered');
+        });
     }
 
     nextQuestion() {
